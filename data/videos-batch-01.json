@@ -1,0 +1,163 @@
+{
+  "videos": [
+    {
+      "id": "01",
+      "filename": "01-verdad-sal",
+      "template": "Educational",
+      "props": {
+        "title": "La Verdad sobre la Sal",
+        "hook": "¿Por qué nos dijeron que la sal es mala pero los atletas profesionales la consumen a montones?",
+        "mainPoints": [
+          "Pierdes 500-1000mg de sodio por litro de sudor",
+          "Durante ejercicio intenso pierdes hasta 2L por hora",
+          "La mayoría de bebidas deportivas solo tienen 20-50mg"
+        ],
+        "conclusion": "bilan tiene 1000mg de sodio por porción - lo que tu cuerpo científicamente necesita",
+        "cta": "Dime en los comentarios si ya sabías esto"
+      }
+    },
+    {
+      "id": "02",
+      "filename": "02-senales-deshidratacion",
+      "template": "QuickTip",
+      "props": {
+        "title": "3 Señales de Deshidratación",
+        "hook": "El 75% de los mexicanos están deshidratados ahora mismo y ni siquiera lo saben",
+        "tips": [
+          "Orina amarillo oscuro significa modo emergencia",
+          "Cansancio que no se va ni con café",
+          "Antojos locos de sal o azúcar"
+        ],
+        "reason": "Tu cuerpo confunde la falta de electrolitos con hambre",
+        "cta": "Guarda este video y chécate"
+      }
+    },
+    {
+      "id": "03",
+      "filename": "03-mito-8-vasos",
+      "template": "Mythbusting",
+      "props": {
+        "title": "El Mito de los 8 Vasos",
+        "hook": "Los 8 vasos de agua al día son un mito y te voy a decir por qué",
+        "myth": "Este consejo viene de un estudio de los años 40 que fue malinterpretado",
+        "truth": "Tu necesidad de agua depende de tu peso, actividad y clima",
+        "explanation": "Un oficinista de 60kg en CDMX no necesita lo mismo que un albañil de 90kg en Monterrey con 40 grados",
+        "cta": "Dime cuánta agua tomas tú al día"
+      }
+    },
+    {
+      "id": "04",
+      "filename": "04-trampa-bebidas",
+      "template": "Mythbusting",
+      "props": {
+        "title": "Trampa de Bebidas Deportivas",
+        "hook": "Me gasté cientos de pesos en bebidas deportivas antes de darme cuenta que me estaban viendo la cara",
+        "myth": "Las bebidas deportivas del súper tienen solo 20-50mg de sodio",
+        "truth": "Necesitas 500-1000mg por litro de sudor",
+        "explanation": "Aparte tienen 30g de azúcar - casi como un refresco. bilan tiene 1000mg sodio y 0g azúcar",
+        "cta": "Lee la etiqueta la próxima vez"
+      }
+    },
+    {
+      "id": "05",
+      "filename": "05-cure-calambres",
+      "template": "Trending",
+      "props": {
+        "title": "Cómo Me Curé de los Calambres",
+        "hook": "Durante 3 años no pude terminar un partido de futbol completo por los calambres",
+        "scenes": [
+          "Calambres cada partido minuto 60-70",
+          "Probé plátanos, agua, pastillas - nada funcionó",
+          "Descubrí que necesitaba SODIO no solo potasio",
+          "Ahora juego 90 minutos completos sin calambres"
+        ],
+        "cta": "Dime dónde te dan calambres a ti",
+        "trendingFormat": "transformation"
+      }
+    },
+    {
+      "id": "06",
+      "filename": "06-transformacion-gym",
+      "template": "Trending",
+      "props": {
+        "title": "Transformación en el Gym",
+        "hook": "Aumenté 15% mi rendimiento en el gym sin cambiar mi rutina ni mi dieta",
+        "scenes": [
+          "Antes: Cansancio, dolores de cabeza, DOMS de 3-4 días",
+          "El cambio: Agregué electrolitos a mi hidratación",
+          "Después: Más energía, pesos subieron 10-15%",
+          "Solo agregué bilan - nada más"
+        ],
+        "cta": "Comenta tu ejercicio principal",
+        "trendingFormat": "transformation"
+      }
+    },
+    {
+      "id": "07",
+      "filename": "07-tip-hidratacion",
+      "template": "QuickTip",
+      "props": {
+        "title": "Tip de Hidratación 15s",
+        "hook": "Este truco de hidratación te puede salvar en tu próximo entrenamiento",
+        "tips": [
+          "Pellizca tu piel en el dorso de la mano",
+          "Si vuelve lento = deshidratado",
+          "Si vuelve rápido = bien hidratado"
+        ],
+        "reason": "Es la forma más rápida de saber tu estado de hidratación",
+        "cta": "Guarda esto y usa bilan",
+        "duration": 15
+      }
+    },
+    {
+      "id": "08",
+      "filename": "08-secreto-atletas",
+      "template": "QuickTip",
+      "props": {
+        "title": "Secreto de los Atletas",
+        "hook": "Los atletas profesionales no toman agua durante entrenamientos. Toman esto",
+        "tips": [
+          "Cuando sudas intensamente el agua sola no te rehidrata",
+          "Puede incluso empeorar tu rendimiento",
+          "Los atletas reponen electrolitos: 1000mg de sodio por hora"
+        ],
+        "reason": "bilan tiene exactamente esa fórmula que usan los pros",
+        "cta": "Sígueme para más secretos"
+      }
+    },
+    {
+      "id": "09",
+      "filename": "09-pov-olvidas",
+      "template": "Trending",
+      "props": {
+        "title": "POV Olvidas Electrolitos",
+        "hook": "POV: Olvidaste tus electrolitos y ya vas en el minuto 45 de cardio",
+        "scenes": [
+          "Minuto 15: Todo bien, estoy bien 😎",
+          "Minuto 30: ¿Por qué me siento mareado? 🤔",
+          "Minuto 45: Chale, me está dando calambre 😰",
+          "Minuto 60: ¿Por qué me odia mi cuerpo? 💀"
+        ],
+        "cta": "No seas payaso, trae tu bilan",
+        "trendingFormat": "pov"
+      }
+    },
+    {
+      "id": "10",
+      "filename": "10-tutorial-hidratacion",
+      "template": "Trending",
+      "props": {
+        "title": "Tutorial Hidratación Perfecta",
+        "hook": "Tutorial: Cómo hidratarte como los atletas profesionales en 3 pasos",
+        "scenes": [
+          "PASO 1: Pre-entrenamiento - 500ml con bilan 2h antes",
+          "PASO 2: Durante - 250ml cada 15-20 minutos",
+          "PASO 3: Post - 500-750ml en la siguiente hora",
+          "Guarda este tutorial y pruébalo una semana"
+        ],
+        "cta": "Guarda este tutorial",
+        "trendingFormat": "challenge"
+      }
+    }
+  ]
+}
