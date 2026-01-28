@@ -23,15 +23,15 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Timing (30 seconds total)
+  // Timing (30 seconds total) - NO GAPS!
   const titleEnd = fps * 4;
   const mythStart = fps * 4;
   const mythEnd = fps * 10;
   const truthStart = fps * 10;
   const truthEnd = fps * 18;
   const explanationStart = fps * 18;
-  const explanationEnd = fps * 24;
-  const ctaStart = fps * 24;
+  const explanationEnd = fps * 25; // Ends at 25s to make room for CTA
+  const ctaStart = fps * 25; // CTA starts exactly when explanation ends
 
   // Animations
   const titleOpacity = interpolate(frame, [0, 10, titleEnd - 10, titleEnd], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
@@ -43,12 +43,18 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
   const truthOpacity = interpolate(frame, [truthStart, truthStart + 10, truthEnd - 10, truthEnd], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
   const truthScale = spring({ frame: frame - truthStart, fps, config: { damping: 10 } });
 
-  const explainOpacity = interpolate(frame, [explanationStart, explanationStart + 10, explanationEnd - 10, explanationEnd], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
+  const explainOpacity = interpolate(frame, [explanationStart, explanationStart + 10, explanationEnd - 15, explanationEnd - 5], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
 
-  const ctaOpacity = interpolate(frame, [ctaStart, ctaStart + 10], [0, 1], { extrapolateRight: 'clamp' });
+  const ctaOpacity = interpolate(frame, [ctaStart - 10, ctaStart, fps * 30], [0, 1, 1], { extrapolateRight: 'clamp' });
   const ctaScale = spring({ frame: frame - ctaStart, fps, config: { damping: 10 } });
 
-  const logoOpacity = interpolate(frame, [0, 15], [0, 1], { extrapolateRight: 'clamp' });
+  // Logo fades out before CTA so only one logo shows at a time
+  const logoOpacity = interpolate(
+    frame, 
+    [0, 15, ctaStart - 15, ctaStart], 
+    [0, 1, 1, 0], 
+    { extrapolateRight: 'clamp' }
+  );
 
   return (
     <AbsoluteFill
@@ -59,7 +65,7 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
         fontFamily: getFontStack('body'),
       }}
     >
-      {/* Logo - centered, large */}
+      {/* Logo - centered, large with shadow */}
       {showLogo && (
         <div
           style={{
@@ -74,7 +80,11 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
         >
           <Img
             src={staticFile(brand.logo.path)}
-            style={{ width: brand.logo.width, height: 'auto' }}
+            style={{ 
+              width: brand.logo.width, 
+              height: 'auto',
+              filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 4px 8px rgba(0,0,0,0.2))',
+            }}
           />
         </div>
       )}
@@ -90,26 +100,34 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
             padding: '0 50px',
           }}
         >
+          {/* CHUNKY LABEL - GREEN for contrast */}
           <div
             style={{
-              fontSize: brand.typography.caption,
-              color: brandColor,
+              display: 'inline-block',
+              fontSize: 58, // Increased from 52
+              color: '#FFFFFF',
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
-              marginBottom: 24,
+              marginBottom: 36,
               textTransform: 'uppercase',
-              letterSpacing: 4,
+              letterSpacing: 5,
+              padding: '16px 36px',
+              backgroundColor: brand.colors.accentGreen,
+              borderRadius: 14,
+              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              boxShadow: `0 8px 32px ${brand.colors.accentGreen}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
             🔍 MITO VS REALIDAD
           </div>
           <div
             style={{
-              fontSize: brand.typography.title,
+              fontSize: 72, // Increased from brand.typography.title (64)
               color: brand.colors.white,
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
               lineHeight: 1.1,
+              textShadow: '0 6px 20px rgba(0,0,0,0.4)',
             }}
           >
             {title}
@@ -128,22 +146,29 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
             padding: '0 40px',
           }}
         >
+          {/* CHUNKY RED LABEL */}
           <div
             style={{
-              fontSize: brand.typography.body,
-              color: brand.colors.error,
+              display: 'inline-block',
+              fontSize: 58, // Increased from 52
+              color: '#FFFFFF',
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
-              marginBottom: 24,
+              marginBottom: 36,
               textTransform: 'uppercase',
-              letterSpacing: 3,
+              letterSpacing: 5,
+              padding: '16px 36px',
+              backgroundColor: brand.colors.error,
+              borderRadius: 14,
+              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              boxShadow: `0 8px 32px ${brand.colors.error}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
             ❌ EL MITO
           </div>
           <div
             style={{
-              fontSize: brand.typography.subtitle,
+              fontSize: 58, // Increased from brand.typography.subtitle (52)
               color: brand.colors.white,
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
@@ -152,6 +177,7 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
               backgroundColor: 'rgba(239, 68, 68, 0.15)',
               borderRadius: 20,
               border: '3px solid rgba(239, 68, 68, 0.4)',
+              textShadow: '0 4px 12px rgba(0,0,0,0.3)',
             }}
           >
             "{myth}"
@@ -170,30 +196,38 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
             padding: '0 40px',
           }}
         >
+          {/* CHUNKY GREEN LABEL */}
           <div
             style={{
-              fontSize: brand.typography.body,
-              color: brandColor,
+              display: 'inline-block',
+              fontSize: 58, // Increased from 52
+              color: '#FFFFFF',
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
-              marginBottom: 24,
+              marginBottom: 36,
               textTransform: 'uppercase',
-              letterSpacing: 3,
+              letterSpacing: 5,
+              padding: '16px 36px',
+              backgroundColor: brand.colors.success,
+              borderRadius: 14,
+              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              boxShadow: `0 8px 32px ${brand.colors.success}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
             ✅ LA VERDAD
           </div>
           <div
             style={{
-              fontSize: brand.typography.subtitle,
+              fontSize: 58, // Increased from brand.typography.subtitle (52)
               color: brand.colors.white,
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
               lineHeight: 1.2,
               padding: '36px 44px',
-              backgroundColor: `${brandColor}22`,
+              backgroundColor: `${brand.colors.success}22`,
               borderRadius: 20,
-              border: `3px solid ${brandColor}55`,
+              border: `3px solid ${brand.colors.success}55`,
+              textShadow: '0 4px 12px rgba(0,0,0,0.3)',
             }}
           >
             {truth}
@@ -213,11 +247,12 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
         >
           <div
             style={{
-              fontSize: brand.typography.subtitle,
+              fontSize: 58, // Increased from brand.typography.subtitle (52)
               color: brand.colors.white,
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
               lineHeight: 1.3,
+              textShadow: '0 6px 20px rgba(0,0,0,0.4)',
             }}
           >
             {explanation}
@@ -225,7 +260,7 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
         </div>
       )}
 
-      {/* CTA */}
+      {/* CTA - Brand Outro Style */}
       {frame >= ctaStart && (
         <div
           style={{
@@ -238,22 +273,39 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
             alignItems: 'center',
           }}
         >
-          <div
-            style={{
-              fontSize: brand.typography.title,
-              color: brand.colors.white,
-              fontFamily: getFontStack('heading'),
-              fontWeight: 700,
-              marginBottom: 40,
-            }}
-          >
-            {cta}
-          </div>
           {showLogo && (
-            <Img
-              src={staticFile(brand.logo.path)}
-              style={{ width: brand.logo.widthCTA, height: 'auto' }}
-            />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <Img
+                src={staticFile(brand.logo.path)}
+                style={{ 
+                  width: brand.logo.widthCTA, 
+                  height: 'auto',
+                  filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.3))',
+                }}
+              />
+              {/* Tagline below logo */}
+              <div
+                style={{
+                  marginTop: 20,
+                  fontSize: 38, // Increased for accessibility
+                  color: brand.colors.white,
+                  fontFamily: getFontStack('heading'),
+                  fontWeight: 700,
+                  letterSpacing: 6,
+                  textTransform: 'lowercase',
+                  textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+                  opacity: 0.9,
+                }}
+              >
+                hidratación inteligente
+              </div>
+            </div>
           )}
         </div>
       )}

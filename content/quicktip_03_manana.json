@@ -1,0 +1,13 @@
+{
+  "id": "quicktip_03",
+  "template": "QuickTip",
+  "contentProps": {
+    "tip": "Un vaso de agua al despertar activa tu día",
+    "reason": "Después de 8 horas sin beber, tu cuerpo necesita rehidratarse",
+    "cta": "Empieza bien tu mañana"
+  },
+  "tiktok": {
+    "caption": "☀️ El hábito más fácil que puedes empezar HOY\n\nDespués de dormir, tu cuerpo lleva horas sin agua. Un vaso al despertar marca la diferencia.\n\n#morning #rutina #habitossaludables #hidratacion #buenosdias #wellness #bilan #vidaSaludable",
+    "hashtags": ["morning", "rutina", "habitossaludables", "hidratacion", "buenosdias", "wellness", "bilan", "vidaSaludable"]
+  }
+}

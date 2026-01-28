@@ -30,14 +30,19 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
   const tipOpacity = interpolate(frame, [tipStart, tipStart + 10, tipEnd - 10, tipEnd], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
   const tipScale = spring({ frame: frame - tipStart, fps, config: brand.animation.spring });
 
-  const reasonOpacity = interpolate(frame, [reasonStart, reasonStart + 10, reasonEnd - 10, reasonEnd], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
+  const reasonOpacity = interpolate(frame, [reasonStart, reasonStart + 10, reasonEnd - 15, reasonEnd - 5], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
   const reasonY = interpolate(frame, [reasonStart, reasonStart + 15], [50, 0], { extrapolateRight: 'clamp' });
 
-  const ctaOpacity = interpolate(frame, [ctaStart, ctaStart + 10], [0, 1], { extrapolateRight: 'clamp' });
+  const ctaOpacity = interpolate(frame, [ctaStart - 10, ctaStart], [0, 1], { extrapolateRight: 'clamp' });
   const ctaScale = spring({ frame: frame - ctaStart, fps, config: { damping: 10 } });
 
-  // Logo animation
-  const logoOpacity = interpolate(frame, [0, 15], [0, 1], { extrapolateRight: 'clamp' });
+  // Logo animation - fade out before CTA so only one logo shows at a time
+  const logoOpacity = interpolate(
+    frame, 
+    [0, 15, ctaStart - 15, ctaStart], 
+    [0, 1, 1, 0], 
+    { extrapolateRight: 'clamp' }
+  );
 
   return (
     <AbsoluteFill
@@ -48,7 +53,7 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
         fontFamily: getFontStack('body'),
       }}
     >
-      {/* Logo - centered, large */}
+      {/* Logo - centered, large with shadow */}
       {showLogo && (
         <div
           style={{
@@ -63,7 +68,11 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
         >
           <Img
             src={staticFile(brand.logo.path)}
-            style={{ width: brand.logo.width, height: 'auto' }}
+            style={{ 
+              width: brand.logo.width, 
+              height: 'auto',
+              filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 4px 8px rgba(0,0,0,0.2))',
+            }}
           />
         </div>
       )}
@@ -79,15 +88,22 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
             padding: '0 50px',
           }}
         >
+          {/* CHUNKY LABEL with glow - GREEN for contrast on blue bg */}
           <div
             style={{
-              fontSize: brand.typography.caption,
-              color: brandColor,
+              display: 'inline-block',
+              fontSize: 56,
+              color: '#FFFFFF',
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
-              marginBottom: 24,
+              marginBottom: 36,
               textTransform: 'uppercase',
-              letterSpacing: 4,
+              letterSpacing: 6,
+              padding: '18px 40px',
+              backgroundColor: brand.colors.accentGreen,
+              borderRadius: 16,
+              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              boxShadow: `0 8px 32px ${brand.colors.accentGreen}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
             💡 TIP RÁPIDO
@@ -99,6 +115,7 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
               lineHeight: 1.1,
+              textShadow: '0 6px 20px rgba(0,0,0,0.4)',
             }}
           >
             {tip}
@@ -117,15 +134,22 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
             padding: '0 50px',
           }}
         >
+          {/* CHUNKY LABEL - GREEN for contrast */}
           <div
             style={{
-              fontSize: brand.typography.body,
-              color: brandColor,
+              display: 'inline-block',
+              fontSize: 52,
+              color: '#FFFFFF',
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
-              marginBottom: 24,
+              marginBottom: 36,
               textTransform: 'uppercase',
-              letterSpacing: 3,
+              letterSpacing: 5,
+              padding: '16px 36px',
+              backgroundColor: brand.colors.accentGreen,
+              borderRadius: 14,
+              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              boxShadow: `0 8px 32px ${brand.colors.accentGreen}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
             ¿POR QUÉ?
@@ -137,6 +161,7 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
               lineHeight: 1.2,
+              textShadow: '0 6px 20px rgba(0,0,0,0.4)',
             }}
           >
             {reason}
@@ -164,6 +189,7 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
               marginBottom: 40,
+              textShadow: '0 6px 20px rgba(0,0,0,0.4)',
             }}
           >
             {cta}
@@ -171,7 +197,11 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
           {showLogo && (
             <Img
               src={staticFile(brand.logo.path)}
-              style={{ width: brand.logo.widthCTA, height: 'auto' }}
+              style={{ 
+                width: brand.logo.widthCTA, 
+                height: 'auto',
+                filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.3))',
+              }}
             />
           )}
         </div>

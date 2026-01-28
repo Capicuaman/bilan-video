@@ -1,0 +1,713 @@
+{
+  "metadata": {
+    "title": "BILAN Momentum Loop Content Compendium",
+    "description": "Content ideas based on Wes McDowell's Momentum Loop strategy (Attraction → Conversion → Email)",
+    "source": "contnetStrategy.md - The NEW Way to Win at Content Marketing in 2026",
+    "created": "2026-01-27",
+    "totalVideos": 30,
+    "strategy": {
+      "phase1_attraction": "Long-form YouTube optimized videos (FAQ, List, Comparison, Thought Leadership)",
+      "phase2_conversion": "Website landing pages with clear CTAs and lead magnets",
+      "phase3_email": "Weekly nurture emails + sales sequences"
+    }
+  },
+  "videos": [
+    {
+      "id": "attract_01",
+      "filename": "faq-como-saber-si-necesito-electrolitos",
+      "template": "Educational",
+      "contentType": "FAQ",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "¿Cómo Saber Si Necesito Electrolitos?",
+        "hook": "Esta es la pregunta que me hacen todos los días: ¿realmente necesito electrolitos o es solo marketing?",
+        "mainPoints": [
+          "Señal #1: Orina amarillo oscuro a pesar de tomar agua",
+          "Señal #2: Calambres musculares durante o después del ejercicio",
+          "Señal #3: Fatiga persistente que no se quita con descanso",
+          "Señal #4: Mareos al levantarte rápidamente",
+          "Señal #5: Antojos intensos de comida salada"
+        ],
+        "conclusion": "Si tienes 2 o más de estas señales, tu cuerpo está pidiendo electrolitos a gritos",
+        "cta": "Comenta cuántas señales tienes tú"
+      },
+      "youtube": {
+        "searchIntent": "cómo saber si necesito electrolitos",
+        "duration": "90-120s",
+        "thumbnailText": "5 SEÑALES que NECESITAS Electrolitos"
+      }
+    },
+    {
+      "id": "attract_02",
+      "filename": "faq-diferencia-agua-vs-electrolitos",
+      "template": "Educational",
+      "contentType": "FAQ",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "Agua vs Electrolitos: La Diferencia",
+        "hook": "¿Por qué el agua sola no es suficiente cuando sudas? Te explico la ciencia en 60 segundos",
+        "mainPoints": [
+          "El agua solo repone líquido, no minerales",
+          "Pierdes 500-1000mg de sodio por litro de sudor",
+          "Sin electrolitos, el agua no entra a tus células",
+          "Tomar solo agua puede diluir tu sangre (hiponatremia)",
+          "Los electrolitos permiten que el agua te hidrate de verdad"
+        ],
+        "conclusion": "Es como intentar cargar tu celular sin cable - necesitas el conductor (electrolitos)",
+        "cta": "Guarda esto para tu próximo entrenamiento"
+      },
+      "youtube": {
+        "searchIntent": "diferencia entre agua y electrolitos",
+        "duration": "60-90s",
+        "thumbnailText": "AGUA vs ELECTROLITOS: Cuál Necesitas"
+      }
+    },
+    {
+      "id": "attract_03",
+      "filename": "list-9-razones-necesitas-electrolitos",
+      "template": "QuickTip",
+      "contentType": "List",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "9 Razones Para Tomar Electrolitos",
+        "hook": "No solo los atletas necesitan electrolitos. Aquí están 9 razones por las que TÚ también los necesitas",
+        "tips": [
+          "1. Haces ejercicio más de 30 minutos",
+          "2. Vives en clima caliente (>25°C)",
+          "3. Sudas mucho en el trabajo",
+          "4. Tomas café o alcohol regularmente",
+          "5. Sigues dieta baja en sodio",
+          "6. Ayunas o haces keto",
+          "7. Te sientes cansado sin razón",
+          "8. Tienes calambres nocturnos",
+          "9. Tu orina es color amarillo oscuro"
+        ],
+        "reason": "Cada una de estas situaciones agota tus electrolitos más rápido de lo normal",
+        "cta": "Cuenta cuántas te aplican"
+      },
+      "youtube": {
+        "searchIntent": "razones para tomar electrolitos",
+        "duration": "90-120s",
+        "thumbnailText": "9 Razones NECESITAS Electrolitos (No Solo Gym)"
+      }
+    },
+    {
+      "id": "attract_04",
+      "filename": "comparison-bilan-vs-gatorade",
+      "template": "Mythbusting",
+      "contentType": "Comparison",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "BILAN vs Bebidas Deportivas",
+        "hook": "Comparé BILAN con las bebidas deportivas más populares. Los resultados me sorprendieron",
+        "myth": "Las bebidas deportivas comerciales son la mejor opción para hidratarte",
+        "truth": "La mayoría son básicamente agua con azúcar y colorantes",
+        "explanation": "Gatorade: 50mg sodio, 30g azúcar | Powerade: 45mg sodio, 35g azúcar | Electrolit: 260mg sodio, 18g azúcar | BILAN: 1000mg sodio, 0g azúcar - la diferencia es abismal",
+        "cta": "Lee las etiquetas antes de comprar"
+      },
+      "youtube": {
+        "searchIntent": "bilan vs gatorade comparación",
+        "duration": "90-120s",
+        "thumbnailText": "BILAN vs GATORADE: La Verdad Impactante"
+      }
+    },
+    {
+      "id": "attract_05",
+      "filename": "thought-leadership-industria-bebidas",
+      "template": "Educational",
+      "contentType": "Thought Leadership",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "Por Qué la Industria Te Miente",
+        "hook": "La industria de bebidas deportivas no quiere que sepas esto sobre los electrolitos",
+        "mainPoints": [
+          "Las grandes marcas priorizan sabor sobre función",
+          "Agregan azúcar para crear adicción, no por ciencia",
+          "Usan mínimo sodio para no 'asustar' al consumidor",
+          "Marketing masivo te hace creer que funcionan",
+          "La verdad: están diseñadas para ventas, no para hidratación"
+        ],
+        "conclusion": "Por eso creamos BILAN: ciencia primero, marketing segundo. 1000mg sodio, 0 azúcar, 0 basura",
+        "cta": "Comparte esto si estás harto de que te vean la cara"
+      },
+      "youtube": {
+        "searchIntent": "verdad sobre bebidas deportivas",
+        "duration": "120-180s",
+        "thumbnailText": "La MENTIRA de Bebidas Deportivas"
+      }
+    },
+    {
+      "id": "attract_06",
+      "filename": "faq-cuanto-sodio-necesito-dia",
+      "template": "Educational",
+      "contentType": "FAQ",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "¿Cuánto Sodio Necesito Al Día?",
+        "hook": "La OMS dice una cosa, los atletas hacen otra. ¿Quién tiene razón sobre el sodio?",
+        "mainPoints": [
+          "OMS recomienda 2000mg/día para persona sedentaria",
+          "Atletas pierden 500-1000mg por hora de ejercicio",
+          "Un maratón puede hacerte perder 4000-8000mg",
+          "Tu necesidad depende de: actividad, clima, genética",
+          "No es 'cuánto necesitas' sino 'cuánto estás perdiendo'"
+        ],
+        "conclusion": "Calcula tu pérdida: peso perdido en kg × 575 = mg de sodio perdido",
+        "cta": "Haz el cálculo y comenta tu resultado"
+      },
+      "youtube": {
+        "searchIntent": "cuánto sodio necesito al día ejercicio",
+        "duration": "90-120s",
+        "thumbnailText": "Sodio Que NECESITAS (No lo que crees)"
+      }
+    },
+    {
+      "id": "attract_07",
+      "filename": "list-5-errores-hidratacion",
+      "template": "QuickTip",
+      "contentType": "List",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "5 Errores Fatales de Hidratación",
+        "hook": "Estos 5 errores están arruinando tu hidratación y ni siquiera te das cuenta",
+        "tips": [
+          "ERROR #1: Esperar a tener sed para tomar agua (ya perdiste 2% de agua corporal)",
+          "ERROR #2: Tomar solo agua durante entrenamientos largos (dilución de sodio)",
+          "ERROR #3: Rehidratarte solo después del ejercicio (el daño ya está hecho)",
+          "ERROR #4: Usar el color de orina como único indicador (es tardío)",
+          "ERROR #5: Creer que 'más agua = mejor' (puede ser peligroso sin electrolitos)"
+        ],
+        "reason": "Cada error puede costarte rendimiento, salud o ambos",
+        "cta": "¿Cuál error estabas cometiendo? Comenta el número"
+      },
+      "youtube": {
+        "searchIntent": "errores de hidratación ejercicio",
+        "duration": "90-120s",
+        "thumbnailText": "5 ERRORES FATALES de Hidratación"
+      }
+    },
+    {
+      "id": "attract_08",
+      "filename": "comparison-electrolitos-naturales-vs-suplementos",
+      "template": "Mythbusting",
+      "contentType": "Comparison",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "Fuentes Naturales vs Suplementos",
+        "hook": "¿Puedes obtener todos los electrolitos que necesitas de los alimentos? La respuesta te va a sorprender",
+        "myth": "Los alimentos son suficiente fuente de electrolitos",
+        "truth": "Para obtener 1000mg de sodio necesitarías: 10 plátanos, o 500g de espinaca, o 3L de agua de coco",
+        "explanation": "Los alimentos son excelentes para mantenimiento diario. Pero en ejercicio intenso, pierdes electrolitos más rápido de lo que puedes comerlos. Los suplementos llenan ese gap",
+        "cta": "¿Tú qué prefieres? Natural o suplemento"
+      },
+      "youtube": {
+        "searchIntent": "electrolitos naturales vs suplementos",
+        "duration": "90-120s",
+        "thumbnailText": "Alimentos vs Suplementos: LA VERDAD"
+      }
+    },
+    {
+      "id": "attract_09",
+      "filename": "thought-leadership-hiponatremia-peligro",
+      "template": "Educational",
+      "contentType": "Thought Leadership",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "El Peligro de Tomar Demasiada Agua",
+        "hook": "Atletas han muerto por tomar DEMASIADA agua. Esto es lo que nadie te dice sobre la hiponatremia",
+        "mainPoints": [
+          "Hiponatremia = sodio en sangre peligrosamente bajo",
+          "Síntomas: confusión, náuseas, convulsiones, coma",
+          "Ocurre cuando tomas agua sin reponer electrolitos",
+          "Maratones y ultra-maratones son de alto riesgo",
+          "Prevención: 1000mg sodio por cada litro de agua en ejercicio"
+        ],
+        "conclusion": "No es broma. La hidratación sin electrolitos puede matarte. BILAN no es lujo, es seguridad",
+        "cta": "Comparte esto con alguien que corra maratones"
+      },
+      "youtube": {
+        "searchIntent": "hiponatremia que es peligros",
+        "duration": "120-180s",
+        "thumbnailText": "AGUA Puede MATARTE (Hiponatremia)"
+      }
+    },
+    {
+      "id": "attract_10",
+      "filename": "faq-mejor-momento-tomar-electrolitos",
+      "template": "QuickTip",
+      "contentType": "FAQ",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "¿Cuándo Tomar Electrolitos?",
+        "hook": "La pregunta del millón: ¿antes, durante o después del ejercicio? Aquí está el timing perfecto",
+        "tips": [
+          "ANTES: 500ml con electrolitos 2h antes del ejercicio (carga previa)",
+          "DURANTE: 250ml cada 15-20min si sudas intenso (mantenimiento)",
+          "DESPUÉS: 500-750ml en siguiente hora (recuperación)",
+          "EXTRA: Al despertar si entrenas en la mañana (para 'desayunar' tus células)"
+        ],
+        "reason": "El timing correcto previene deshidratación y maximiza absorción",
+        "cta": "Guarda este horario y úsalo"
+      },
+      "youtube": {
+        "searchIntent": "cuando tomar electrolitos ejercicio",
+        "duration": "60-90s",
+        "thumbnailText": "TIMING Perfecto Para Electrolitos"
+      }
+    },
+    {
+      "id": "convert_01",
+      "filename": "myth-azucar-necesaria-energia",
+      "template": "Mythbusting",
+      "contentType": "Conversion",
+      "marketingPhase": "Conversion",
+      "props": {
+        "title": "¿Necesitas Azúcar Para Energía?",
+        "hook": "Las bebidas deportivas te dicen que necesitas azúcar para energía. Esto es lo que la ciencia realmente dice",
+        "myth": "Necesitas 30g de azúcar en tu bebida deportiva para tener energía",
+        "truth": "Solo necesitas carbohidratos rápidos si haces ejercicio intenso por más de 90 minutos consecutivos",
+        "explanation": "El 90% de la gente no hace ejercicio tan intenso. El azúcar solo causa picos de insulina, crash y almacenamiento de grasa. BILAN: 0g azúcar, hidratación sin picos",
+        "cta": "Prueba BILAN por 7 días - link en bio"
+      },
+      "tiktok": {
+        "caption": "🚨 VERDAD SOBRE EL AZÚCAR\n\n¿Realmente necesitas 30g de azúcar para hidratarte?\n\nLa respuesta corta: NO (para el 90% de personas)\n\nLas bebidas deportivas te venden azúcar como 'energía necesaria' pero la ciencia dice otra cosa 📊\n\nBILAN: 0g azúcar, hidratación real\n\n#mitos #azucar #hidratacion #bilan #salud #fitness #nutricion",
+        "hashtags": ["mitos", "azucar", "hidratacion", "bilan", "salud", "fitness", "nutricion"],
+        "cta": "Link en bio para probar BILAN"
+      }
+    },
+    {
+      "id": "convert_02",
+      "filename": "transformation-antes-despues-bilan",
+      "template": "Trending",
+      "contentType": "Conversion",
+      "marketingPhase": "Conversion",
+      "props": {
+        "title": "30 Días Con BILAN",
+        "hook": "Documenté 30 días tomando BILAN diario. Esto fue lo que pasó",
+        "scenes": [
+          "DÍA 1-7: Menos calambres, más energía en entrenamientos",
+          "DÍA 8-14: Recuperación más rápida, menos fatiga post-gym",
+          "DÍA 15-21: Mejor enfoque mental, menos antojos de comida",
+          "DÍA 22-30: Rendimiento constante, 0 días malos en el gym"
+        ],
+        "cta": "Pruébalo tú mismo - link en bio para tu primer mes",
+        "trendingFormat": "transformation"
+      },
+      "tiktok": {
+        "caption": "📊 EXPERIMENTO: 30 DÍAS CON BILAN\n\nResultados reales sin editar:\n\n✅ Menos calambres desde semana 1\n✅ Recuperación 2x más rápida\n✅ Mental clarity como nunca\n✅ 0 días malos en el gym\n\n¿Mi conclusión? Ya es parte de mi rutina diaria\n\nPruébalo tú: link en bio 🔗\n\n#bilan #transformacion #30dias #hidratacion #fitness #resultados",
+        "hashtags": ["bilan", "transformacion", "30dias", "hidratacion", "fitness", "resultados"],
+        "cta": "Link en bio - tu primer mes de BILAN"
+      }
+    },
+    {
+      "id": "convert_03",
+      "filename": "tutorial-como-usar-bilan-correctamente",
+      "template": "QuickTip",
+      "contentType": "Conversion",
+      "marketingPhase": "Conversion",
+      "props": {
+        "title": "Cómo Usar BILAN (Tutorial)",
+        "hook": "Esto es exactamente cómo uso BILAN para maximizar resultados",
+        "tips": [
+          "PASO 1: Un scoop en 500ml agua fría",
+          "PASO 2: Agita 10 segundos (se disuelve perfecto)",
+          "PASO 3: Toma 2h antes de entrenar + durante + después",
+          "BONUS: También en ayunas para hidratación celular óptima"
+        ],
+        "reason": "La hidratación correcta = mejor rendimiento + recuperación más rápida",
+        "cta": "Ordena el tuyo - link en bio"
+      },
+      "tiktok": {
+        "caption": "📚 TUTORIAL: Cómo Usar BILAN\n\nEl protocolo exacto que uso:\n\n1️⃣ Un scoop + 500ml agua\n2️⃣ Agitar 10 segundos\n3️⃣ Antes/durante/después entrenar\n💡 BONUS: En ayunas para iniciar bien el día\n\nListo para probar: link en bio 🔗\n\n#bilan #tutorial #comousar #hidratacion #fitness #gym",
+        "hashtags": ["bilan", "tutorial", "comousar", "hidratacion", "fitness", "gym"],
+        "cta": "Ordena en el link de mi bio"
+      }
+    },
+    {
+      "id": "convert_04",
+      "filename": "social-proof-testimonios-reales",
+      "template": "Trending",
+      "contentType": "Conversion",
+      "marketingPhase": "Conversion",
+      "props": {
+        "title": "Lo Que Dicen Los Usuarios",
+        "hook": "Les pregunté a usuarios reales de BILAN qué cambió en su vida. Estas fueron sus respuestas",
+        "scenes": [
+          "María: 'Ya no me dan calambres en las piernas por la noche'",
+          "Jorge: 'Subí 10kg en mi squat en 3 semanas'",
+          "Ana: 'Ya no necesito 3 cafés para funcionar'",
+          "Carlos: 'Corro 10k sin sentir que me muero'"
+        ],
+        "cta": "Sé el próximo testimonio - link en bio",
+        "trendingFormat": "compilation"
+      },
+      "tiktok": {
+        "caption": "💬 TESTIMONIOS REALES DE BILAN\n\nEstas son historias sin filtro de usuarios reales:\n\n🏃‍♀️ Sin calambres nocturnos\n💪 Más fuerza en el gym\n☕ Menos dependencia del café\n🎯 Mejor rendimiento deportivo\n\nTu turno de probar: link en bio\n\n#bilan #testimonios #resultadosreales #hidratacion #fitness",
+        "hashtags": ["bilan", "testimonios", "resultadosreales", "hidratacion", "fitness"],
+        "cta": "Prueba BILAN - link en bio"
+      }
+    },
+    {
+      "id": "convert_05",
+      "filename": "urgency-stock-limitado",
+      "template": "Trending",
+      "contentType": "Conversion",
+      "marketingPhase": "Conversion",
+      "props": {
+        "title": "Último Día Para Ordenar",
+        "hook": "ÚLTIMA OPORTUNIDAD: El batch de este mes se agota HOY",
+        "scenes": [
+          "Solo quedan 47 unidades disponibles",
+          "Próximo batch no llega hasta dentro de 3 semanas",
+          "Miles de personas esperando restock",
+          "Si quieres BILAN este mes, ordena HOY"
+        ],
+        "cta": "Link en bio - no te quedes sin tu BILAN",
+        "trendingFormat": "urgency"
+      },
+      "tiktok": {
+        "caption": "⚠️ ÚLTIMO DÍA - STOCK LIMITADO\n\nQuedan 47 unidades\nPróximo batch: 3 semanas\nMiles en lista de espera\n\nSi quieres BILAN este mes → ACTÚA AHORA\n\nLink en bio 🔗 (mientras dure stock)\n\n#bilan #stocklimitado #ultimaoportunidad #hidratacion",
+        "hashtags": ["bilan", "stocklimitado", "ultimaoportunidad", "hidratacion"],
+        "cta": "ORDENA AHORA - link en bio"
+      }
+    },
+    {
+      "id": "email_01",
+      "filename": "nurture-nuevo-video-disponible",
+      "template": "Educational",
+      "contentType": "Email Nurture",
+      "marketingPhase": "Email",
+      "props": {
+        "title": "Nuevo Video: 5 Señales De Deshidratación",
+        "hook": "Hey! Acabo de subir un video que podría salvarte de un colapso en tu próximo entrenamiento",
+        "mainPoints": [
+          "Cubrimos las 5 señales más ignoradas de deshidratación",
+          "Te enseño el test rápido de 5 segundos para checar tu estado",
+          "Incluye la fórmula exacta para calcular cuántos electrolitos necesitas"
+        ],
+        "conclusion": "Ve el video completo aquí [LINK] - dura solo 2 minutos",
+        "cta": "Responde este email si tienes preguntas"
+      },
+      "emailSubject": "⚠️ Estas 5 señales indican que estás deshidratado",
+      "emailType": "weekly_nurture"
+    },
+    {
+      "id": "email_02",
+      "filename": "nurture-caso-estudio-hiponatremia",
+      "template": "Educational",
+      "contentType": "Email Nurture",
+      "marketingPhase": "Email",
+      "props": {
+        "title": "Caso Real: Hiponatremia En Maratón",
+        "hook": "Esta historia me dejó helado. Un corredor de 28 años casi muere por tomar DEMASIADA agua",
+        "mainPoints": [
+          "Juan corrió el Maratón CDMX 2024",
+          "Tomó 8 litros de agua pura (sin electrolitos)",
+          "Kilómetro 35: confusión, náuseas, colapso",
+          "Diagnóstico: hiponatremia severa (sodio en sangre crítico)",
+          "Estuvo 2 días en hospital. Se salvó de milagro"
+        ],
+        "conclusion": "Por eso siempre digo: hidratación sin electrolitos puede ser letal. Lee el caso completo aquí [LINK]",
+        "cta": "Comparte esta historia con corredores que conozcas"
+      },
+      "emailSubject": "🚨 [CASO REAL] Casi muere por tomar agua (hiponatremia)",
+      "emailType": "weekly_nurture"
+    },
+    {
+      "id": "email_03",
+      "filename": "sales-lanzamiento-sabor-nuevo",
+      "template": "Trending",
+      "contentType": "Email Sales",
+      "marketingPhase": "Email",
+      "props": {
+        "title": "NUEVO Sabor Disponible",
+        "hook": "Después de 8 meses de desarrollo, finalmente está aquí: BILAN Sandía-Lima",
+        "scenes": [
+          "Mismo perfil de electrolitos de siempre (1000mg sodio)",
+          "Mismo 0g azúcar, 0 basura",
+          "Nuevo sabor refrescante perfecto para verano",
+          "OFERTA LANZAMIENTO: 20% OFF primeras 100 unidades"
+        ],
+        "cta": "Ordena ahora con 20% descuento - código SANDIA20",
+        "trendingFormat": "launch"
+      },
+      "emailSubject": "🍉 NUEVO Sabor + 20% Descuento (primeras 100 unidades)",
+      "emailType": "sales_launch"
+    },
+    {
+      "id": "email_04",
+      "filename": "sales-bundle-ahorro-mensual",
+      "template": "QuickTip",
+      "contentType": "Email Sales",
+      "marketingPhase": "Email",
+      "props": {
+        "title": "Ahorra $400 Con Bundle Mensual",
+        "hook": "Hice las matemáticas: si tomas BILAN diario, estás gastando más de lo necesario",
+        "tips": [
+          "Compra individual: $350/bote × 4 = $1,400/mes",
+          "Bundle mensual: $1,000/mes (4 botes)",
+          "Ahorro: $400 al mes = $4,800 al año",
+          "PLUS: Envío gratis + prioridad en restocks"
+        ],
+        "reason": "Bundle es la forma más inteligente de asegurar tu suministro y ahorrar",
+        "cta": "Cambia a bundle aquí - ahorra $400/mes"
+      },
+      "emailSubject": "💰 Ahorra $400/mes con Bundle Mensual de BILAN",
+      "emailType": "sales_offer"
+    },
+    {
+      "id": "email_05",
+      "filename": "sales-garantia-30-dias",
+      "template": "Mythbusting",
+      "contentType": "Email Sales",
+      "marketingPhase": "Email",
+      "props": {
+        "title": "Garantía 30 Días - Sin Riesgo",
+        "hook": "Si hay algo que me preguntan mucho es: '¿Y si no me funciona?'. Aquí está mi respuesta",
+        "myth": "Tengo que arriesgar $350 sin saber si me va a funcionar",
+        "truth": "Tienes 30 días COMPLETOS para probar BILAN. Si no notas diferencia, te devolvemos TODO tu dinero",
+        "explanation": "No tienes que creerme. Solo tienes que probarlo. Si en 30 días no sientes: más energía, mejor recuperación, menos calambres - te devuelvo cada peso",
+        "cta": "Prueba BILAN 30 días sin riesgo - ordena aquí"
+      },
+      "emailSubject": "✅ Prueba BILAN 30 días - Garantía de devolución total",
+      "emailType": "sales_offer"
+    },
+    {
+      "id": "recurring_01",
+      "filename": "quicktip-hidratacion-verano",
+      "template": "QuickTip",
+      "contentType": "Seasonal",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "Hidratación En Verano Mexicano",
+        "hook": "Con 40°C en Monterrey, esto es lo que necesitas saber para no deshidratarte",
+        "tips": [
+          "A 40°C pierdes 50% MÁS electrolitos que a 25°C",
+          "Necesitas 1.5L por hora de exposición al sol (con electrolitos)",
+          "Los aires acondicionados también te deshidratan",
+          "Síntoma #1 del golpe de calor: dejar de sudar (EMERGENCIA)"
+        ],
+        "reason": "El verano mexicano no es broma. La hidratación correcta puede salvarte la vida",
+        "cta": "Comparte con familia en estados del norte"
+      },
+      "youtube": {
+        "searchIntent": "hidratación verano calor extremo",
+        "duration": "60-90s",
+        "thumbnailText": "Sobrevive VERANO 40°C (Hidratación)"
+      }
+    },
+    {
+      "id": "recurring_02",
+      "filename": "myth-cafe-deshidrata",
+      "template": "Mythbusting",
+      "contentType": "FAQ",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "¿El Café Te Deshidrata?",
+        "hook": "Todos dicen que el café deshidrata. ¿Pero es verdad o es otro mito?",
+        "myth": "El café te deshidrata porque es diurético",
+        "truth": "El café tiene efecto diurético LEVE, pero el agua del café compensa la pérdida",
+        "explanation": "Estudios muestran que 1 café = retención del 84% del agua. PERO: si tomas 3+ cafés al día, sí pierdes electrolitos extra (especialmente potasio)",
+        "cta": "Tomadores de café: agreguen electrolitos a su rutina"
+      },
+      "youtube": {
+        "searchIntent": "el café deshidrata verdad o mito",
+        "duration": "60-90s",
+        "thumbnailText": "CAFÉ Te DESHIDRATA? (Verdad o Mito)"
+      }
+    },
+    {
+      "id": "recurring_03",
+      "filename": "tutorial-protocolo-gym",
+      "template": "QuickTip",
+      "contentType": "Tutorial",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "Protocolo Hidratación Para Gym",
+        "hook": "Este es el protocolo exacto de hidratación que usan atletas profesionales en el gym",
+        "tips": [
+          "2 HORAS ANTES: 500ml con electrolitos (pre-carga)",
+          "30 MIN ANTES: 250ml adicionales",
+          "DURANTE: Sorbo cada 5-10 minutos (no esperar sed)",
+          "POST: 500ml en primera hora + 250ml por cada hora siguiente"
+        ],
+        "reason": "Este protocolo mantiene rendimiento óptimo y acelera recuperación 2x",
+        "cta": "Guarda esto y síguelo por 1 semana - me cuentas resultados"
+      },
+      "youtube": {
+        "searchIntent": "protocolo hidratación gym ejercicio",
+        "duration": "90-120s",
+        "thumbnailText": "PROTOCOLO PRO de Hidratación (Gym)"
+      }
+    },
+    {
+      "id": "recurring_04",
+      "filename": "list-beneficios-magnesio",
+      "template": "Educational",
+      "contentType": "List",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "7 Beneficios Del Magnesio",
+        "hook": "El magnesio es el electrolito más subestimado. Aquí están 7 razones por las que lo necesitas",
+        "mainPoints": [
+          "1. Previene calambres musculares (incluso nocturnos)",
+          "2. Mejora calidad del sueño profundo",
+          "3. Reduce ansiedad y estrés",
+          "4. Ayuda a absorber calcio (huesos más fuertes)",
+          "5. Regula presión arterial",
+          "6. Mejora sensibilidad a insulina",
+          "7. Acelera recuperación muscular post-ejercicio"
+        ],
+        "conclusion": "BILAN incluye 200mg de magnesio óptimo por porción - justo lo que necesitas diario",
+        "cta": "¿Cuál beneficio te sorprendió más? Comenta"
+      },
+      "youtube": {
+        "searchIntent": "beneficios del magnesio suplemento",
+        "duration": "90-120s",
+        "thumbnailText": "7 Beneficios MAGNESIO (Más Ignorado)"
+      }
+    },
+    {
+      "id": "recurring_05",
+      "filename": "comparison-tipos-magnesio",
+      "template": "Educational",
+      "contentType": "Comparison",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "No Todos Los Magnésios Son Iguales",
+        "hook": "Existen 7 tipos de magnesio. Elegir el equivocado puede arruinar tus resultados",
+        "mainPoints": [
+          "Magnesio citrato: mejor absorción (lo que usa BILAN)",
+          "Magnesio óxido: barata pero mala absorción (10-15%)",
+          "Magnesio glicinato: bueno para sueño",
+          "Magnesio L-treonato: para función cognitiva",
+          "La mayoría de suplementos baratos usan óxido (inútil)"
+        ],
+        "conclusion": "BILAN usa citrato de magnesio - absorción superior para ejercicio y recuperación",
+        "cta": "Revisa tu suplemento actual - ¿qué tipo usa?"
+      },
+      "youtube": {
+        "searchIntent": "tipos de magnesio cual es mejor",
+        "duration": "90-120s",
+        "thumbnailText": "7 TIPOS Magnesio: Cuál Elegir"
+      }
+    },
+    {
+      "id": "recurring_06",
+      "filename": "myth-potasio-platanos",
+      "template": "Mythbusting",
+      "contentType": "FAQ",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "¿Los Plátanos Previenen Calambres?",
+        "hook": "Toda tu vida te dijeron 'come plátano para los calambres'. Pero ¿funciona realmente?",
+        "myth": "Los plátanos previenen calambres por su potasio",
+        "truth": "Un plátano tiene 400mg potasio - está bien. PERO: los calambres son más por falta de SODIO que potasio",
+        "explanation": "Pierdes 10x más sodio que potasio al sudar. El plátano no te da sodio. Por eso sigues con calambres aunque comas plátanos",
+        "cta": "La solución real: sodio + potasio juntos (como en BILAN)"
+      },
+      "youtube": {
+        "searchIntent": "plátanos previenen calambres verdad",
+        "duration": "60-90s",
+        "thumbnailText": "PLÁTANOS Para Calambres? (Verdad Chocante)"
+      }
+    },
+    {
+      "id": "recurring_07",
+      "filename": "thought-leadership-futuro-hidratacion",
+      "template": "Educational",
+      "contentType": "Thought Leadership",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "El Futuro De La Hidratación",
+        "hook": "En 5 años, nadie va a tomar agua sola durante ejercicio. Esto es lo que viene",
+        "mainPoints": [
+          "Hidratación personalizada basada en tu genética",
+          "Sensores que miden electrolitos en tiempo real",
+          "Formulaciones adaptadas a tu tasa de sudor",
+          "Fin del 'one size fits all' en bebidas deportivas",
+          "BILAN está adelantado: ya ofrecemos perfiles personalizados"
+        ],
+        "conclusion": "El futuro es hidratación científica, no marketing. Y ya está aquí",
+        "cta": "Comenta: ¿Te gustaría un perfil personalizado?"
+      },
+      "youtube": {
+        "searchIntent": "futuro de la hidratación deportiva",
+        "duration": "120-180s",
+        "thumbnailText": "FUTURO Hidratación Deportiva (5 Años)"
+      }
+    },
+    {
+      "id": "recurring_08",
+      "filename": "tutorial-test-hidratacion-casero",
+      "template": "QuickTip",
+      "contentType": "Tutorial",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "Test De Hidratación Casero",
+        "hook": "No necesitas laboratorio para saber si estás hidratado. Estos 3 tests los haces en casa en 30 segundos",
+        "tips": [
+          "TEST 1: Pellizca la piel del dorso de mano. Si vuelve lento (>2 seg) = deshidratado",
+          "TEST 2: Presiona uña. Si color vuelve lento (>2 seg) = deshidratado",
+          "TEST 3: Orina color amarillo oscuro = deshidratado",
+          "BONUS: Pésate antes y después de entrenar. Perdiste peso = perdiste agua"
+        ],
+        "reason": "Estos tests te dan respuesta instantánea sin equipo especial",
+        "cta": "Hazlo ahora y comenta tu resultado"
+      },
+      "youtube": {
+        "searchIntent": "como saber si estoy deshidratado test casero",
+        "duration": "60-90s",
+        "thumbnailText": "TEST Hidratación CASERO (30 segundos)"
+      }
+    },
+    {
+      "id": "recurring_09",
+      "filename": "list-sintomas-deficit-potasio",
+      "template": "Educational",
+      "contentType": "List",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "8 Señales De Déficit De Potasio",
+        "hook": "El 98% de mexicanos no consume suficiente potasio. Estas son las señales de que tú eres uno de ellos",
+        "mainPoints": [
+          "1. Calambres musculares frecuentes (especialmente nocturnos)",
+          "2. Fatiga crónica sin razón aparente",
+          "3. Debilidad muscular (especialmente en piernas)",
+          "4. Constipación o problemas digestivos",
+          "5. Palpitaciones cardíacas irregulares",
+          "6. Hormigueo o entumecimiento",
+          "7. Presión arterial alta",
+          "8. Necesitas orinar mucho más de lo normal"
+        ],
+        "conclusion": "Si tienes 3+ señales, necesitas más potasio. BILAN tiene 400mg por porción",
+        "cta": "Cuenta cuántas señales tienes"
+      },
+      "youtube": {
+        "searchIntent": "sintomas deficit de potasio señales",
+        "duration": "90-120s",
+        "thumbnailText": "8 SEÑALES Déficit POTASIO (98% lo tiene)"
+      }
+    },
+    {
+      "id": "recurring_10",
+      "filename": "comparison-agua-alcalina-vs-normal",
+      "template": "Mythbusting",
+      "contentType": "Comparison",
+      "marketingPhase": "Attraction",
+      "props": {
+        "title": "Agua Alcalina vs Agua Normal",
+        "hook": "Gastaste $800 en garrafón de agua alcalina. ¿Realmente vale la pena o es marketing?",
+        "myth": "El agua alcalina te hidrata mejor y balancea tu pH corporal",
+        "truth": "Tu cuerpo regula pH automáticamente (pulmones + riñones). El agua alcalina llega al estómago (ácido) y pierde su alcalinidad",
+        "explanation": "NO hay estudios que demuestren ventaja real. Lo importante no es el pH del agua, sino los ELECTROLITOS que contiene",
+        "cta": "Ahorra tu dinero. Agua normal + electrolitos = hidratación real"
+      },
+      "youtube": {
+        "searchIntent": "agua alcalina sirve verdad o mito",
+        "duration": "90-120s",
+        "thumbnailText": "AGUA ALCALINA: Verdad vs Marketing"
+      }
+    }
+  ]
+}

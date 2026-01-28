@@ -13,6 +13,7 @@ export const brand = {
     text: '#ffffff',
     textMuted: 'rgba(255,255,255,0.7)',
     accent: '#0066CC',
+    accentGreen: '#22c55e',  // Green for accent squares (contrasts with blue bg)
     success: '#22c55e',
     error: '#ef4444',
   },
@@ -32,7 +33,7 @@ export const brand = {
   // Logo - MUCH LARGER and centered
   logo: {
     path: 'logo.png',
-    width: 400,       // Big logo at top
+    width: 550,       // Bigger logo at top
     widthCTA: 750,    // CTA screen - HUGE for TikTok visibility
   },
 
@@ -58,6 +59,13 @@ export const brand = {
     body: 44,      // Was 28
     caption: 36,   // Was 22
     label: 28,     // Was 18
+  },
+
+  // Text effects for labels/badges
+  textEffects: {
+    labelShadow: '0 4px 12px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3)',
+    titleShadow: '0 6px 20px rgba(0,0,0,0.4), 0 3px 8px rgba(0,0,0,0.2)',
+    glowShadow: (color: string) => `0 0 30px ${color}66, 0 0 60px ${color}33`,
   },
 } as const;
 

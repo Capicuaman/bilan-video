@@ -35,17 +35,23 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
   const hookOpacity = interpolate(frame, [0, 10, hookEnd - 10, hookEnd], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
   const hookScale = spring({ frame, fps, config: brand.animation.spring });
 
-  const ctaOpacity = interpolate(frame, [ctaStart, ctaStart + 10], [0, 1], { extrapolateRight: 'clamp' });
+  const ctaOpacity = interpolate(frame, [ctaStart - 10, ctaStart], [0, 1], { extrapolateRight: 'clamp' });
   const ctaScale = spring({ frame: frame - ctaStart, fps, config: { damping: 10 } });
 
   const conclusionOpacity = interpolate(
-    frame, 
-    [conclusionStart, conclusionStart + 10, conclusionEnd - 10, conclusionEnd], 
-    [0, 1, 1, 0], 
+    frame,
+    [conclusionStart, conclusionStart + 10, conclusionEnd - 15, conclusionEnd - 5],
+    [0, 1, 1, 0],
     { extrapolateRight: 'clamp' }
   );
 
-  const logoOpacity = interpolate(frame, [0, 15], [0, 1], { extrapolateRight: 'clamp' });
+  // Logo fades out before CTA so only one logo shows at a time
+  const logoOpacity = interpolate(
+    frame, 
+    [0, 15, ctaStart - 15, ctaStart], 
+    [0, 1, 1, 0], 
+    { extrapolateRight: 'clamp' }
+  );
 
   // Current point
   const getCurrentPoint = () => {
@@ -75,7 +81,7 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
         fontFamily: getFontStack('body'),
       }}
     >
-      {/* Logo - centered, large */}
+      {/* Logo - centered, large with shadow */}
       {showLogo && (
         <div
           style={{
@@ -90,7 +96,11 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
         >
           <Img
             src={staticFile(brand.logo.path)}
-            style={{ width: brand.logo.width, height: 'auto' }}
+            style={{ 
+              width: brand.logo.width, 
+              height: 'auto',
+              filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 4px 8px rgba(0,0,0,0.2))',
+            }}
           />
         </div>
       )}
@@ -106,15 +116,22 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
             padding: '0 50px',
           }}
         >
+          {/* CHUNKY LABEL - GREEN for contrast */}
           <div
             style={{
-              fontSize: brand.typography.body,
-              color: brandColor,
+              display: 'inline-block',
+              fontSize: 52,
+              color: '#FFFFFF',
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
-              marginBottom: 24,
+              marginBottom: 36,
               textTransform: 'uppercase',
-              letterSpacing: 4,
+              letterSpacing: 5,
+              padding: '16px 36px',
+              backgroundColor: brand.colors.accentGreen,
+              borderRadius: 14,
+              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              boxShadow: `0 8px 32px ${brand.colors.accentGreen}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
             📚 {title}
@@ -126,6 +143,7 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
               lineHeight: 1.1,
+              textShadow: '0 6px 20px rgba(0,0,0,0.4)',
             }}
           >
             {hook}
@@ -144,15 +162,22 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
             padding: '0 40px',
           }}
         >
+          {/* CHUNKY POINT LABEL - GREEN for contrast */}
           <div
             style={{
-              fontSize: brand.typography.caption,
-              color: brandColor,
+              display: 'inline-block',
+              fontSize: 48,
+              color: '#FFFFFF',
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
-              marginBottom: 24,
+              marginBottom: 36,
               textTransform: 'uppercase',
-              letterSpacing: 3,
+              letterSpacing: 4,
+              padding: '14px 32px',
+              backgroundColor: brand.colors.accentGreen,
+              borderRadius: 12,
+              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              boxShadow: `0 8px 32px ${brand.colors.accentGreen}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
             PUNTO {currentPoint + 1} DE {mainPoints.length}
@@ -168,6 +193,7 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
               backgroundColor: `${brandColor}15`,
               borderRadius: 20,
               borderLeft: `6px solid ${brandColor}`,
+              textShadow: '0 4px 12px rgba(0,0,0,0.3)',
             }}
           >
             {mainPoints[currentPoint]}
@@ -185,15 +211,22 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
             padding: '0 50px',
           }}
         >
+          {/* CHUNKY LABEL - GREEN for contrast */}
           <div
             style={{
-              fontSize: brand.typography.caption,
-              color: brandColor,
+              display: 'inline-block',
+              fontSize: 52,
+              color: '#FFFFFF',
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
-              marginBottom: 24,
+              marginBottom: 36,
               textTransform: 'uppercase',
-              letterSpacing: 3,
+              letterSpacing: 5,
+              padding: '16px 36px',
+              backgroundColor: brand.colors.accentGreen,
+              borderRadius: 14,
+              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              boxShadow: `0 8px 32px ${brand.colors.accentGreen}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
             ✨ EN RESUMEN
@@ -205,6 +238,7 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
               lineHeight: 1.2,
+              textShadow: '0 6px 20px rgba(0,0,0,0.4)',
             }}
           >
             {conclusion}
@@ -232,6 +266,7 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
               fontFamily: getFontStack('heading'),
               fontWeight: 700,
               marginBottom: 40,
+              textShadow: '0 6px 20px rgba(0,0,0,0.4)',
             }}
           >
             {cta}
@@ -239,7 +274,11 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
           {showLogo && (
             <Img
               src={staticFile(brand.logo.path)}
-              style={{ width: brand.logo.widthCTA, height: 'auto' }}
+              style={{ 
+                width: brand.logo.widthCTA, 
+                height: 'auto',
+                filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.3))',
+              }}
             />
           )}
         </div>
@@ -259,10 +298,11 @@ export const EducationalVideo: React.FC<EducationalProps> = ({
             <div
               key={i}
               style={{
-                width: 16,
-                height: 16,
+                width: 20,
+                height: 20,
                 borderRadius: '50%',
                 backgroundColor: i <= currentPoint ? brandColor : 'rgba(255,255,255,0.3)',
+                boxShadow: i <= currentPoint ? `0 4px 12px ${brandColor}66` : 'none',
               }}
             />
           ))}

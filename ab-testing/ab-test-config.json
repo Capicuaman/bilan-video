@@ -1,0 +1,175 @@
+{
+  "introVariants": [
+    {
+      "id": "A",
+      "name": "Current BrandIntro",
+      "tagline": "¿QUÉ OCULTAN LAS BEBIDAS DEPORTIVAS?",
+      "style": "curiosity",
+      "targetEmotion": "intrigue",
+      "animationSpeed": "medium"
+    },
+    {
+      "id": "B", 
+      "name": "Problem-Agitation Hook",
+      "tagline": "PIERDES MÁS DE LO QUE CREES",
+      "subtagline": "La verdad sobre la hidratación",
+      "style": "pain",
+      "targetEmotion": "urgency",
+      "animationSpeed": "fast"
+    },
+    {
+      "id": "C",
+      "name": "Authority Hook", 
+      "tagline": "CIENCIA PARA ATLETAS",
+      "subtagline": "Lo que los profesionales no te dicen",
+      "style": "authority",
+      "targetEmotion": "trust",
+      "animationSpeed": "slow"
+    },
+    {
+      "id": "D",
+      "name": "Social Proof Hook",
+      "tagline": "YA SOMOS +10,000 ATLETAS",
+      "subtagline": "Únete a la revolución del rendimiento",
+      "style": "social",
+      "targetEmotion": "belonging",
+      "animationSpeed": "medium"
+    },
+    {
+      "id": "E",
+      "name": "Urgency Hook",
+      "tagline": "¿SUDAS HOY?",
+      "subtagline": "No leas esto si no entrenas mañana",
+      "style": "urgency",
+      "targetEmotion": "fear-of-missing-out",
+      "animationSpeed": "fast"
+    }
+  ],
+  "outroVariants": [
+    {
+      "id": "A",
+      "name": "Current BrandOutro",
+      "cta": "¡Síguenos para más tips!",
+      "handle": "@bilan.mx",
+      "type": "community",
+      "primaryAction": "follow"
+    },
+    {
+      "id": "B",
+      "name": "Direct Action Outro", 
+      "cta": "TU CUERPO TE LO PEDIRÁ",
+      "handle": "Ordena ahora →",
+      "type": "action",
+      "primaryAction": "purchase"
+    },
+    {
+      "id": "C",
+      "name": "Community Challenge Outro",
+      "cta": "PRUÉBALO 7 DÍAS Y CUÉNTANOS",
+      "handle": "@bilan.mx #RetoBilan",
+      "type": "challenge", 
+      "primaryAction": "engage"
+    },
+    {
+      "id": "D",
+      "name": "Scientific Validation Outro",
+      "cta": "COMPROBADO POR LA CIENCIA",
+      "handle": "Ver estudios →",
+      "type": "validation",
+      "primaryAction": "learn"
+    },
+    {
+      "id": "E", 
+      "name": "Limited Time Outro",
+      "cta": "20% DESCUENTO SOLO HOY",
+      "handle": "CÓDIGO: HIDRATA20",
+      "type": "offer",
+      "primaryAction": "purchase-urgent"
+    }
+  ],
+  "hooksByVideoType": {
+    "Mythbusting": [
+      "¿MITO O REALIDAD?",
+      "LO QUE NUNCA TE DIJERON", 
+      "DESVANECIENDO MITOS",
+      "LA VERDAD OCULTA",
+      "MENTIRAS DE LA INDUSTRIA"
+    ],
+    "Educational": [
+      "CLASE MAESTRA DE HIDRATACIÓN",
+      "APRENDE DE LOS EXPERTOS",
+      "BIENVENIDO A LA CIENCIA", 
+      "EL MUNDO INTERNO DE TU CUERPO",
+      "CONOCIMIENTO QUE RINDE"
+    ],
+    "QuickTip": [
+      "TRUCO EN 15 SEGUNDOS",
+      "AHORA MISMO: PRUEBA ESTO",
+      "EL SECRETO RÁPIDO",
+      "TIP DE EXPERTO",
+      "CAMBIA TU HOY"
+    ],
+    "Trending": [
+      "POV: ESTÁS HACIÉNDOLO MAL",
+      "TRANSFORMACIÓN EN 60 SEG",
+      "ESTÁS VIENDO EL FUTURO",
+      "LO QUE TODOS ESTÁN HACIENDO",
+      "NO TE QUEDES AFUERA"
+    ]
+  },
+  "testMatrix": [
+    {
+      "id": "test-01",
+      "introVariant": "A",
+      "outroVariant": "A", 
+      "videos": ["03-mito-8-vasos", "04-trampa-bebidas"],
+      "hypothesis": "Baseline curiosity + community engagement performs best for mythbusting"
+    },
+    {
+      "id": "test-02",
+      "introVariant": "B",
+      "outroVariant": "B",
+      "videos": ["05-cure-calambres", "06-transformacion-gym"],
+      "hypothesis": "Pain agitaton + direct action drives higher conversion for transformation content"
+    },
+    {
+      "id": "test-03", 
+      "introVariant": "C",
+      "outroVariant": "C",
+      "videos": ["01-verdad-sal", "08-secreto-atletas"],
+      "hypothesis": "Authority positioning + challenge engagement works for scientific content"
+    },
+    {
+      "id": "test-04",
+      "introVariant": "D",
+      "outroVariant": "D",
+      "videos": ["09-pov-olvidas", "10-tutorial-hidratacion"],
+      "hypothesis": "Social proof + validation increases trust for tutorial content"
+    },
+    {
+      "id": "test-05",
+      "introVariant": "E", 
+      "outroVariant": "E",
+      "videos": ["02-senales-deshidratacion", "07-tip-hidratacion"],
+      "hypothesis": "Urgency hooks + limited offers drive immediate action for quick tips"
+    }
+  ],
+  "successMetrics": {
+    "primary": [
+      "completionRate",
+      "ctaClickthrough",
+      "socialEngagement"
+    ],
+    "secondary": [
+      "first3SecondsRetention", 
+      "shareRate",
+      "commentSentiment",
+      "conversionRate"
+    ],
+    "thresholds": {
+      "completionRate": 0.70,
+      "ctaClickthrough": 0.15,
+      "socialEngagement": 0.05
+    }
+  }
+}
