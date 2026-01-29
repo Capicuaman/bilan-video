@@ -1,12 +1,18 @@
-import { AbsoluteFill, Sequence, useVideoConfig } from 'remotion';
-import { BrandIntroPerfected } from '../components/BrandIntroPerfected';
-import { BrandOutroPerfected } from '../components/BrandOutroPerfected';
-import { QuickTipVideo } from './QuickTipVideo';
-import { MythbustingVideo } from './MythbustingVideo';
-import { EducationalVideo } from './EducationalVideo';
-import { TrendingVideo } from './TrendingVideo';
+import {
+  AbsoluteFill,
+  Sequence,
+  useVideoConfig,
+  Audio,
+  staticFile,
+} from "remotion";
+import { BrandIntroPerfected } from "../components/BrandIntroPerfected";
+import { BrandOutroPerfected } from "../components/BrandOutroPerfected";
+import { QuickTipVideo } from "./QuickTipVideo";
+import { MythbustingVideo } from "./MythbustingVideo";
+import { EducationalVideo } from "./EducationalVideo";
+import { TrendingVideo } from "./TrendingVideo";
 
-type TemplateType = 'QuickTip' | 'Mythbusting' | 'Educational' | 'Trending';
+type TemplateType = "QuickTip" | "Mythbusting" | "Educational" | "Trending";
 
 interface MasterVideoProps {
   template: TemplateType;
@@ -27,16 +33,16 @@ const CONTENT_DURATIONS: Record<TemplateType, number> = {
 };
 
 const INTRO_DURATION = 2.5; // seconds
-const OUTRO_DURATION = 4;   // seconds
+const OUTRO_DURATION = 4; // seconds
 
 export const MasterVideo: React.FC<MasterVideoProps> = ({
   template,
   contentProps,
   showIntro = true,
   showOutro = true,
-  introTagline = 'hidratación inteligente',
-  outroCta = '¡Guarda este video!',
-  outroHandle = '@bilan.mx',
+  introTagline = "hidratación inteligente",
+  outroCta = "¡Guarda este video!",
+  outroHandle = "@bilan.mx",
 }) => {
   const { fps } = useVideoConfig();
 
@@ -61,6 +67,13 @@ export const MasterVideo: React.FC<MasterVideoProps> = ({
 
   return (
     <AbsoluteFill>
+      {/* Background Music - Phase 1 Audio Implementation */}
+      <Audio
+        src={staticFile("audio/music/ambient-loop.mp3")}
+        loop={true}
+        volume={0.3}
+      />
+
       {/* INTRO */}
       {showIntro && (
         <Sequence from={0} durationInFrames={introDurationFrames}>
@@ -69,17 +82,20 @@ export const MasterVideo: React.FC<MasterVideoProps> = ({
       )}
 
       {/* MAIN CONTENT */}
-      <Sequence from={introDurationFrames} durationInFrames={contentDurationFrames}>
+      <Sequence
+        from={introDurationFrames}
+        durationInFrames={contentDurationFrames}
+      >
         <ContentComponent {...modifiedContentProps} />
       </Sequence>
 
       {/* OUTRO */}
       {showOutro && (
-        <Sequence from={introDurationFrames + contentDurationFrames} durationInFrames={outroDurationFrames}>
-          <BrandOutroPerfected
-            cta={outroCta}
-            handle={outroHandle}
-          />
+        <Sequence
+          from={introDurationFrames + contentDurationFrames}
+          durationInFrames={outroDurationFrames}
+        >
+          <BrandOutroPerfected cta={outroCta} handle={outroHandle} />
         </Sequence>
       )}
     </AbsoluteFill>
@@ -91,7 +107,7 @@ export const getMasterVideoDuration = (
   template: TemplateType,
   showIntro: boolean = true,
   showOutro: boolean = true,
-  fps: number = 30
+  fps: number = 30,
 ): number => {
   const intro = showIntro ? INTRO_DURATION : 0;
   const outro = showOutro ? OUTRO_DURATION : 0;

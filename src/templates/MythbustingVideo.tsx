@@ -1,5 +1,14 @@
-import { AbsoluteFill, useCurrentFrame, useVideoConfig, interpolate, spring, Img, staticFile } from 'remotion';
-import { brand, getFontStack } from '../brand';
+import {
+  AbsoluteFill,
+  useCurrentFrame,
+  useVideoConfig,
+  interpolate,
+  spring,
+  Img,
+  staticFile,
+  Audio,
+} from "remotion";
+import { brand, getFontStack } from "../brand";
 
 interface MythbustingProps {
   title: string;
@@ -34,56 +43,103 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
   const ctaStart = fps * 25; // CTA starts exactly when explanation ends
 
   // Animations
-  const titleOpacity = interpolate(frame, [0, 10, titleEnd - 10, titleEnd], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
+  const titleOpacity = interpolate(
+    frame,
+    [0, 10, titleEnd - 10, titleEnd],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" },
+  );
   const titleScale = spring({ frame, fps, config: brand.animation.spring });
 
-  const mythOpacity = interpolate(frame, [mythStart, mythStart + 10, mythEnd - 10, mythEnd], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
-  const mythX = interpolate(frame, [mythStart, mythStart + 15], [-100, 0], { extrapolateRight: 'clamp' });
+  const mythOpacity = interpolate(
+    frame,
+    [mythStart, mythStart + 10, mythEnd - 10, mythEnd],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" },
+  );
+  const mythX = interpolate(frame, [mythStart, mythStart + 15], [-100, 0], {
+    extrapolateRight: "clamp",
+  });
 
-  const truthOpacity = interpolate(frame, [truthStart, truthStart + 10, truthEnd - 10, truthEnd], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
-  const truthScale = spring({ frame: frame - truthStart, fps, config: { damping: 10 } });
+  const truthOpacity = interpolate(
+    frame,
+    [truthStart, truthStart + 10, truthEnd - 10, truthEnd],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" },
+  );
+  const truthScale = spring({
+    frame: frame - truthStart,
+    fps,
+    config: { damping: 10 },
+  });
 
-  const explainOpacity = interpolate(frame, [explanationStart, explanationStart + 10, explanationEnd - 15, explanationEnd - 5], [0, 1, 1, 0], { extrapolateRight: 'clamp' });
+  const explainOpacity = interpolate(
+    frame,
+    [
+      explanationStart,
+      explanationStart + 10,
+      explanationEnd - 15,
+      explanationEnd - 5,
+    ],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" },
+  );
 
-  const ctaOpacity = interpolate(frame, [ctaStart - 10, ctaStart, fps * 30], [0, 1, 1], { extrapolateRight: 'clamp' });
-  const ctaScale = spring({ frame: frame - ctaStart, fps, config: { damping: 10 } });
+  const ctaOpacity = interpolate(
+    frame,
+    [ctaStart - 10, ctaStart, fps * 30],
+    [0, 1, 1],
+    { extrapolateRight: "clamp" },
+  );
+  const ctaScale = spring({
+    frame: frame - ctaStart,
+    fps,
+    config: { damping: 10 },
+  });
 
   // Logo fades out before CTA so only one logo shows at a time
   const logoOpacity = interpolate(
-    frame, 
-    [0, 15, ctaStart - 15, ctaStart], 
-    [0, 1, 1, 0], 
-    { extrapolateRight: 'clamp' }
+    frame,
+    [0, 15, ctaStart - 15, ctaStart],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" },
   );
 
   return (
     <AbsoluteFill
       style={{
         backgroundColor: brand.colors.background,
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontFamily: getFontStack('body'),
+        justifyContent: "center",
+        alignItems: "center",
+        fontFamily: getFontStack("body"),
       }}
     >
+      {/* Background Music - Phase 1 Audio Implementation */}
+      <Audio
+        src={staticFile("audio/music/ambient-loop.mp3")}
+        loop={true}
+        volume={0.3}
+      />
       {/* Logo - centered, large with shadow */}
       {showLogo && (
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             top: 80,
             left: 0,
             right: 0,
-            display: 'flex',
-            justifyContent: 'center',
+            display: "flex",
+            justifyContent: "center",
             opacity: logoOpacity,
           }}
         >
           <Img
             src={staticFile(brand.logo.path)}
-            style={{ 
-              width: brand.logo.width, 
-              height: 'auto',
-              filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 4px 8px rgba(0,0,0,0.2))',
+            style={{
+              width: brand.logo.width,
+              height: "auto",
+              filter:
+                "drop-shadow(0 8px 24px rgba(0,0,0,0.4)) drop-shadow(0 4px 8px rgba(0,0,0,0.2))",
             }}
           />
         </div>
@@ -93,28 +149,28 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
       {frame < titleEnd && (
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             opacity: titleOpacity,
             transform: `scale(${titleScale})`,
-            textAlign: 'center',
-            padding: '0 50px',
+            textAlign: "center",
+            padding: "0 50px",
           }}
         >
           {/* CHUNKY LABEL - GREEN for contrast */}
           <div
             style={{
-              display: 'inline-block',
+              display: "inline-block",
               fontSize: 58, // Increased from 52
-              color: '#FFFFFF',
-              fontFamily: getFontStack('heading'),
+              color: "#FFFFFF",
+              fontFamily: getFontStack("heading"),
               fontWeight: 700,
               marginBottom: 36,
-              textTransform: 'uppercase',
+              textTransform: "uppercase",
               letterSpacing: 5,
-              padding: '16px 36px',
+              padding: "16px 36px",
               backgroundColor: brand.colors.accentGreen,
               borderRadius: 14,
-              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              textShadow: "0 4px 12px rgba(0,0,0,0.4)",
               boxShadow: `0 8px 32px ${brand.colors.accentGreen}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
@@ -124,10 +180,10 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
             style={{
               fontSize: 72, // Increased from brand.typography.title (64)
               color: brand.colors.white,
-              fontFamily: getFontStack('heading'),
+              fontFamily: getFontStack("heading"),
               fontWeight: 700,
               lineHeight: 1.1,
-              textShadow: '0 6px 20px rgba(0,0,0,0.4)',
+              textShadow: "0 6px 20px rgba(0,0,0,0.4)",
             }}
           >
             {title}
@@ -139,28 +195,28 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
       {frame >= mythStart && frame < mythEnd && (
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             opacity: mythOpacity,
             transform: `translateX(${mythX}px)`,
-            textAlign: 'center',
-            padding: '0 40px',
+            textAlign: "center",
+            padding: "0 40px",
           }}
         >
           {/* CHUNKY RED LABEL */}
           <div
             style={{
-              display: 'inline-block',
+              display: "inline-block",
               fontSize: 58, // Increased from 52
-              color: '#FFFFFF',
-              fontFamily: getFontStack('heading'),
+              color: "#FFFFFF",
+              fontFamily: getFontStack("heading"),
               fontWeight: 700,
               marginBottom: 36,
-              textTransform: 'uppercase',
+              textTransform: "uppercase",
               letterSpacing: 5,
-              padding: '16px 36px',
+              padding: "16px 36px",
               backgroundColor: brand.colors.error,
               borderRadius: 14,
-              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              textShadow: "0 4px 12px rgba(0,0,0,0.4)",
               boxShadow: `0 8px 32px ${brand.colors.error}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
@@ -170,14 +226,14 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
             style={{
               fontSize: 58, // Increased from brand.typography.subtitle (52)
               color: brand.colors.white,
-              fontFamily: getFontStack('heading'),
+              fontFamily: getFontStack("heading"),
               fontWeight: 700,
               lineHeight: 1.2,
-              padding: '36px 44px',
-              backgroundColor: 'rgba(239, 68, 68, 0.15)',
+              padding: "36px 44px",
+              backgroundColor: "rgba(239, 68, 68, 0.15)",
               borderRadius: 20,
-              border: '3px solid rgba(239, 68, 68, 0.4)',
-              textShadow: '0 4px 12px rgba(0,0,0,0.3)',
+              border: "3px solid rgba(239, 68, 68, 0.4)",
+              textShadow: "0 4px 12px rgba(0,0,0,0.3)",
             }}
           >
             "{myth}"
@@ -189,28 +245,28 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
       {frame >= truthStart && frame < truthEnd && (
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             opacity: truthOpacity,
             transform: `scale(${truthScale})`,
-            textAlign: 'center',
-            padding: '0 40px',
+            textAlign: "center",
+            padding: "0 40px",
           }}
         >
           {/* CHUNKY GREEN LABEL */}
           <div
             style={{
-              display: 'inline-block',
+              display: "inline-block",
               fontSize: 58, // Increased from 52
-              color: '#FFFFFF',
-              fontFamily: getFontStack('heading'),
+              color: "#FFFFFF",
+              fontFamily: getFontStack("heading"),
               fontWeight: 700,
               marginBottom: 36,
-              textTransform: 'uppercase',
+              textTransform: "uppercase",
               letterSpacing: 5,
-              padding: '16px 36px',
+              padding: "16px 36px",
               backgroundColor: brand.colors.success,
               borderRadius: 14,
-              textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+              textShadow: "0 4px 12px rgba(0,0,0,0.4)",
               boxShadow: `0 8px 32px ${brand.colors.success}88, 0 4px 16px rgba(0,0,0,0.3)`,
             }}
           >
@@ -220,14 +276,14 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
             style={{
               fontSize: 58, // Increased from brand.typography.subtitle (52)
               color: brand.colors.white,
-              fontFamily: getFontStack('heading'),
+              fontFamily: getFontStack("heading"),
               fontWeight: 700,
               lineHeight: 1.2,
-              padding: '36px 44px',
+              padding: "36px 44px",
               backgroundColor: `${brand.colors.success}22`,
               borderRadius: 20,
               border: `3px solid ${brand.colors.success}55`,
-              textShadow: '0 4px 12px rgba(0,0,0,0.3)',
+              textShadow: "0 4px 12px rgba(0,0,0,0.3)",
             }}
           >
             {truth}
@@ -239,20 +295,20 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
       {frame >= explanationStart && frame < explanationEnd && (
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             opacity: explainOpacity,
-            textAlign: 'center',
-            padding: '0 50px',
+            textAlign: "center",
+            padding: "0 50px",
           }}
         >
           <div
             style={{
               fontSize: 58, // Increased from brand.typography.subtitle (52)
               color: brand.colors.white,
-              fontFamily: getFontStack('heading'),
+              fontFamily: getFontStack("heading"),
               fontWeight: 700,
               lineHeight: 1.3,
-              textShadow: '0 6px 20px rgba(0,0,0,0.4)',
+              textShadow: "0 6px 20px rgba(0,0,0,0.4)",
             }}
           >
             {explanation}
@@ -264,29 +320,29 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
       {frame >= ctaStart && (
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             opacity: ctaOpacity,
             transform: `scale(${ctaScale})`,
-            textAlign: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
           {showLogo && (
             <div
               style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
               }}
             >
               <Img
                 src={staticFile(brand.logo.path)}
-                style={{ 
-                  width: brand.logo.widthCTA, 
-                  height: 'auto',
-                  filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.3))',
+                style={{
+                  width: brand.logo.widthCTA,
+                  height: "auto",
+                  filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.3))",
                 }}
               />
               {/* Tagline below logo */}
@@ -295,11 +351,11 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
                   marginTop: 20,
                   fontSize: 38, // Increased for accessibility
                   color: brand.colors.white,
-                  fontFamily: getFontStack('heading'),
+                  fontFamily: getFontStack("heading"),
                   fontWeight: 700,
                   letterSpacing: 6,
-                  textTransform: 'lowercase',
-                  textShadow: '0 4px 12px rgba(0,0,0,0.4)',
+                  textTransform: "lowercase",
+                  textShadow: "0 4px 12px rgba(0,0,0,0.4)",
                   opacity: 0.9,
                 }}
               >
@@ -313,7 +369,7 @@ export const MythbustingVideo: React.FC<MythbustingProps> = ({
       {/* Brand bar */}
       <div
         style={{
-          position: 'absolute',
+          position: "absolute",
           bottom: 0,
           left: 0,
           right: 0,
