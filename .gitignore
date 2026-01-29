@@ -5,3 +5,18 @@ dist
 
 # Ignore the output video from Git but not videos you import into src/.
 out
+
+# Test files and archives
+archive/
+audio-test-videos/
+test-renders/
+*.mp4
+
+# Build artifacts
+build/
+
+# Audio files (generated)
+public/audio/
+
+# Test template variations
+src/templates/*-test*.tsx
