@@ -25,6 +25,76 @@
 - [ ] Review all 10 videos
 - [ ] Prepare for TikTok posting
 
+## 📋 TODO Plan - System Improvements
+
+### 🔴 High Priority (Quick Wins)
+
+**Code Cleanup & Consistency**
+- [ ] Consolidate 5 QuickTipVideo-test*.tsx files into single component with `audioVariant` prop
+- [x] Fix brand name consistency - change "BILAN" to "bilan" in Root.tsx default props
+- [ ] Unify batch-render.mjs and batch-render-master.mjs into single script with CLI flags
+- [ ] Archive test videos to `archive/` folder
+
+**Content Validation**
+- [ ] Create `utils/validate-content.ts` for TikTok compliance checking
+- [ ] Add medical claims detection (prevent "cures", "treats", "heals")
+- [ ] Add brand name validator (enforce lowercase "bilan")
+- [ ] Add duration validation (content vs target duration check)
+
+### 🟡 Medium Priority (Audio & Performance)
+
+**Audio System Enhancement**
+- [ ] Create template-specific audio library structure:
+  - `public/audio/music/quicktip/` - energetic tracks (120-140 BPM)
+  - `public/audio/music/mythbusting/` - dramatic tension tracks
+  - `public/audio/music/educational/` - calm ambient tracks
+  - `public/audio/music/trending/` - viral beats
+- [ ] Create `config/audio.ts` with audio presets per template
+- [ ] Add sound effects: whoosh-in, pop, ding for transitions
+- [ ] Implement audio variant selector in templates
+
+**Performance & Scalability**
+- [ ] Add parallel rendering with concurrency control (PQueue)
+- [ ] Implement incremental rendering with content hash cache
+- [ ] Add render progress indicators for batch operations
+- [ ] Add retry logic for failed renders
+
+**Developer Experience**
+- [ ] Create `BaseTemplate.tsx` to share common patterns (logo, audio, brand bar)
+- [ ] Add full type coverage with `VideoContentMap` discriminated union
+- [ ] Add hot reload for content files (chokidar watch)
+
+### 🟢 Low Priority (Advanced Features)
+
+**Analytics & A/B Testing**
+- [ ] Embed tracking metadata in video exports (version, template, audioVariant, abTestGroup)
+- [ ] Create A/B test configuration framework in `ab-testing/`
+- [ ] Build simple performance dashboard (render times, success rates)
+
+**Content Pipeline**
+- [ ] Support multiple input formats (JSON, Google Sheets API, Notion)
+- [ ] Implement dynamic duration calculation based on word count
+- [ ] Create template preview system (3-second low-quality preview)
+- [ ] Add content calendar integration for seasonal topics
+
+**File Organization**
+- [ ] Restructure templates into folders:
+  ```
+  src/templates/
+    ├── base/BaseTemplate.tsx
+    ├── QuickTip/index.tsx, variants.ts, types.ts
+    ├── Mythbusting/
+    ├── Educational/
+    └── Trending/
+  ```
+- [ ] Organize content by batch:
+  ```
+  content/
+    ├── batch-01/
+    ├── batch-02/
+    └── templates/
+  ```
+
 ## ✅ Recently Completed
 
 - [x] Update MythbustingVideo template with chunky style ✅
@@ -161,4 +231,4 @@
 
 ---
 
-_Last updated: 2026-01-28 15:38_
+_Last updated: 2026-01-30_

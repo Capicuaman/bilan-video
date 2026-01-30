@@ -223,8 +223,8 @@ export const RemotionRoot: React.FC = () => {
             "El magnesio ayuda con la recuperación y el sueño",
           ],
           conclusion:
-            "Por eso BILAN tiene los 3 electrolitos en proporciones óptimas",
-          cta: "Prueba BILAN hoy",
+            "Por eso bilan tiene los 3 electrolitos en proporciones óptimas",
+          cta: "Prueba bilan hoy",
           brandColor: "#00a86b",
         }}
       />
@@ -243,7 +243,7 @@ export const RemotionRoot: React.FC = () => {
           scenes: [
             "Tomando solo agua, siempre cansado",
             "Investigando sobre electrolitos",
-            "Probando BILAN por primera vez",
+            "Probando bilan por primera vez",
             "3 semanas después: energía todo el día",
           ],
           cta: "Tu turno de transformarte",
@@ -331,8 +331,8 @@ export const RemotionRoot: React.FC = () => {
               "El magnesio ayuda con la recuperación y el sueño",
             ],
             conclusion:
-              "Por eso BILAN tiene los 3 electrolitos en proporciones óptimas",
-            cta: "Prueba BILAN hoy",
+              "Por eso bilan tiene los 3 electrolitos en proporciones óptimas",
+            cta: "Prueba bilan hoy",
             brandColor: "#00a86b",
           },
           showIntro: true,
@@ -356,7 +356,7 @@ export const RemotionRoot: React.FC = () => {
             scenes: [
               "Tomando solo agua, siempre cansado",
               "Investigando sobre electrolitos",
-              "Probando BILAN por primera vez",
+              "Probando bilan por primera vez",
               "3 semanas después: energía todo el día",
             ],
             cta: "Tu turno de transformarte",
