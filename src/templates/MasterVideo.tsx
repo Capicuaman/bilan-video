@@ -71,7 +71,7 @@ export const MasterVideo: React.FC<MasterVideoProps> = ({
       <Audio
         src={staticFile("audio/music/ambient-loop.mp3")}
         loop={true}
-        volume={0.3}
+        volume={0.6}
       />
 
       {/* INTRO */}
