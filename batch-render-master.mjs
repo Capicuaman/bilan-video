@@ -1,11 +1,44 @@
 #!/usr/bin/env node
 import { bundle } from '@remotion/bundler';
 import { renderMedia, selectComposition } from '@remotion/renderer';
-import { readFileSync, readdirSync, mkdirSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'fs';
 import { resolve, dirname, basename } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Progress bar utility
+function createProgressBar(current, total, width = 30) {
+  const percentage = Math.round((current / total) * 100);
+  const filled = Math.round((current / total) * width);
+  const empty = width - filled;
+  const bar = '█'.repeat(filled) + '░'.repeat(empty);
+  return `[${bar}] ${percentage}%`;
+}
+
+// Format duration in human-readable format
+function formatDuration(ms) {
+  const seconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+
+  if (hours > 0) {
+    return `${hours}h ${minutes % 60}m ${seconds % 60}s`;
+  } else if (minutes > 0) {
+    return `${minutes}m ${seconds % 60}s`;
+  } else {
+    return `${seconds}s`;
+  }
+}
+
+// Calculate ETA
+function calculateETA(completedCount, totalCount, elapsedMs) {
+  if (completedCount === 0) return 'calculating...';
+  const avgTimePerVideo = elapsedMs / completedCount;
+  const remainingVideos = totalCount - completedCount;
+  const etaMs = avgTimePerVideo * remainingVideos;
+  return formatDuration(etaMs);
+}
 
 // Configuration
 const CONTENT_DIR = process.env.CONTENT_DIR || 'content';
@@ -63,6 +96,8 @@ function loadContentFiles(contentDir) {
 }
 
 async function main() {
+  const batchStartTime = Date.now();
+
   console.log('🎬 BILAN Master Video Batch Renderer');
   console.log('====================================');
   console.log(`Content Dir: ${CONTENT_DIR}`);
@@ -88,23 +123,42 @@ async function main() {
 
   // Bundle the project
   console.log('📦 Bundling project...');
+  const bundleStartTime = Date.now();
   const bundleLocation = await bundle({
     entryPoint: resolve(__dirname, 'src/index.ts'),
     webpackOverride: (config) => config,
   });
-  console.log('✅ Bundle complete');
+  const bundleTime = Date.now() - bundleStartTime;
+  console.log(`✅ Bundle complete (${formatDuration(bundleTime)})`);
   console.log('');
 
-  // Render each video
+  // Render tracking
+  const renderResults = [];
   let completed = 0;
   let failed = 0;
 
-  for (const video of videos) {
+  for (let i = 0; i < videos.length; i++) {
+    const video = videos[i];
+    const videoStartTime = Date.now();
     const compositionId = TEMPLATE_TO_MASTER[video.template];
     const outputPath = resolve(OUTPUT_DIR, `${video.id}.mp4`);
 
+    // Progress header
+    const progress = createProgressBar(i, videos.length);
+    const eta = calculateETA(i, videos.length, Date.now() - batchStartTime - bundleTime);
+
+    console.log(`\n${progress} Video ${i + 1}/${videos.length} • ETA: ${eta}`);
     console.log(`🎥 Rendering: ${video.id} (${video.template})`);
     console.log(`   Outro CTA: "${video.outroCta}"`);
+
+    const result = {
+      id: video.id,
+      template: video.template,
+      file: video.file,
+      outputPath: outputPath,
+      startTime: new Date(videoStartTime).toISOString(),
+      status: 'pending',
+    };
 
     try {
       // Prepare props for MasterVideo
@@ -125,7 +179,8 @@ async function main() {
         inputProps: inputProps,
       });
 
-      // Render
+      // Render with progress callback
+      let lastLoggedProgress = 0;
       await renderMedia({
         composition,
         serveUrl: bundleLocation,
@@ -133,29 +188,93 @@ async function main() {
         outputLocation: outputPath,
         inputProps: inputProps,
         concurrency: CONCURRENCY,
+        onProgress: ({ progress, renderedFrames, encodedFrames }) => {
+          const percentage = Math.round(progress * 100);
+          // Log every 10% to avoid spam
+          if (percentage >= lastLoggedProgress + 10) {
+            const bar = createProgressBar(progress * 100, 100, 20);
+            console.log(`   ${bar} • Frame ${renderedFrames}/${composition.durationInFrames}`);
+            lastLoggedProgress = percentage;
+          }
+        },
       });
 
+      const renderTime = Date.now() - videoStartTime;
+      result.status = 'success';
+      result.durationMs = renderTime;
+      result.endTime = new Date().toISOString();
+
       console.log(`✅ Saved: ${outputPath}`);
-      console.log('');
+      console.log(`   ⏱️  Render time: ${formatDuration(renderTime)}`);
       completed++;
     } catch (error) {
-      console.error(`❌ Failed to render ${video.id}:`, error.message);
-      console.log('');
+      const renderTime = Date.now() - videoStartTime;
+      result.status = 'failed';
+      result.durationMs = renderTime;
+      result.endTime = new Date().toISOString();
+      result.error = {
+        message: error.message,
+        stack: error.stack,
+        frame: error.frame || null,
+      };
+
+      console.error(`❌ Failed to render ${video.id}`);
+      console.error(`   Error: ${error.message}`);
+      if (error.frame) {
+        console.error(`   Failed at frame: ${error.frame}`);
+      }
       failed++;
     }
+
+    renderResults.push(result);
   }
 
-  console.log('====================================');
+  const totalTime = Date.now() - batchStartTime;
+
+  // Final summary
+  console.log('\n====================================');
   console.log(`🎉 Batch complete!`);
+  console.log(`   ⏱️  Total time: ${formatDuration(totalTime)}`);
+  console.log(`   📦 Bundle time: ${formatDuration(bundleTime)}`);
+  console.log(`   🎬 Render time: ${formatDuration(totalTime - bundleTime)}`);
   console.log(`   ✅ Completed: ${completed}`);
   console.log(`   ❌ Failed: ${failed}`);
   console.log(`   📁 Output: ${resolve(OUTPUT_DIR)}`);
-  console.log('');
-  console.log('📊 Rendered videos:');
-  videos.forEach((v, i) => {
-    const status = i < completed ? '✅' : '❌';
-    console.log(`   ${status} ${v.id} (${v.template})`);
+
+  if (completed > 0) {
+    const avgRenderTime = renderResults
+      .filter(r => r.status === 'success')
+      .reduce((sum, r) => sum + r.durationMs, 0) / completed;
+    console.log(`   📊 Avg render time: ${formatDuration(avgRenderTime)}`);
+  }
+
+  console.log('\n📊 Detailed results:');
+  renderResults.forEach((result) => {
+    const icon = result.status === 'success' ? '✅' : '❌';
+    const time = result.durationMs ? ` (${formatDuration(result.durationMs)})` : '';
+    console.log(`   ${icon} ${result.id} (${result.template})${time}`);
+    if (result.error) {
+      console.log(`      └─ ${result.error.message}`);
+    }
   });
+
+  // Save detailed log to JSON
+  const logPath = resolve(OUTPUT_DIR, 'render-log.json');
+  const logData = {
+    batchStartTime: new Date(batchStartTime).toISOString(),
+    batchEndTime: new Date().toISOString(),
+    totalDurationMs: totalTime,
+    bundleDurationMs: bundleTime,
+    renderDurationMs: totalTime - bundleTime,
+    totalVideos: videos.length,
+    completed: completed,
+    failed: failed,
+    concurrency: CONCURRENCY,
+    results: renderResults,
+  };
+
+  writeFileSync(logPath, JSON.stringify(logData, null, 2));
+  console.log(`\n💾 Detailed log saved: ${logPath}`);
 }
 
 main().catch((err) => {
