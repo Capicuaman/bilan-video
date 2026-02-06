@@ -97,6 +97,7 @@ function loadContentFiles(contentDir) {
           content.outroCta ||
           DEFAULT_OUTRO_CTAS[videos.length % DEFAULT_OUTRO_CTAS.length],
         audioTrack: content.audioTrack || "ambient-loop.mp3",
+        tiktokCaption: content.tiktok?.caption || "",
         file: file,
       });
     } catch (error) {
@@ -226,6 +227,18 @@ async function main() {
 
       console.log(`✅ Saved: ${outputPath}`);
       console.log(`   ⏱️  Render time: ${formatDuration(renderTime)}`);
+
+      // Display TikTok caption for easy copying
+      if (video.tiktokCaption) {
+        console.log("");
+        console.log("   📱 TikTok Caption:");
+        console.log("   " + "─".repeat(60));
+        video.tiktokCaption.split("\n").forEach((line) => {
+          console.log("   " + line);
+        });
+        console.log("   " + "─".repeat(60));
+      }
+
       completed++;
     } catch (error) {
       const renderTime = Date.now() - videoStartTime;
