@@ -1,6 +1,7 @@
 {
   "id": "quicktip_01",
   "template": "QuickTip",
+  "audioTrack": "ambient-quick-start.mp3",
   "contentProps": {
     "tip": "Toma agua antes de sentir sed",
     "reason": "Cuando sientes sed, tu cuerpo ya está pidiendo hidratación",
@@ -8,6 +9,14 @@
   },
   "tiktok": {
     "caption": "💧 El tip más simple pero el más olvidado\n\n¿Sabías que cuando sientes sed ya es tarde? Tu cuerpo te está avisando que necesita agua.\n\n#hidratacion #bienestar #saludable #tipssaludables #agua #bilan #electrolitos",
-    "hashtags": ["hidratacion", "bienestar", "saludable", "tipssaludables", "agua", "bilan", "electrolitos"]
+    "hashtags": [
+      "hidratacion",
+      "bienestar",
+      "saludable",
+      "tipssaludables",
+      "agua",
+      "bilan",
+      "electrolitos"
+    ]
   }
 }

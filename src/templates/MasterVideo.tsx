@@ -22,6 +22,7 @@ interface MasterVideoProps {
   introTagline?: string;
   outroCta?: string;
   outroHandle?: string;
+  audioTrack?: string;
 }
 
 // Content duration mapping (in seconds)
@@ -43,6 +44,7 @@ export const MasterVideo: React.FC<MasterVideoProps> = ({
   introTagline = "hidratación inteligente",
   outroCta = "¡Guarda este video!",
   outroHandle = "@bilan.mx",
+  audioTrack = "ambient-loop.mp3",
 }) => {
   const { fps } = useVideoConfig();
 
@@ -69,7 +71,7 @@ export const MasterVideo: React.FC<MasterVideoProps> = ({
     <AbsoluteFill>
       {/* Background Music - Phase 1 Audio Implementation */}
       <Audio
-        src={staticFile("audio/music/ambient-loop.mp3")}
+        src={staticFile(`audio/music/${audioTrack}`)}
         loop={true}
         volume={0.6}
       />

@@ -1,6 +1,7 @@
 {
   "id": "myth_01",
   "template": "Mythbusting",
+  "audioTrack": "ambient-music-loop-118.mp3",
   "contentProps": {
     "title": "¿8 vasos al día?",
     "myth": "Todos necesitamos exactamente 8 vasos de agua al día",
@@ -10,6 +11,15 @@
   },
   "tiktok": {
     "caption": "🔍 MITO VS REALIDAD\n\n¿De dónde salió lo de los 8 vasos? La verdad es que cada cuerpo es diferente.\n\nLo importante: escucha a tu cuerpo y mantente hidratado según TU estilo de vida 💧\n\n#mitos #realidad #hidratacion #curiosidades #aprendeentiktok #datoscuriosos #bilan #salud",
-    "hashtags": ["mitos", "realidad", "hidratacion", "curiosidades", "aprendeentiktok", "datoscuriosos", "bilan", "salud"]
+    "hashtags": [
+      "mitos",
+      "realidad",
+      "hidratacion",
+      "curiosidades",
+      "aprendeentiktok",
+      "datoscuriosos",
+      "bilan",
+      "salud"
+    ]
   }
 }

@@ -1,6 +1,7 @@
 {
   "id": "quicktip_02",
   "template": "QuickTip",
+  "audioTrack": "electro-drone-ambient.mp3",
   "contentProps": {
     "tip": "Hidrátate antes, durante y después del ejercicio",
     "reason": "Tu cuerpo pierde agua y minerales cuando sudas",
@@ -8,6 +9,15 @@
   },
   "tiktok": {
     "caption": "🏋️ El secreto que los atletas saben\n\nNo solo durante... ¡antes y después también! Tu cuerpo te lo agradecerá.\n\n#fitness #gym #ejercicio #hidratacion #workout #entrenamiento #bilan #tipsfitness",
-    "hashtags": ["fitness", "gym", "ejercicio", "hidratacion", "workout", "entrenamiento", "bilan", "tipsfitness"]
+    "hashtags": [
+      "fitness",
+      "gym",
+      "ejercicio",
+      "hidratacion",
+      "workout",
+      "entrenamiento",
+      "bilan",
+      "tipsfitness"
+    ]
   }
 }

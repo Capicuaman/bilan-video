@@ -1,6 +1,7 @@
 {
   "id": "myth_sal_v2",
   "template": "Mythbusting",
+  "audioTrack": "ambient-loop.mp3",
   "contentProps": {
     "title": "¿La sal es el enemigo?",
     "myth": "Hay que evitar la sal a toda costa",
@@ -10,6 +11,15 @@
   },
   "tiktok": {
     "caption": "🧂 ¿La sal es realmente tan mala?\n\nSpoiler: el balance es la clave 🔑\n\nCada cuerpo es diferente - lo importante es informarte y encontrar lo que funciona para TI.\n\n⚠️ Siempre consulta a un profesional de salud para consejos personalizados.\n\n#mitos #nutricion #alimentacion #vidasaludable #aprendeentiktok #bilan #balance #salud",
-    "hashtags": ["mitos", "nutricion", "alimentacion", "vidasaludable", "aprendeentiktok", "bilan", "balance", "salud"]
+    "hashtags": [
+      "mitos",
+      "nutricion",
+      "alimentacion",
+      "vidasaludable",
+      "aprendeentiktok",
+      "bilan",
+      "balance",
+      "salud"
+    ]
   }
 }
