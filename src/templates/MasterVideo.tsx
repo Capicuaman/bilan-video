@@ -22,6 +22,7 @@ interface MasterVideoProps {
   introTagline?: string;
   outroCta?: string;
   outroHandle?: string;
+  outroWebsite?: string;
   audioTrack?: string;
 }
 
@@ -43,7 +44,8 @@ export const MasterVideo: React.FC<MasterVideoProps> = ({
   showOutro = true,
   introTagline = "hidratación inteligente",
   outroCta = "¡Guarda este video!",
-  outroHandle = "@bilan.mx",
+  outroHandle = "@bilan.electrolitos",
+  outroWebsite = "www.bilan.mx",
   audioTrack = "ambient-loop.mp3",
 }) => {
   const { fps } = useVideoConfig();
@@ -97,7 +99,11 @@ export const MasterVideo: React.FC<MasterVideoProps> = ({
           from={introDurationFrames + contentDurationFrames}
           durationInFrames={outroDurationFrames}
         >
-          <BrandOutroPerfected cta={outroCta} handle={outroHandle} />
+          <BrandOutroPerfected
+            cta={outroCta}
+            handle={outroHandle}
+            website={outroWebsite}
+          />
         </Sequence>
       )}
     </AbsoluteFill>

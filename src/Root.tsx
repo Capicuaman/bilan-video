@@ -275,7 +275,7 @@ export const RemotionRoot: React.FC = () => {
           showIntro: true,
           showOutro: true,
           introTagline: "HIDRATACIÓN INTELIGENTE",
-          outroHandle: "@bilan.mx",
+          outroHandle: "@bilan.electrolitos",
         }}
       />
 

@@ -187,7 +187,8 @@ async function main() {
         showOutro: true,
         introTagline: "hidratación inteligente",
         outroCta: video.outroCta,
-        outroHandle: "@bilan.mx",
+        outroHandle: "@bilan.electrolitos",
+        outroWebsite: "www.bilan.mx",
         audioTrack: video.audioTrack,
       };
 
