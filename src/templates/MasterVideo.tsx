@@ -23,6 +23,7 @@ interface MasterVideoProps {
   outroCta?: string;
   outroHandle?: string;
   outroWebsite?: string;
+  showActionPrompts?: boolean;
   audioTrack?: string;
 }
 
@@ -46,6 +47,7 @@ export const MasterVideo: React.FC<MasterVideoProps> = ({
   outroCta = "¡Guarda este video!",
   outroHandle = "@bilan.electrolitos",
   outroWebsite = "www.bilan.mx",
+  showActionPrompts = true,
   audioTrack = "ambient-loop.mp3",
 }) => {
   const { fps } = useVideoConfig();
@@ -103,6 +105,7 @@ export const MasterVideo: React.FC<MasterVideoProps> = ({
             cta={outroCta}
             handle={outroHandle}
             website={outroWebsite}
+            showActionPrompts={showActionPrompts}
           />
         </Sequence>
       )}

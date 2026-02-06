@@ -13,12 +13,14 @@ interface BrandOutroPerfectedProps {
   cta?: string;
   handle?: string;
   website?: string;
+  showActionPrompts?: boolean;
 }
 
 export const BrandOutroPerfected: React.FC<BrandOutroPerfectedProps> = ({
   cta = "¡Guarda este video!",
   handle = "@bilan.electrolitos",
   website = "www.bilan.mx",
+  showActionPrompts = true,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -228,38 +230,40 @@ export const BrandOutroPerfected: React.FC<BrandOutroPerfectedProps> = ({
         </div>
 
         {/* Action Buttons - Maximum visibility */}
-        <div
-          style={{
-            opacity: actionsOpacity,
-            transform: `translateY(${actionsY}px)`,
-            display: "flex",
-            gap: 45, // Increased gap for larger text
-            marginTop: 15,
-            flexWrap: "wrap",
-            justifyContent: "center",
-          }}
-        >
-          {[
-            { emoji: "❤️", text: "Like", color: "#ff4458" },
-            { emoji: "💬", text: "Comenta", color: "#4CAF50" },
-            { emoji: "📤", text: "Comparte", color: "#2196F3" },
-          ].map((action, i) => (
-            <div
-              key={i}
-              style={{
-                fontSize: brand.typography.caption, // Increased from 28px to 36px
-                color: brand.colors.white,
-                fontFamily: getFontStack("heading"),
-                fontWeight: 700, // Bolder for better visibility
-                textShadow: `0 3px 12px ${action.color}44, 0 2px 8px rgba(0,0,0,0.4)`,
-                textAlign: "center",
-              }}
-            >
-              <span style={{ fontSize: "1.2em" }}>{action.emoji}</span>{" "}
-              {action.text}
-            </div>
-          ))}
-        </div>
+        {showActionPrompts && (
+          <div
+            style={{
+              opacity: actionsOpacity,
+              transform: `translateY(${actionsY}px)`,
+              display: "flex",
+              gap: 45, // Increased gap for larger text
+              marginTop: 15,
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {[
+              { emoji: "❤️", text: "Like", color: "#ff4458" },
+              { emoji: "💬", text: "Comenta", color: "#4CAF50" },
+              { emoji: "📤", text: "Comparte", color: "#2196F3" },
+            ].map((action, i) => (
+              <div
+                key={i}
+                style={{
+                  fontSize: brand.typography.caption, // Increased from 28px to 36px
+                  color: brand.colors.white,
+                  fontFamily: getFontStack("heading"),
+                  fontWeight: 700, // Bolder for better visibility
+                  textShadow: `0 3px 12px ${action.color}44, 0 2px 8px rgba(0,0,0,0.4)`,
+                  textAlign: "center",
+                }}
+              >
+                <span style={{ fontSize: "1.2em" }}>{action.emoji}</span>{" "}
+                {action.text}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Brand bar - consistent with intro */}

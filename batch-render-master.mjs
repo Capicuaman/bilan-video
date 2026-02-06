@@ -10,8 +10,24 @@ import {
 } from "fs";
 import { resolve, dirname, basename } from "path";
 import { fileURLToPath } from "url";
+import readline from "readline";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Create readline interface for user input
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+// Helper function to ask user for confirmation
+function askQuestion(question) {
+  return new Promise((resolve) => {
+    rl.question(question, (answer) => {
+      resolve(answer.trim().toLowerCase());
+    });
+  });
+}
 
 // Progress bar utility
 function createProgressBar(current, total, width = 30) {
@@ -108,6 +124,97 @@ function loadContentFiles(contentDir) {
   return videos;
 }
 
+// Pre-render checklist - displays all text elements for verification
+async function showPreRenderChecklist(videos) {
+  console.log("\n" + "=".repeat(70));
+  console.log("📋 PRE-RENDER CHECKLIST - Please verify all text elements");
+  console.log("=".repeat(70));
+  console.log("");
+
+  // Default settings
+  const introSettings = {
+    tagline: "hidratación inteligente",
+    duration: "2.5s",
+  };
+
+  const outroSettings = {
+    handle: "@bilan.electrolitos",
+    website: "www.bilan.mx",
+    duration: "4s",
+    showActionPrompts: true,
+  };
+
+  console.log("🎬 INTRO ELEMENTS:");
+  console.log("   ├─ Tagline: " + introSettings.tagline);
+  console.log("   └─ Duration: " + introSettings.duration);
+  console.log("");
+
+  console.log("🎬 OUTRO ELEMENTS:");
+  console.log("   ├─ Handle: " + outroSettings.handle);
+  console.log("   ├─ Website: " + outroSettings.website);
+  console.log("   ├─ Duration: " + outroSettings.duration);
+  console.log(
+    "   └─ Action Prompts: " +
+      (outroSettings.showActionPrompts
+        ? "✅ Yes (❤️ Like 💬 Comenta 📤 Comparte)"
+        : "❌ No"),
+  );
+  console.log("");
+
+  console.log("🎬 VIDEOS TO RENDER:");
+  videos.forEach((video, i) => {
+    console.log(`\n   ${i + 1}. ${video.id} (${video.template})`);
+    console.log(`      └─ Outro CTA: "${video.outroCta}"`);
+  });
+
+  console.log("\n" + "=".repeat(70));
+  console.log("");
+
+  // Ask user to confirm or customize
+  const answer = await askQuestion(
+    "Do you want to customize any elements? (yes/no): ",
+  );
+
+  if (answer === "yes" || answer === "y") {
+    console.log("\n📝 CUSTOMIZATION OPTIONS:");
+
+    // Ask about action prompts
+    const actionPrompts = await askQuestion(
+      "   Show action prompts (Like/Comment/Share)? (yes/no) [default: yes]: ",
+    );
+    outroSettings.showActionPrompts =
+      actionPrompts !== "no" && actionPrompts !== "n";
+
+    // Ask about handle
+    const handleAnswer = await askQuestion(
+      `   Handle [default: ${outroSettings.handle}]: `,
+    );
+    if (handleAnswer) outroSettings.handle = handleAnswer;
+
+    // Ask about website
+    const websiteAnswer = await askQuestion(
+      `   Website [default: ${outroSettings.website}]: `,
+    );
+    if (websiteAnswer) outroSettings.website = websiteAnswer;
+
+    console.log("\n✅ Updated settings:");
+    console.log("   Handle: " + outroSettings.handle);
+    console.log("   Website: " + outroSettings.website);
+    console.log(
+      "   Action Prompts: " + (outroSettings.showActionPrompts ? "Yes" : "No"),
+    );
+  }
+
+  console.log("\n" + "=".repeat(70));
+  const proceed = await askQuestion("\nProceed with rendering? (yes/no): ");
+  console.log("=".repeat(70) + "\n");
+
+  return {
+    proceed: proceed === "yes" || proceed === "y",
+    settings: { intro: introSettings, outro: outroSettings },
+  };
+}
+
 async function main() {
   const batchStartTime = Date.now();
 
@@ -133,6 +240,18 @@ async function main() {
   }
 
   console.log("");
+
+  // Show pre-render checklist and get user confirmation
+  const checklist = await showPreRenderChecklist(videos);
+
+  if (!checklist.proceed) {
+    console.log("\n❌ Rendering cancelled by user");
+    rl.close();
+    process.exit(0);
+  }
+
+  // Store settings for use during rendering
+  const renderSettings = checklist.settings;
 
   // Bundle the project
   console.log("📦 Bundling project...");
@@ -185,10 +304,11 @@ async function main() {
         contentProps: video.contentProps,
         showIntro: true,
         showOutro: true,
-        introTagline: "hidratación inteligente",
+        introTagline: renderSettings.intro.tagline,
         outroCta: video.outroCta,
-        outroHandle: "@bilan.electrolitos",
-        outroWebsite: "www.bilan.mx",
+        outroHandle: renderSettings.outro.handle,
+        outroWebsite: renderSettings.outro.website,
+        showActionPrompts: renderSettings.outro.showActionPrompts,
         audioTrack: video.audioTrack,
       };
 
@@ -312,9 +432,13 @@ async function main() {
 
   writeFileSync(logPath, JSON.stringify(logData, null, 2));
   console.log(`\n💾 Detailed log saved: ${logPath}`);
+
+  // Close readline interface
+  rl.close();
 }
 
 main().catch((err) => {
   console.error("Fatal error:", err);
+  rl.close();
   process.exit(1);
 });
