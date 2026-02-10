@@ -1,0 +1,36 @@
+{
+  "contentId": "BILAN_FACT_005",
+  "type": "scientificfact",
+  "topic": "plasma-sanguineo",
+  "category": "educacion",
+  "tip": "Tu sangre es 90% agua - la hidratación afecta todo tu sistema",
+  "reason": "El plasma transporta nutrientes, oxígeno y elimina desechos. Deshidratación = sangre más espesa = menor rendimiento y mayor riesgo cardiovascular",
+  "cta": "Cuida tu sangre",
+  "title": "La Autopista de Tu Cuerpo",
+  "subtitle": "Por qué la sangre necesita agua",
+  "keyPoint1": "PLASMA\n90% es agua",
+  "keyPoint2": "FUNCIÓN\nTransporte de todo lo vital",
+  "keyPoint3": "RIESGO\nSangre espesa por deshidratación",
+  "conclusion": "bilan mantiene tu sistema fluyendo",
+  "hashtags": {
+    "tiktok": [
+      "#ciencia",
+      "#sangre",
+      "#bilan",
+      "#salud",
+      "#hidratacion"
+    ],
+    "instagram": [
+      "#CienciaDeLaSangre",
+      "#HidratacionVital",
+      "#Bilan",
+      "#Salud"
+    ],
+    "twitter": [
+      "#ciencia",
+      "#salud",
+      "#hidratacion"
+    ],
+    "whatsapp": []
+  }
+}

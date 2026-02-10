@@ -1,0 +1,24 @@
+{
+  "contentId": "BILAN_MYTH_001",
+  "type": "mythbusting",
+  "topic": "sodio-mitos",
+  "category": "educacion",
+  "tip": "MITO: La sal es mala para ti",
+  "reason": "REALIDAD: Tu cuerpo NECESITA sodio para mantener el equilibrio de líquidos y la función muscular correcta",
+  "cta": "Aprende la ciencia real",
+  "title": "Desmintiendo Mitos del Sodio",
+  "subtitle": "La verdad científica sobre la sal",
+  "keyPoint1": "FUNCIÓN VITAL\nEl sodio regula el balance hídrico",
+  "keyPoint2": "RENDIMIENTO\nEsencial para contracciones musculares",
+  "keyPoint3": "SALUD\nLa deficiencia causa más problemas que el exceso",
+  "conclusion": "bilan usa la cantidad exacta que tu cuerpo necesita",
+  "myth": "Debes evitar la sal completamente",
+  "truth": "El sodio es esencial para tu salud",
+  "explanation": "Sin sodio adecuado, puedes sufrir calambres, fatiga y deshidratación",
+  "hashtags": {
+    "tiktok": ["#mitos", "#sodio", "#bilan", "#ciencia", "#salud"],
+    "instagram": ["#MitosVsRealidad", "#CienciaReal", "#Bilan", "#SodioEsencial"],
+    "twitter": ["#mythbusting", "#sodio", "#ciencia"],
+    "whatsapp": []
+  }
+}

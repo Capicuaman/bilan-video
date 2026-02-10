@@ -1,0 +1,36 @@
+{
+  "contentId": "BILAN_FACT_004",
+  "type": "scientificfact",
+  "topic": "ejercicio-prolongado",
+  "category": "educacion",
+  "tip": "Después de 60 minutos de ejercicio, el agua sola ya no es suficiente",
+  "reason": "En sesiones largas, pierdes electrolitos masivamente. Reponer solo agua sin minerales puede causar hiponatremia y arruinar tu rendimiento",
+  "cta": "Entrena más inteligente",
+  "title": "La Regla de los 60 Minutos",
+  "subtitle": "Cuándo el agua no es suficiente",
+  "keyPoint1": "< 60 MIN\nAgua puede bastar",
+  "keyPoint2": "> 60 MIN\nElectrolitos son esenciales",
+  "keyPoint3": "RIESGO\nHiponatremia por solo agua",
+  "conclusion": "bilan es tu aliado en sesiones largas",
+  "hashtags": {
+    "tiktok": [
+      "#endurance",
+      "#bilan",
+      "#running",
+      "#ciclismo",
+      "#triatlon"
+    ],
+    "instagram": [
+      "#EnduranceTraining",
+      "#ElectrolitosEsenciales",
+      "#Bilan",
+      "#LongRun"
+    ],
+    "twitter": [
+      "#endurance",
+      "#running",
+      "#bilan"
+    ],
+    "whatsapp": []
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "contentId": "BILAN_FACT_001",
+  "createdAt": "2026-02-10T02:38:46.538Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_FACT_001",
+    "type": "scientificfact",
+    "topic": "composicion-corporal",
+    "category": "educacion",
+    "tip": "Tu cuerpo es 60% agua y 0.5% electrolitos",
+    "reason": "Esta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el balance correcto, nada funciona como debe",
+    "cta": "Conoce tu cuerpo",
+    "title": "Eres Agua y Electricidad",
+    "subtitle": "La ciencia detrás de tu composición",
+    "keyPoint1": "AGUA\n60% de tu peso corporal",
+    "keyPoint2": "ELECTROLITOS\n0.5% que lo cambia todo",
+    "keyPoint3": "BALANCE\nLa clave del rendimiento óptimo",
+    "conclusion": "bilan mantiene tu balance perfecto",
+    "hashtags": {
+      "tiktok": [
+        "#ciencia",
+        "#hidratacion",
+        "#bilan",
+        "#salud",
+        "#fitness"
+      ],
+      "instagram": [
+        "#CienciaReal",
+        "#HidratacionInteligente",
+        "#Bilan",
+        "#SaludOptima"
+      ],
+      "twitter": [
+        "#ciencia",
+        "#hidratacion",
+        "#salud"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_FACT_001_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_FACT_001_tiktok_caption.txt",
+      "caption": "🔥 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\nEsta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el ba...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T02:38:46.538Z",
+      "renderTime": 50.3
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_FACT_001_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_FACT_001_whatsapp_caption.txt",
+      "caption": "📱 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\nEsta proporción es esencial para todas las funcio...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T02:38:46.538Z",
+      "renderTime": 29.4
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_FACT_001_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_FACT_001_twitter_caption.txt",
+      "caption": "🧵 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\nHilo 👇\\n\\nEsta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el balance correcto, nada funciona como debe\\n\\nConoce tu cuerpo\\n\\n#electrolitos #h...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T02:38:46.538Z",
+      "renderTime": 46.4
+    }
+  }
+}

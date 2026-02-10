@@ -1,0 +1,21 @@
+{
+  "contentId": "BILAN_EDU_001",
+  "type": "educational",
+  "topic": "electrolitos-esenciales",
+  "category": "ciencia",
+  "tip": "Conoce los 3 electrolitos esenciales",
+  "reason": "Cada uno tiene una función específica en tu cuerpo que no puedes ignorar",
+  "cta": "Hidrátate con los 3",
+  "title": "3 Electrolitos Que Debes Conocer",
+  "subtitle": "La ciencia detrás de la hidratación perfecta",
+  "keyPoint1": "SODIO (Na+)\nRegula el balance de líquidos\nPreviene calambres musculares",
+  "keyPoint2": "POTASIO (K+)\nEsencial para contracciones musculares\nMantiene la presión arterial",
+  "keyPoint3": "MAGNESIO (Mg++)\nAyuda en la recuperación muscular\nMejora la calidad del sueño",
+  "conclusion": "bilan combina los 3 en las proporciones científicamente probadas",
+  "hashtags": {
+    "tiktok": ["#electrolitos", "#ciencia", "#bilan", "#salud", "#educacion"],
+    "instagram": ["#CienciaReal", "#ElectrolitosEsenciales", "#Bilan", "#SaludInteligente"],
+    "twitter": ["#electrolitos", "#ciencia", "#salud"],
+    "whatsapp": []
+  }
+}

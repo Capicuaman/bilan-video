@@ -1,0 +1,44 @@
+{
+  "contentId": "DEMO_FULL",
+  "createdAt": "2026-02-08T19:34:03.914Z",
+  "status": "ready",
+  "content": {
+    "tip": "Los electrolitos no son solo sal",
+    "reason": "Son minerales esenciales: sodio, potasio y magnesio que tu cuerpo necesita para funcionar correctamente",
+    "cta": "Hidrátate con ciencia",
+    "topic": "electrolitos-basics",
+    "category": "educational",
+    "title": "3 Electrolitos Esenciales",
+    "subtitle": "Lo que tu cuerpo realmente necesita",
+    "keyPoint1": "SODIO\\nBalance de líquidos y función nerviosa",
+    "keyPoint2": "POTASIO\\nContracción muscular y presión arterial",
+    "keyPoint3": "MAGNESIO\\nRecuperación y relajación muscular",
+    "conclusion": "Por eso bilan tiene los 3 en proporción científica"
+  },
+  "platforms": {
+    "whatsapp": {
+      "videoFile": "out/whatsapp/DEMO_FULL_whatsapp.mp4",
+      "captionFile": "out/whatsapp/DEMO_FULL_whatsapp_caption.txt",
+      "caption": "📱 Los electrolitos no son solo sal\\n\\nSon minerales esenciales: sodio, potasio y magnesio que tu...",
+      "status": "ready",
+      "generatedAt": "2026-02-08T19:34:03.914Z",
+      "renderTime": 24.6
+    },
+    "twitter": {
+      "videoFile": "out/twitter/DEMO_FULL_twitter.mp4",
+      "captionFile": "out/twitter/DEMO_FULL_twitter_caption.txt",
+      "caption": "🧵 Los electrolitos no son solo sal\\n\\nHilo 👇\\n\\nSon minerales esenciales: sodio, potasio y magnesio que tu cuerpo necesita para funcionar correctamente\\n\\nHidrátate con ciencia\\n\\n#electrolitos #hidratacion #salud",
+      "status": "ready",
+      "generatedAt": "2026-02-08T19:34:03.914Z",
+      "renderTime": 37.5
+    },
+    "instagram": {
+      "videoFile": "out/instagram/DEMO_FULL_instagram.mp4",
+      "captionFile": "out/instagram/DEMO_FULL_instagram_caption.txt",
+      "caption": "💡 Los electrolitos no son solo sal\\n\\n✨ Son minerales esenciales: sodio, potasio y magnesio que tu cuerpo necesita para funcionar correctamente\\n\\nHidrátate con ciencia\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-08T19:34:03.914Z",
+      "renderTime": 28.4
+    }
+  }
+}

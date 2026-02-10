@@ -5,6 +5,8 @@ import {
   MythbustingVideo,
   EducationalVideo,
   TrendingVideo,
+  QuickTipSquare,
+  EducationalLandscape,
 } from "./templates";
 import { QuickTipVideo as QuickTipVideoTest1 } from "./templates/QuickTipVideo-test1";
 import { QuickTipVideo as QuickTipVideoTest2 } from "./templates/QuickTipVideo-test2";
@@ -367,6 +369,60 @@ export const RemotionRoot: React.FC = () => {
           showOutro: true,
         }}
       />
+
+      {/* ============================================ */}
+      {/* PLATFORM-SPECIFIC COMPOSITIONS */}
+      {/* ============================================ */}
+
+      {/* WhatsApp Square Format - QuickTip */}
+      <Composition
+        id="QuickTipWhatsApp"
+        component={QuickTipSquare}
+        durationInFrames={FPS * 12}
+        fps={FPS}
+        width={1080}
+        height={1080}
+        defaultProps={{
+          tip: "Los electrolitos no son solo sal",
+          reason: "Son minerales esenciales: sodio, potasio y magnesio que tu cuerpo necesita para funcionar",
+          cta: "Hidrátate con ciencia"
+        }}
+      />
+
+      {/* Twitter Landscape Format - Educational */}
+      <Composition
+        id="EducationalTwitter"
+        component={EducationalLandscape}
+        durationInFrames={FPS * 15}
+        fps={FPS}
+        width={1920}
+        height={1080}
+        defaultProps={{
+          title: "3 Electrolitos Esenciales",
+          subtitle: "Lo que tu cuerpo realmente necesita",
+          keyPoint1: "SODIO\nBalance de líquidos y función nerviosa",
+          keyPoint2: "POTASIO\nContracción muscular y presión arterial",
+          keyPoint3: "MAGNESIO\nRecuperación y relajación muscular",
+          conclusion: "Por eso bilan tiene los 3 en proporción científica"
+        }}
+      />
+
+      {/* Instagram Square Alternative */}
+      <Composition
+        id="QuickTipInstagram"
+        component={QuickTipSquare}
+        durationInFrames={FPS * 15}
+        fps={FPS}
+        width={1080}
+        height={1080}
+        defaultProps={{
+          tip: "MITO: La sal es mala",
+          reason: "REALIDAD: Tu cuerpo NECESITA sodio para hidratarse correctamente y mantener la función muscular",
+          cta: "Hidrátate inteligentemente"
+        }}
+      />
+
+      {/* TikTok remains as existing QuickTipVideo, MythbustingVideo, etc. */}
     </>
   );
 };

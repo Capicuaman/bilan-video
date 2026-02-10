@@ -1,0 +1,28 @@
+{
+  "contentId": "TEST_005",
+  "createdAt": "2026-02-08T19:32:08.488Z",
+  "status": "ready",
+  "content": {
+    "tip": "Los electrolitos no son solo sal",
+    "reason": "Son minerales esenciales: sodio, potasio y magnesio que tu cuerpo necesita para funcionar correctamente",
+    "cta": "Hidrátate con ciencia",
+    "topic": "electrolitos-basics",
+    "category": "educational",
+    "title": "3 Electrolitos Esenciales",
+    "subtitle": "Lo que tu cuerpo realmente necesita",
+    "keyPoint1": "SODIO\\nBalance de líquidos y función nerviosa",
+    "keyPoint2": "POTASIO\\nContracción muscular y presión arterial",
+    "keyPoint3": "MAGNESIO\\nRecuperación y relajación muscular",
+    "conclusion": "Por eso bilan tiene los 3 en proporción científica"
+  },
+  "platforms": {
+    "whatsapp": {
+      "videoFile": "out/whatsapp/TEST_005_whatsapp.mp4",
+      "captionFile": "out/whatsapp/TEST_005_whatsapp_caption.txt",
+      "caption": "📱 Los electrolitos no son solo sal\\n\\nSon minerales esenciales: sodio, potasio y magnesio que tu...",
+      "status": "ready",
+      "generatedAt": "2026-02-08T19:32:08.489Z",
+      "renderTime": 24.8
+    }
+  }
+}

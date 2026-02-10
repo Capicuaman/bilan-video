@@ -1,0 +1,36 @@
+{
+  "contentId": "BILAN_FACT_001",
+  "type": "scientificfact",
+  "topic": "composicion-corporal",
+  "category": "educacion",
+  "tip": "Tu cuerpo es 60% agua y 0.5% electrolitos",
+  "reason": "Esta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el balance correcto, nada funciona como debe",
+  "cta": "Conoce tu cuerpo",
+  "title": "Eres Agua y Electricidad",
+  "subtitle": "La ciencia detrás de tu composición",
+  "keyPoint1": "AGUA\n60% de tu peso corporal",
+  "keyPoint2": "ELECTROLITOS\n0.5% que lo cambia todo",
+  "keyPoint3": "BALANCE\nLa clave del rendimiento óptimo",
+  "conclusion": "bilan mantiene tu balance perfecto",
+  "hashtags": {
+    "tiktok": [
+      "#ciencia",
+      "#hidratacion",
+      "#bilan",
+      "#salud",
+      "#fitness"
+    ],
+    "instagram": [
+      "#CienciaReal",
+      "#HidratacionInteligente",
+      "#Bilan",
+      "#SaludOptima"
+    ],
+    "twitter": [
+      "#ciencia",
+      "#hidratacion",
+      "#salud"
+    ],
+    "whatsapp": []
+  }
+}
