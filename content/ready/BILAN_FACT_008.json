@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_FACT_008",
+  "createdAt": "2026-02-10T17:50:27.518Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_FACT_008",
+    "type": "scientificfact",
+    "topic": "sed-no-confiable",
+    "category": "educacion",
+    "tip": "La sed NO es un indicador confiable de deshidratación",
+    "reason": "40% de las personas no sienten sed hasta perder 2% de peso corporal - cuando el daño al rendimiento ya empezó. No esperes a tener sed",
+    "cta": "Anticipa la sed",
+    "title": "No Esperes a Tener Sed",
+    "subtitle": "Por qué la sed llega tarde",
+    "keyPoint1": "RETRASO\nLa sed aparece cuando ya estás deshidratado",
+    "keyPoint2": "40% NO SIENTE\nSed hasta 2% de pérdida",
+    "keyPoint3": "ESTRATEGIA\nHidratación programada, no reactiva",
+    "conclusion": "bilan mantiene tu hidratación adelantada",
+    "hashtags": {
+      "tiktok": [
+        "#hidratacion",
+        "#ciencia",
+        "#bilan",
+        "#salud",
+        "#tips"
+      ],
+      "instagram": [
+        "#NoEsperesLaSed",
+        "#HidratacionInteligente",
+        "#Bilan",
+        "#CienciaReal"
+      ],
+      "twitter": [
+        "#hidratacion",
+        "#ciencia",
+        "#salud"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_FACT_008_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_FACT_008_tiktok_caption.txt",
+      "caption": "🔥 La sed NO es un indicador confiable de deshidratación\\n\\n40% de las personas no sienten sed hasta perder 2% de peso corporal - cuando el daño al...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:50:27.519Z",
+      "renderTime": 53.6
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_FACT_008_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_FACT_008_instagram_caption.txt",
+      "caption": "💡 La sed NO es un indicador confiable de deshidratación\\n\\n✨ 40% de las personas no sienten sed hasta perder 2% de peso corporal - cuando el daño al rendimiento ya empezó. No esperes a tener sed\\n\\nAnticipa la sed\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:50:27.519Z",
+      "renderTime": 34.3
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_FACT_008_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_FACT_008_whatsapp_caption.txt",
+      "caption": "📱 La sed NO es un indicador confiable de deshidratación\\n\\n40% de las personas no sienten sed ha...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:50:27.519Z",
+      "renderTime": 27.8
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_FACT_008_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_FACT_008_twitter_caption.txt",
+      "caption": "🧵 La sed NO es un indicador confiable de deshidratación\\n\\nHilo 👇\\n\\n40% de las personas no sienten sed hasta perder 2% de peso corporal - cuando el daño al rendimiento ya empezó. No esperes a tener sed\\n\\nAnticipa la sed\\n\\n#electroli...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:50:27.519Z",
+      "renderTime": 44.6
+    }
+  }
+}

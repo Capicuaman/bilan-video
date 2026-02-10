@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_PRODUCT_002",
+  "createdAt": "2026-02-10T18:01:30.358Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_PRODUCT_002",
+    "type": "productinfo",
+    "topic": "ratio-optimo",
+    "category": "producto",
+    "tip": "BILAN usa el ratio científicamente óptimo: 1000mg Na, 200mg K, 80mg Mg",
+    "reason": "No es aleatorio. Esta proporción (12.5:2.5:1) replica lo que tu cuerpo pierde en sudor y necesita para máxima absorción",
+    "cta": "Ciencia, no adivinanzas",
+    "title": "La Fórmula Perfecta",
+    "subtitle": "Proporción basada en investigación real",
+    "keyPoint1": "1000mg SODIO\nLo que realmente pierdes",
+    "keyPoint2": "200mg POTASIO\nBalance celular óptimo",
+    "keyPoint3": "80mg MAGNESIO\nPara función muscular",
+    "conclusion": "bilan es ciencia aplicada",
+    "hashtags": {
+      "tiktok": [
+        "#ciencia",
+        "#bilan",
+        "#electrolitos",
+        "#fitness",
+        "#performance"
+      ],
+      "instagram": [
+        "#CienciaAplicada",
+        "#FormulaPerfecta",
+        "#Bilan",
+        "#Performance"
+      ],
+      "twitter": [
+        "#ciencia",
+        "#bilan",
+        "#electrolitos"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_PRODUCT_002_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_PRODUCT_002_tiktok_caption.txt",
+      "caption": "🔥 BILAN usa el ratio científicamente óptimo: 1000mg Na, 200mg K, 80mg Mg\\n\\nNo es aleatorio. Esta proporción (12.5:2.5:1) replica lo que tu cuerpo...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:01:30.359Z",
+      "renderTime": 47.7
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_PRODUCT_002_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_PRODUCT_002_instagram_caption.txt",
+      "caption": "💡 BILAN usa el ratio científicamente óptimo: 1000mg Na, 200mg K, 80mg Mg\\n\\n✨ No es aleatorio. Esta proporción (12.5:2.5:1) replica lo que tu cuerpo pierde en sudor y necesita para máxima absorción\\n\\nCiencia, no adivinanzas\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCie...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:01:30.359Z",
+      "renderTime": 34.7
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_PRODUCT_002_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_PRODUCT_002_whatsapp_caption.txt",
+      "caption": "📱 BILAN usa el ratio científicamente óptimo: 1000mg Na, 200mg K, 80mg Mg\\n\\nNo es aleatorio. Est...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:01:30.359Z",
+      "renderTime": 28.1
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_PRODUCT_002_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_PRODUCT_002_twitter_caption.txt",
+      "caption": "🧵 BILAN usa el ratio científicamente óptimo: 1000mg Na, 200mg K, 80mg Mg\\n\\nHilo 👇\\n\\nNo es aleatorio. Esta proporción (12.5:2.5:1) replica lo que tu cuerpo pierde en sudor y necesita para máxima absorción\\n\\nCiencia, no adivinanzas\\n\\...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:01:30.359Z",
+      "renderTime": 43.2
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_TIP_002",
+  "createdAt": "2026-02-10T18:19:44.252Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_TIP_002",
+    "type": "quicktip",
+    "topic": "color-orina",
+    "category": "tips",
+    "tip": "El color de tu orina te dice todo sobre tu hidratación",
+    "reason": "La orina clara indica hidratación adecuada, la oscura significa que necesitas más líquidos. Es el indicador más simple y efectivo",
+    "cta": "Monitorea tu hidratación",
+    "title": "La Prueba del Color",
+    "subtitle": "Tu indicador personal de hidratación",
+    "keyPoint1": "CLARA\nHidratación óptima",
+    "keyPoint2": "AMARILLO PÁLIDO\nPerfecto balance",
+    "keyPoint3": "OSCURA\nNecesitas hidratarte YA",
+    "conclusion": "bilan te devuelve al amarillo perfecto",
+    "hashtags": {
+      "tiktok": [
+        "#hidratacion",
+        "#tips",
+        "#bilan",
+        "#salud",
+        "#bienestar"
+      ],
+      "instagram": [
+        "#TipsDeHidratacion",
+        "#SaludReal",
+        "#Bilan",
+        "#Wellness"
+      ],
+      "twitter": [
+        "#hidratacion",
+        "#tips",
+        "#salud"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_TIP_002_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_TIP_002_tiktok_caption.txt",
+      "caption": "🔥 El color de tu orina te dice todo sobre tu hidratación\\n\\nLa orina clara indica hidratación adecuada, la oscura significa que necesitas más líqu...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:19:44.253Z",
+      "renderTime": 72.6
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_TIP_002_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_TIP_002_instagram_caption.txt",
+      "caption": "💡 El color de tu orina te dice todo sobre tu hidratación\\n\\n✨ La orina clara indica hidratación adecuada, la oscura significa que necesitas más líquidos. Es el indicador más simple y efectivo\\n\\nMonitorea tu hidratación\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:19:44.253Z",
+      "renderTime": 57.4
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_TIP_002_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_TIP_002_whatsapp_caption.txt",
+      "caption": "📱 El color de tu orina te dice todo sobre tu hidratación\\n\\nLa orina clara indica hidratación ad...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:19:44.253Z",
+      "renderTime": 54.3
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_TIP_002_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_TIP_002_twitter_caption.txt",
+      "caption": "🧵 El color de tu orina te dice todo sobre tu hidratación\\n\\nHilo 👇\\n\\nLa orina clara indica hidratación adecuada, la oscura significa que necesitas más líquidos. Es el indicador más simple y efectivo\\n\\nMonitorea tu hidratación\\n\\n#ele...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:19:44.253Z",
+      "renderTime": 52.3
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_FACT_006",
+  "createdAt": "2026-02-10T17:44:43.370Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_FACT_006",
+    "type": "scientificfact",
+    "topic": "magnesio-300-reacciones",
+    "category": "educacion",
+    "tip": "El magnesio participa en más de 300 reacciones enzimáticas en tu cuerpo",
+    "reason": "Producción de energía, síntesis de proteínas, función muscular, nervios. Sin magnesio suficiente, tu cuerpo literalmente no puede funcionar",
+    "cta": "Necesitas magnesio",
+    "title": "Magnesio: El Mineral Milagroso",
+    "subtitle": "300+ funciones vitales",
+    "keyPoint1": "ENERGÍA\nProducción de ATP",
+    "keyPoint2": "MÚSCULOS\nContracción y relajación",
+    "keyPoint3": "NERVIOS\nTransmisión de señales",
+    "conclusion": "bilan te da el magnesio que necesitas",
+    "hashtags": {
+      "tiktok": [
+        "#magnesio",
+        "#ciencia",
+        "#bilan",
+        "#salud",
+        "#nutricion"
+      ],
+      "instagram": [
+        "#MagnesioEsencial",
+        "#300Reacciones",
+        "#Bilan",
+        "#CienciaReal"
+      ],
+      "twitter": [
+        "#magnesio",
+        "#ciencia",
+        "#salud"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_FACT_006_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_FACT_006_tiktok_caption.txt",
+      "caption": "🔥 El magnesio participa en más de 300 reacciones enzimáticas en tu cuerpo\\n\\nProducción de energía, síntesis de proteínas, función muscular, nervi...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:44:43.370Z",
+      "renderTime": 54.4
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_FACT_006_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_FACT_006_instagram_caption.txt",
+      "caption": "💡 El magnesio participa en más de 300 reacciones enzimáticas en tu cuerpo\\n\\n✨ Producción de energía, síntesis de proteínas, función muscular, nervios. Sin magnesio suficiente, tu cuerpo literalmente no puede funcionar\\n\\nNecesitas magnesio\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:44:43.370Z",
+      "renderTime": 38
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_FACT_006_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_FACT_006_whatsapp_caption.txt",
+      "caption": "📱 El magnesio participa en más de 300 reacciones enzimáticas en tu cuerpo\\n\\nProducción de energ...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:44:43.370Z",
+      "renderTime": 32.5
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_FACT_006_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_FACT_006_twitter_caption.txt",
+      "caption": "🧵 El magnesio participa en más de 300 reacciones enzimáticas en tu cuerpo\\n\\nHilo 👇\\n\\nProducción de energía, síntesis de proteínas, función muscular, nervios. Sin magnesio suficiente, tu cuerpo literalmente no puede funcionar\\n\\nNeces...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:44:43.370Z",
+      "renderTime": 45.6
+    }
+  }
+}

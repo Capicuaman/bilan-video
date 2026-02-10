@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_FACT_009",
+  "createdAt": "2026-02-10T17:53:39.043Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_FACT_009",
+    "type": "scientificfact",
+    "topic": "viscosidad-sangre",
+    "category": "educacion",
+    "tip": "La deshidratación aumenta la viscosidad de tu sangre",
+    "reason": "Sangre más espesa = mayor riesgo de coágulos, peor circulación, más trabajo para el corazón. La hidratación con electrolitos mantiene tu sangre fluyendo",
+    "cta": "Protege tu corazón",
+    "title": "Sangre Espesa, Peligro Real",
+    "subtitle": "La deshidratación afecta tu circulación",
+    "keyPoint1": "VISCOSIDAD\nSangre más espesa sin agua",
+    "keyPoint2": "RIESGOS\nCoágulos y problemas cardíacos",
+    "keyPoint3": "PREVENCIÓN\nHidratación constante",
+    "conclusion": "bilan mantiene tu sangre en estado óptimo",
+    "hashtags": {
+      "tiktok": [
+        "#sangre",
+        "#corazon",
+        "#bilan",
+        "#salud",
+        "#ciencia"
+      ],
+      "instagram": [
+        "#SaludCardiovascular",
+        "#SangreOptima",
+        "#Bilan",
+        "#Prevencion"
+      ],
+      "twitter": [
+        "#salud",
+        "#corazon",
+        "#ciencia"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_FACT_009_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_FACT_009_tiktok_caption.txt",
+      "caption": "🔥 La deshidratación aumenta la viscosidad de tu sangre\\n\\nSangre más espesa = mayor riesgo de coágulos, peor circulación, más trabajo para el cora...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:53:39.044Z",
+      "renderTime": 55.1
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_FACT_009_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_FACT_009_instagram_caption.txt",
+      "caption": "💡 La deshidratación aumenta la viscosidad de tu sangre\\n\\n✨ Sangre más espesa = mayor riesgo de coágulos, peor circulación, más trabajo para el corazón. La hidratación con electrolitos mantiene tu sangre fluyendo\\n\\nProtege tu corazón\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludB...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:53:39.044Z",
+      "renderTime": 56.2
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_FACT_009_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_FACT_009_whatsapp_caption.txt",
+      "caption": "📱 La deshidratación aumenta la viscosidad de tu sangre\\n\\nSangre más espesa = mayor riesgo de co...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:53:39.044Z",
+      "renderTime": 32
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_FACT_009_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_FACT_009_twitter_caption.txt",
+      "caption": "🧵 La deshidratación aumenta la viscosidad de tu sangre\\n\\nHilo 👇\\n\\nSangre más espesa = mayor riesgo de coágulos, peor circulación, más trabajo para el corazón. La hidratación con electrolitos mantiene tu sangre fluyendo\\n\\nProtege tu ...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:53:39.044Z",
+      "renderTime": 44.1
+    }
+  }
+}

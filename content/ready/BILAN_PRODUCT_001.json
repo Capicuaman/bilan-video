@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_PRODUCT_001",
+  "createdAt": "2026-02-10T17:58:52.837Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_PRODUCT_001",
+    "type": "productinfo",
+    "topic": "sin-azucar",
+    "category": "producto",
+    "tip": "BILAN: Cero azúcar, cero calorías, cero compromisos",
+    "reason": "Las bebidas deportivas tradicionales tienen 20-30g de azúcar. BILAN te da los electrolitos que necesitas sin las calorías que no necesitas",
+    "cta": "Hidratación limpia",
+    "title": "Pureza Sin Compromisos",
+    "subtitle": "Electrolitos farmacéuticos, cero basura",
+    "keyPoint1": "CERO AZÚCAR\nSin calorías vacías",
+    "keyPoint2": "GRADO FARMACÉUTICO\nPureza máxima",
+    "keyPoint3": "SIN ARTIFICIALES\nNada de colorantes ni saborizantes",
+    "conclusion": "bilan es hidratación inteligente",
+    "hashtags": {
+      "tiktok": [
+        "#sinazucar",
+        "#bilan",
+        "#hidratacion",
+        "#fitness",
+        "#keto"
+      ],
+      "instagram": [
+        "#CeroAzucar",
+        "#HidratacionLimpia",
+        "#Bilan",
+        "#KetoFriendly"
+      ],
+      "twitter": [
+        "#sinazucar",
+        "#bilan",
+        "#keto"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_PRODUCT_001_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_PRODUCT_001_tiktok_caption.txt",
+      "caption": "🔥 BILAN: Cero azúcar, cero calorías, cero compromisos\\n\\nLas bebidas deportivas tradicionales tienen 20-30g de azúcar. BILAN te da los electrolito...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:58:52.837Z",
+      "renderTime": 46.1
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_PRODUCT_001_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_PRODUCT_001_instagram_caption.txt",
+      "caption": "💡 BILAN: Cero azúcar, cero calorías, cero compromisos\\n\\n✨ Las bebidas deportivas tradicionales tienen 20-30g de azúcar. BILAN te da los electrolitos que necesitas sin las calorías que no necesitas\\n\\nHidratación limpia\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:58:52.837Z",
+      "renderTime": 33.4
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_PRODUCT_001_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_PRODUCT_001_whatsapp_caption.txt",
+      "caption": "📱 BILAN: Cero azúcar, cero calorías, cero compromisos\\n\\nLas bebidas deportivas tradicionales ti...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:58:52.837Z",
+      "renderTime": 27.8
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_PRODUCT_001_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_PRODUCT_001_twitter_caption.txt",
+      "caption": "🧵 BILAN: Cero azúcar, cero calorías, cero compromisos\\n\\nHilo 👇\\n\\nLas bebidas deportivas tradicionales tienen 20-30g de azúcar. BILAN te da los electrolitos que necesitas sin las calorías que no necesitas\\n\\nHidratación limpia\\n\\n#ele...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:58:52.837Z",
+      "renderTime": 42.8
+    }
+  }
+}

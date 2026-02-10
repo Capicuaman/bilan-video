@@ -6,6 +6,7 @@ import {
   spring,
   Img,
   staticFile,
+  Audio,
 } from "remotion";
 import { brand, getFontStack } from "../brand";
 
@@ -83,6 +84,13 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
         fontFamily: getFontStack("body"),
       }}
     >
+      {/* Background Music */}
+      <Audio
+        src={staticFile("audio/music/ambient-quick-start.mp3")}
+        volume={0.3}
+        startFrom={0}
+      />
+
       {/* Logo - centered, large with shadow */}
       {showLogo && (
         <div

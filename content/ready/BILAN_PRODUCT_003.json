@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_PRODUCT_003",
+  "createdAt": "2026-02-10T18:04:09.747Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_PRODUCT_003",
+    "type": "productinfo",
+    "topic": "grado-farmaceutico",
+    "category": "producto",
+    "tip": "BILAN usa sales de grado farmacéutico, no aditivos baratos",
+    "reason": "La pureza importa. Sales farmacéuticas significan máxima biodisponibilidad y cero contaminantes. Tu cuerpo merece lo mejor",
+    "cta": "Calidad sin igual",
+    "title": "Pureza Farmacéutica",
+    "subtitle": "No todas las sales son iguales",
+    "keyPoint1": "PUREZA\nGrado farmacéutico certificado",
+    "keyPoint2": "ABSORCIÓN\nMáxima biodisponibilidad",
+    "keyPoint3": "CERO BASURA\nSin contaminantes ni rellenos",
+    "conclusion": "bilan no hace compromisos en calidad",
+    "hashtags": {
+      "tiktok": [
+        "#calidad",
+        "#bilan",
+        "#pureza",
+        "#salud",
+        "#premium"
+      ],
+      "instagram": [
+        "#CalidadFarmaceutica",
+        "#PurezaMaxima",
+        "#Bilan",
+        "#Premium"
+      ],
+      "twitter": [
+        "#calidad",
+        "#pureza",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_PRODUCT_003_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_PRODUCT_003_tiktok_caption.txt",
+      "caption": "🔥 BILAN usa sales de grado farmacéutico, no aditivos baratos\\n\\nLa pureza importa. Sales farmacéuticas significan máxima biodisponibilidad y cero ...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:04:09.747Z",
+      "renderTime": 46.8
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_PRODUCT_003_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_PRODUCT_003_instagram_caption.txt",
+      "caption": "💡 BILAN usa sales de grado farmacéutico, no aditivos baratos\\n\\n✨ La pureza importa. Sales farmacéuticas significan máxima biodisponibilidad y cero contaminantes. Tu cuerpo merece lo mejor\\n\\nCalidad sin igual\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:04:09.747Z",
+      "renderTime": 33.9
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_PRODUCT_003_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_PRODUCT_003_whatsapp_caption.txt",
+      "caption": "📱 BILAN usa sales de grado farmacéutico, no aditivos baratos\\n\\nLa pureza importa. Sales farmacé...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:04:09.747Z",
+      "renderTime": 28.3
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_PRODUCT_003_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_PRODUCT_003_twitter_caption.txt",
+      "caption": "🧵 BILAN usa sales de grado farmacéutico, no aditivos baratos\\n\\nHilo 👇\\n\\nLa pureza importa. Sales farmacéuticas significan máxima biodisponibilidad y cero contaminantes. Tu cuerpo merece lo mejor\\n\\nCalidad sin igual\\n\\n#electrolitos ...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:04:09.747Z",
+      "renderTime": 46.6
+    }
+  }
+}

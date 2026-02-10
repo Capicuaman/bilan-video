@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_FACT_002",
+  "createdAt": "2026-02-10T17:32:46.065Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_FACT_002",
+    "type": "scientificfact",
+    "topic": "rendimiento-cognitivo",
+    "category": "educacion",
+    "tip": "Solo 2% de deshidratación reduce tu rendimiento mental",
+    "reason": "Cuando pierdes apenas 2% de tu peso corporal en agua, tu cerebro ya no funciona al 100%. Concentración, memoria y velocidad de procesamiento caen dramáticamente",
+    "cta": "Protege tu mente",
+    "title": "Tu Cerebro Necesita Agua",
+    "subtitle": "2% de pérdida = menor rendimiento",
+    "keyPoint1": "CONCENTRACIÓN\nCae con poca deshidratación",
+    "keyPoint2": "MEMORIA\nAfectada desde 2% de pérdida",
+    "keyPoint3": "VELOCIDAD\nProcesamiento mental más lento",
+    "conclusion": "bilan mantiene tu cerebro al 100%",
+    "hashtags": {
+      "tiktok": [
+        "#cerebro",
+        "#productividad",
+        "#bilan",
+        "#focus",
+        "#rendimiento"
+      ],
+      "instagram": [
+        "#RendimientoMental",
+        "#HidratacionCerebral",
+        "#Bilan",
+        "#Focus"
+      ],
+      "twitter": [
+        "#productividad",
+        "#cerebro",
+        "#hidratacion"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_FACT_002_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_FACT_002_tiktok_caption.txt",
+      "caption": "🔥 Solo 2% de deshidratación reduce tu rendimiento mental\\n\\nCuando pierdes apenas 2% de tu peso corporal en agua, tu cerebro ya no funciona al 100...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:32:46.066Z",
+      "renderTime": 53.2
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_FACT_002_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_FACT_002_instagram_caption.txt",
+      "caption": "💡 Solo 2% de deshidratación reduce tu rendimiento mental\\n\\n✨ Cuando pierdes apenas 2% de tu peso corporal en agua, tu cerebro ya no funciona al 100%. Concentración, memoria y velocidad de procesamiento caen dramáticamente\\n\\nProtege tu mente\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:32:46.066Z",
+      "renderTime": 39.1
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_FACT_002_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_FACT_002_whatsapp_caption.txt",
+      "caption": "📱 Solo 2% de deshidratación reduce tu rendimiento mental\\n\\nCuando pierdes apenas 2% de tu peso ...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:32:46.066Z",
+      "renderTime": 32.7
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_FACT_002_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_FACT_002_twitter_caption.txt",
+      "caption": "🧵 Solo 2% de deshidratación reduce tu rendimiento mental\\n\\nHilo 👇\\n\\nCuando pierdes apenas 2% de tu peso corporal en agua, tu cerebro ya no funciona al 100%. Concentración, memoria y velocidad de procesamiento caen dramáticamente\\n\\nP...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:32:46.066Z",
+      "renderTime": 49.3
+    }
+  }
+}

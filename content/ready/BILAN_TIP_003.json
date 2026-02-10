@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_TIP_003",
+  "createdAt": "2026-02-10T18:22:58.649Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_TIP_003",
+    "type": "quicktip",
+    "topic": "pre-workout",
+    "category": "tips",
+    "tip": "Hidrátate 2-3 horas ANTES de entrenar",
+    "reason": "Tu cuerpo necesita tiempo para distribuir el agua. Tomar 500-600ml con electrolitos 2-3 horas antes te pone en estado óptimo desde el primer minuto",
+    "cta": "Empieza fuerte",
+    "title": "Preparación Pre-Entreno",
+    "subtitle": "La hidratación empieza antes",
+    "keyPoint1": "TIMING\n2-3 horas antes es ideal",
+    "keyPoint2": "CANTIDAD\n500-600ml con electrolitos",
+    "keyPoint3": "RESULTADO\nRendimiento desde el minuto 1",
+    "conclusion": "bilan te prepara para ganar",
+    "hashtags": {
+      "tiktok": [
+        "#preworkout",
+        "#bilan",
+        "#fitness",
+        "#gym",
+        "#rendimiento"
+      ],
+      "instagram": [
+        "#PreWorkout",
+        "#HidratacionInteligente",
+        "#Bilan",
+        "#GymLife"
+      ],
+      "twitter": [
+        "#preworkout",
+        "#fitness",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_TIP_003_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_TIP_003_tiktok_caption.txt",
+      "caption": "🔥 Hidrátate 2-3 horas ANTES de entrenar\\n\\nTu cuerpo necesita tiempo para distribuir el agua. Tomar 500-600ml con electrolitos 2-3 horas antes te ...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:22:58.650Z",
+      "renderTime": 63.4
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_TIP_003_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_TIP_003_instagram_caption.txt",
+      "caption": "💡 Hidrátate 2-3 horas ANTES de entrenar\\n\\n✨ Tu cuerpo necesita tiempo para distribuir el agua. Tomar 500-600ml con electrolitos 2-3 horas antes te pone en estado óptimo desde el primer minuto\\n\\nEmpieza fuerte\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:22:58.650Z",
+      "renderTime": 42.5
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_TIP_003_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_TIP_003_whatsapp_caption.txt",
+      "caption": "📱 Hidrátate 2-3 horas ANTES de entrenar\\n\\nTu cuerpo necesita tiempo para distribuir el agua. To...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:22:58.650Z",
+      "renderTime": 30.2
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_TIP_003_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_TIP_003_twitter_caption.txt",
+      "caption": "🧵 Hidrátate 2-3 horas ANTES de entrenar\\n\\nHilo 👇\\n\\nTu cuerpo necesita tiempo para distribuir el agua. Tomar 500-600ml con electrolitos 2-3 horas antes te pone en estado óptimo desde el primer minuto\\n\\nEmpieza fuerte\\n\\n#electrolitos...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:22:58.650Z",
+      "renderTime": 51
+    }
+  }
+}

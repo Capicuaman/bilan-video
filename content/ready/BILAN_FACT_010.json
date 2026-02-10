@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_FACT_010",
+  "createdAt": "2026-02-10T17:56:18.669Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_FACT_010",
+    "type": "scientificfact",
+    "topic": "memoria-agua",
+    "category": "educacion",
+    "tip": "La hidratación mejora tu memoria de trabajo y velocidad mental",
+    "reason": "El cerebro es 75% agua. Deshidratación = menor flujo sanguíneo cerebral = procesamiento más lento, peor memoria, menor concentración",
+    "cta": "Optimiza tu cerebro",
+    "title": "Agua Para Pensar",
+    "subtitle": "Tu cerebro necesita hidratación",
+    "keyPoint1": "CEREBRO\n75% agua",
+    "keyPoint2": "FLUJO\nMejor circulación = mejor función",
+    "keyPoint3": "RENDIMIENTO\nMemoria y velocidad mental",
+    "conclusion": "bilan mantiene tu cerebro brillante",
+    "hashtags": {
+      "tiktok": [
+        "#cerebro",
+        "#memoria",
+        "#bilan",
+        "#productividad",
+        "#focus"
+      ],
+      "instagram": [
+        "#CerebroOptimo",
+        "#MemoriaMejor",
+        "#Bilan",
+        "#BrainPower"
+      ],
+      "twitter": [
+        "#cerebro",
+        "#memoria",
+        "#productividad"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_FACT_010_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_FACT_010_tiktok_caption.txt",
+      "caption": "🔥 La hidratación mejora tu memoria de trabajo y velocidad mental\\n\\nEl cerebro es 75% agua. Deshidratación = menor flujo sanguíneo cerebral = proc...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:56:18.670Z",
+      "renderTime": 48.1
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_FACT_010_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_FACT_010_instagram_caption.txt",
+      "caption": "💡 La hidratación mejora tu memoria de trabajo y velocidad mental\\n\\n✨ El cerebro es 75% agua. Deshidratación = menor flujo sanguíneo cerebral = procesamiento más lento, peor memoria, menor concentración\\n\\nOptimiza tu cerebro\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCi...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:56:18.670Z",
+      "renderTime": 33.9
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_FACT_010_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_FACT_010_whatsapp_caption.txt",
+      "caption": "📱 La hidratación mejora tu memoria de trabajo y velocidad mental\\n\\nEl cerebro es 75% agua. Desh...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:56:18.670Z",
+      "renderTime": 28.6
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_FACT_010_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_FACT_010_twitter_caption.txt",
+      "caption": "🧵 La hidratación mejora tu memoria de trabajo y velocidad mental\\n\\nHilo 👇\\n\\nEl cerebro es 75% agua. Deshidratación = menor flujo sanguíneo cerebral = procesamiento más lento, peor memoria, menor concentración\\n\\nOptimiza tu cerebro\\n...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:56:18.670Z",
+      "renderTime": 43
+    }
+  }
+}

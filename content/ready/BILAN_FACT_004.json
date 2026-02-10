@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_FACT_004",
+  "createdAt": "2026-02-10T17:38:45.977Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_FACT_004",
+    "type": "scientificfact",
+    "topic": "ejercicio-prolongado",
+    "category": "educacion",
+    "tip": "Después de 60 minutos de ejercicio, el agua sola ya no es suficiente",
+    "reason": "En sesiones largas, pierdes electrolitos masivamente. Reponer solo agua sin minerales puede causar hiponatremia y arruinar tu rendimiento",
+    "cta": "Entrena más inteligente",
+    "title": "La Regla de los 60 Minutos",
+    "subtitle": "Cuándo el agua no es suficiente",
+    "keyPoint1": "< 60 MIN\nAgua puede bastar",
+    "keyPoint2": "> 60 MIN\nElectrolitos son esenciales",
+    "keyPoint3": "RIESGO\nHiponatremia por solo agua",
+    "conclusion": "bilan es tu aliado en sesiones largas",
+    "hashtags": {
+      "tiktok": [
+        "#endurance",
+        "#bilan",
+        "#running",
+        "#ciclismo",
+        "#triatlon"
+      ],
+      "instagram": [
+        "#EnduranceTraining",
+        "#ElectrolitosEsenciales",
+        "#Bilan",
+        "#LongRun"
+      ],
+      "twitter": [
+        "#endurance",
+        "#running",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_FACT_004_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_FACT_004_tiktok_caption.txt",
+      "caption": "🔥 Después de 60 minutos de ejercicio, el agua sola ya no es suficiente\\n\\nEn sesiones largas, pierdes electrolitos masivamente. Reponer solo agua ...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:38:45.977Z",
+      "renderTime": 54.5
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_FACT_004_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_FACT_004_instagram_caption.txt",
+      "caption": "💡 Después de 60 minutos de ejercicio, el agua sola ya no es suficiente\\n\\n✨ En sesiones largas, pierdes electrolitos masivamente. Reponer solo agua sin minerales puede causar hiponatremia y arruinar tu rendimiento\\n\\nEntrena más inteligente\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:38:45.978Z",
+      "renderTime": 39.1
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_FACT_004_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_FACT_004_whatsapp_caption.txt",
+      "caption": "📱 Después de 60 minutos de ejercicio, el agua sola ya no es suficiente\\n\\nEn sesiones largas, pi...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:38:45.978Z",
+      "renderTime": 33
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_FACT_004_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_FACT_004_twitter_caption.txt",
+      "caption": "🧵 Después de 60 minutos de ejercicio, el agua sola ya no es suficiente\\n\\nHilo 👇\\n\\nEn sesiones largas, pierdes electrolitos masivamente. Reponer solo agua sin minerales puede causar hiponatremia y arruinar tu rendimiento\\n\\nEntrena má...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:38:45.978Z",
+      "renderTime": 49.1
+    }
+  }
+}

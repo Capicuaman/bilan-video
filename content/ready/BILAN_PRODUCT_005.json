@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_PRODUCT_005",
+  "createdAt": "2026-02-10T18:09:50.770Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_PRODUCT_005",
+    "type": "productinfo",
+    "topic": "sin-artificiales",
+    "category": "producto",
+    "tip": "BILAN: Sin colorantes, sin saborizantes, sin conservadores artificiales",
+    "reason": "Solo 3 ingredientes: Cloruro de Sodio, Cloruro de Potasio, Cloruro de Magnesio. Nada más. Pureza absoluta para tu cuerpo",
+    "cta": "Transparencia total",
+    "title": "Solo 3 Ingredientes",
+    "subtitle": "Nada que esconder, todo que ganar",
+    "keyPoint1": "NaCl\nCloruro de Sodio farmacéutico",
+    "keyPoint2": "KCl\nCloruro de Potasio puro",
+    "keyPoint3": "MgCl2\nCloruro de Magnesio certificado",
+    "conclusion": "bilan es transparencia en cada sorbo",
+    "hashtags": {
+      "tiktok": [
+        "#clean",
+        "#bilan",
+        "#transparencia",
+        "#sinartificiales",
+        "#pureza"
+      ],
+      "instagram": [
+        "#CleanLabel",
+        "#SoloLoEsencial",
+        "#Bilan",
+        "#Transparencia"
+      ],
+      "twitter": [
+        "#clean",
+        "#transparencia",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_PRODUCT_005_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_PRODUCT_005_tiktok_caption.txt",
+      "caption": "🔥 BILAN: Sin colorantes, sin saborizantes, sin conservadores artificiales\\n\\nSolo 3 ingredientes: Cloruro de Sodio, Cloruro de Potasio, Cloruro de...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:09:50.771Z",
+      "renderTime": 51.2
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_PRODUCT_005_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_PRODUCT_005_instagram_caption.txt",
+      "caption": "💡 BILAN: Sin colorantes, sin saborizantes, sin conservadores artificiales\\n\\n✨ Solo 3 ingredientes: Cloruro de Sodio, Cloruro de Potasio, Cloruro de Magnesio. Nada más. Pureza absoluta para tu cuerpo\\n\\nTransparencia total\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:09:50.771Z",
+      "renderTime": 37.9
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_PRODUCT_005_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_PRODUCT_005_whatsapp_caption.txt",
+      "caption": "📱 BILAN: Sin colorantes, sin saborizantes, sin conservadores artificiales\\n\\nSolo 3 ingredientes...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:09:50.771Z",
+      "renderTime": 29.8
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_PRODUCT_005_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_PRODUCT_005_twitter_caption.txt",
+      "caption": "🧵 BILAN: Sin colorantes, sin saborizantes, sin conservadores artificiales\\n\\nHilo 👇\\n\\nSolo 3 ingredientes: Cloruro de Sodio, Cloruro de Potasio, Cloruro de Magnesio. Nada más. Pureza absoluta para tu cuerpo\\n\\nTransparencia total\\n\\n#...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:09:50.771Z",
+      "renderTime": 46.2
+    }
+  }
+}

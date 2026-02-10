@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_TIP_005",
+  "createdAt": "2026-02-10T18:29:58.371Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_TIP_005",
+    "type": "quicktip",
+    "topic": "recuperacion-muscular",
+    "category": "tips",
+    "tip": "Rehidrata con 1.5 veces el líquido perdido después de entrenar",
+    "reason": "Tu cuerpo sigue perdiendo agua después del ejercicio. Para recuperarte completamente, necesitas más líquido del que perdiste, con electrolitos incluidos",
+    "cta": "Recuperación completa",
+    "title": "La Regla del 1.5x",
+    "subtitle": "Recuperación científica post-entreno",
+    "keyPoint1": "MIDE\nPésate antes y después",
+    "keyPoint2": "CALCULA\nDiferencia x 1.5",
+    "keyPoint3": "REPÓN\nCon electrolitos, no solo agua",
+    "conclusion": "bilan acelera tu recuperación",
+    "hashtags": {
+      "tiktok": [
+        "#recovery",
+        "#bilan",
+        "#fitness",
+        "#postworkout",
+        "#gym"
+      ],
+      "instagram": [
+        "#RecuperacionOptima",
+        "#PostWorkout",
+        "#Bilan",
+        "#FitnessScience"
+      ],
+      "twitter": [
+        "#recovery",
+        "#fitness",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_TIP_005_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_TIP_005_tiktok_caption.txt",
+      "caption": "🔥 Rehidrata con 1.5 veces el líquido perdido después de entrenar\\n\\nTu cuerpo sigue perdiendo agua después del ejercicio. Para recuperarte complet...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:29:58.582Z",
+      "renderTime": 63.7
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_TIP_005_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_TIP_005_instagram_caption.txt",
+      "caption": "💡 Rehidrata con 1.5 veces el líquido perdido después de entrenar\\n\\n✨ Tu cuerpo sigue perdiendo agua después del ejercicio. Para recuperarte completamente, necesitas más líquido del que perdiste, con electrolitos incluidos\\n\\nRecuperación completa\\n\\n#ElectrolitosReales #HidratacionInteligente #...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:29:58.583Z",
+      "renderTime": 50.7
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_TIP_005_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_TIP_005_whatsapp_caption.txt",
+      "caption": "📱 Rehidrata con 1.5 veces el líquido perdido después de entrenar\\n\\nTu cuerpo sigue perdiendo ag...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:29:58.583Z",
+      "renderTime": 31.1
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_TIP_005_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_TIP_005_twitter_caption.txt",
+      "caption": "🧵 Rehidrata con 1.5 veces el líquido perdido después de entrenar\\n\\nHilo 👇\\n\\nTu cuerpo sigue perdiendo agua después del ejercicio. Para recuperarte completamente, necesitas más líquido del que perdiste, con electrolitos incluidos\\n\\nR...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:29:58.583Z",
+      "renderTime": 60.7
+    }
+  }
+}

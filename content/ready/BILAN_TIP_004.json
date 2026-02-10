@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_TIP_004",
+  "createdAt": "2026-02-10T18:26:23.074Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_TIP_004",
+    "type": "quicktip",
+    "topic": "calambres-musculares",
+    "category": "tips",
+    "tip": "Los calambres son una señal clara de desequilibrio electrolítico",
+    "reason": "Cuando el sodio, potasio y magnesio están bajos, tus músculos no pueden contraerse y relajarse correctamente. El resultado: calambres dolorosos",
+    "cta": "Prevén los calambres",
+    "title": "Adiós a los Calambres",
+    "subtitle": "La solución está en los electrolitos",
+    "keyPoint1": "CAUSA\nDeficiencia de Na, K, Mg",
+    "keyPoint2": "PREVENCIÓN\nElectrolitos antes y durante",
+    "keyPoint3": "SOLUCIÓN\nBILAN tiene los 3 minerales",
+    "conclusion": "bilan mantiene tus músculos funcionando",
+    "hashtags": {
+      "tiktok": [
+        "#calambres",
+        "#bilan",
+        "#fitness",
+        "#gym",
+        "#recovery"
+      ],
+      "instagram": [
+        "#NoMasCalambres",
+        "#ElectrolitosReales",
+        "#Bilan",
+        "#Fitness"
+      ],
+      "twitter": [
+        "#calambres",
+        "#fitness",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_TIP_004_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_TIP_004_tiktok_caption.txt",
+      "caption": "🔥 Los calambres son una señal clara de desequilibrio electrolítico\\n\\nCuando el sodio, potasio y magnesio están bajos, tus músculos no pueden cont...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:26:23.127Z",
+      "renderTime": 55
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_TIP_004_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_TIP_004_instagram_caption.txt",
+      "caption": "💡 Los calambres son una señal clara de desequilibrio electrolítico\\n\\n✨ Cuando el sodio, potasio y magnesio están bajos, tus músculos no pueden contraerse y relajarse correctamente. El resultado: calambres dolorosos\\n\\nPrevén los calambres\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #S...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:26:23.127Z",
+      "renderTime": 42.8
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_TIP_004_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_TIP_004_whatsapp_caption.txt",
+      "caption": "📱 Los calambres son una señal clara de desequilibrio electrolítico\\n\\nCuando el sodio, potasio y...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:26:23.127Z",
+      "renderTime": 30.4
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_TIP_004_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_TIP_004_twitter_caption.txt",
+      "caption": "🧵 Los calambres son una señal clara de desequilibrio electrolítico\\n\\nHilo 👇\\n\\nCuando el sodio, potasio y magnesio están bajos, tus músculos no pueden contraerse y relajarse correctamente. El resultado: calambres dolorosos\\n\\nPrevén l...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:26:23.127Z",
+      "renderTime": 70.7
+    }
+  }
+}

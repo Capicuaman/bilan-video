@@ -6,6 +6,7 @@ import {
   spring,
   Img,
   staticFile,
+  Audio,
 } from "remotion";
 import { brand, getFontStack } from "../brand";
 
@@ -126,6 +127,13 @@ export const EducationalLandscape: React.FC<EducationalLandscapeProps> = ({
 
   return (
     <AbsoluteFill style={{ backgroundColor: brandColor }}>
+      {/* Background Music */}
+      <Audio
+        src={staticFile("audio/music/ambient-quick-start.mp3")}
+        volume={0.3}
+        startFrom={0}
+      />
+
       {/* Background with subtle gradient for landscape */}
       <AbsoluteFill
         style={{

@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_FACT_007",
+  "createdAt": "2026-02-10T17:47:42.040Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_FACT_007",
+    "type": "scientificfact",
+    "topic": "potasio-intracelular",
+    "category": "educacion",
+    "tip": "El potasio es el electrolito principal DENTRO de tus células",
+    "reason": "Mientras el sodio domina afuera, el potasio controla todo lo que pasa adentro: energía, señales eléctricas, balance de fluidos. Ambos trabajan juntos",
+    "cta": "Entiende tu cuerpo",
+    "title": "Sodio Afuera, Potasio Adentro",
+    "subtitle": "El equilibrio celular perfecto",
+    "keyPoint1": "SODIO\nExtracelular, fuera de células",
+    "keyPoint2": "POTASIO\nIntracelular, dentro de células",
+    "keyPoint3": "BALANCE\nAmbos necesarios para funcionar",
+    "conclusion": "bilan te da ambos en la proporción correcta",
+    "hashtags": {
+      "tiktok": [
+        "#potasio",
+        "#ciencia",
+        "#bilan",
+        "#celulas",
+        "#biologia"
+      ],
+      "instagram": [
+        "#CienciaCelular",
+        "#SodioYPotasio",
+        "#Bilan",
+        "#BiologiaReal"
+      ],
+      "twitter": [
+        "#ciencia",
+        "#potasio",
+        "#biologia"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_FACT_007_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_FACT_007_tiktok_caption.txt",
+      "caption": "🔥 El potasio es el electrolito principal DENTRO de tus células\\n\\nMientras el sodio domina afuera, el potasio controla todo lo que pasa adentro: e...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:47:42.040Z",
+      "renderTime": 50.8
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_FACT_007_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_FACT_007_instagram_caption.txt",
+      "caption": "💡 El potasio es el electrolito principal DENTRO de tus células\\n\\n✨ Mientras el sodio domina afuera, el potasio controla todo lo que pasa adentro: energía, señales eléctricas, balance de fluidos. Ambos trabajan juntos\\n\\nEntiende tu cuerpo\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #S...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:47:42.040Z",
+      "renderTime": 39.5
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_FACT_007_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_FACT_007_whatsapp_caption.txt",
+      "caption": "📱 El potasio es el electrolito principal DENTRO de tus células\\n\\nMientras el sodio domina afuer...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:47:42.040Z",
+      "renderTime": 33.3
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_FACT_007_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_FACT_007_twitter_caption.txt",
+      "caption": "🧵 El potasio es el electrolito principal DENTRO de tus células\\n\\nHilo 👇\\n\\nMientras el sodio domina afuera, el potasio controla todo lo que pasa adentro: energía, señales eléctricas, balance de fluidos. Ambos trabajan juntos\\n\\nEntien...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:47:42.040Z",
+      "renderTime": 51
+    }
+  }
+}

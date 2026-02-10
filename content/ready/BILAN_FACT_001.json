@@ -1,6 +1,6 @@
 {
   "contentId": "BILAN_FACT_001",
-  "createdAt": "2026-02-10T02:38:46.538Z",
+  "createdAt": "2026-02-10T17:29:46.972Z",
   "status": "ready",
   "content": {
     "contentId": "BILAN_FACT_001",
@@ -44,24 +44,32 @@
       "captionFile": "out/tiktok/BILAN_FACT_001_tiktok_caption.txt",
       "caption": "🔥 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\nEsta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el ba...",
       "status": "ready",
-      "generatedAt": "2026-02-10T02:38:46.538Z",
-      "renderTime": 50.3
+      "generatedAt": "2026-02-10T17:29:46.973Z",
+      "renderTime": 55.9
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_FACT_001_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_FACT_001_instagram_caption.txt",
+      "caption": "💡 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\n✨ Esta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el balance correcto, nada funciona como debe\\n\\nConoce tu cuerpo\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-10T17:29:46.973Z",
+      "renderTime": 32.7
     },
     "whatsapp": {
       "videoFile": "out/whatsapp/BILAN_FACT_001_whatsapp.mp4",
       "captionFile": "out/whatsapp/BILAN_FACT_001_whatsapp_caption.txt",
       "caption": "📱 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\nEsta proporción es esencial para todas las funcio...",
       "status": "ready",
-      "generatedAt": "2026-02-10T02:38:46.538Z",
-      "renderTime": 29.4
+      "generatedAt": "2026-02-10T17:29:46.973Z",
+      "renderTime": 27.6
     },
     "twitter": {
       "videoFile": "out/twitter/BILAN_FACT_001_twitter.mp4",
       "captionFile": "out/twitter/BILAN_FACT_001_twitter_caption.txt",
       "caption": "🧵 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\nHilo 👇\\n\\nEsta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el balance correcto, nada funciona como debe\\n\\nConoce tu cuerpo\\n\\n#electrolitos #h...",
       "status": "ready",
-      "generatedAt": "2026-02-10T02:38:46.538Z",
-      "renderTime": 46.4
+      "generatedAt": "2026-02-10T17:29:46.973Z",
+      "renderTime": 48.5
     }
   }
 }

@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_PRODUCT_004",
+  "createdAt": "2026-02-10T18:07:01.152Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_PRODUCT_004",
+    "type": "productinfo",
+    "topic": "cero-carbohidratos",
+    "category": "producto",
+    "tip": "BILAN es perfecto para keto y paleo: cero carbohidratos, cero azúcar",
+    "reason": "Mantén tu cetosis mientras rehidratas perfectamente. Los electrolitos sin carbohidratos son el secreto de los atletas keto exitosos",
+    "cta": "Keto-friendly al 100%",
+    "title": "Diseñado para Tu Dieta",
+    "subtitle": "Cero carbos, máximos beneficios",
+    "keyPoint1": "0g CARBOHIDRATOS\nMantén tu cetosis",
+    "keyPoint2": "ELECTROLITOS COMPLETOS\nSin romper el ayuno",
+    "keyPoint3": "SIN AZÚCAR\nPerfecto para cualquier dieta",
+    "conclusion": "bilan respeta tus metas dietéticas",
+    "hashtags": {
+      "tiktok": [
+        "#keto",
+        "#bilan",
+        "#paleo",
+        "#lowcarb",
+        "#cetosis"
+      ],
+      "instagram": [
+        "#KetoFriendly",
+        "#CeroCarbos",
+        "#Bilan",
+        "#PaleoLife"
+      ],
+      "twitter": [
+        "#keto",
+        "#paleo",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_PRODUCT_004_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_PRODUCT_004_tiktok_caption.txt",
+      "caption": "🔥 BILAN es perfecto para keto y paleo: cero carbohidratos, cero azúcar\\n\\nMantén tu cetosis mientras rehidratas perfectamente. Los electrolitos si...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:07:01.153Z",
+      "renderTime": 50
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_PRODUCT_004_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_PRODUCT_004_instagram_caption.txt",
+      "caption": "💡 BILAN es perfecto para keto y paleo: cero carbohidratos, cero azúcar\\n\\n✨ Mantén tu cetosis mientras rehidratas perfectamente. Los electrolitos sin carbohidratos son el secreto de los atletas keto exitosos\\n\\nKeto-friendly al 100%\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBas...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:07:01.153Z",
+      "renderTime": 38.6
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_PRODUCT_004_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_PRODUCT_004_whatsapp_caption.txt",
+      "caption": "📱 BILAN es perfecto para keto y paleo: cero carbohidratos, cero azúcar\\n\\nMantén tu cetosis mien...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:07:01.153Z",
+      "renderTime": 30.2
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_PRODUCT_004_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_PRODUCT_004_twitter_caption.txt",
+      "caption": "🧵 BILAN es perfecto para keto y paleo: cero carbohidratos, cero azúcar\\n\\nHilo 👇\\n\\nMantén tu cetosis mientras rehidratas perfectamente. Los electrolitos sin carbohidratos son el secreto de los atletas keto exitosos\\n\\nKeto-friendly al...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:07:01.153Z",
+      "renderTime": 48.6
+    }
+  }
+}

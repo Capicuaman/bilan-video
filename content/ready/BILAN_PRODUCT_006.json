@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_PRODUCT_006",
+  "createdAt": "2026-02-10T18:12:36.278Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_PRODUCT_006",
+    "type": "productinfo",
+    "topic": "empaque-sustentable",
+    "category": "producto",
+    "tip": "BILAN viene en empaque de papel kraft biodegradable",
+    "reason": "Nos importa tu salud Y el planeta. Papel kraft sustentable que protege tu producto mientras cuida el medio ambiente",
+    "cta": "Salud + Sustentabilidad",
+    "title": "Empaque Consciente",
+    "subtitle": "Tu salud y el planeta importan",
+    "keyPoint1": "KRAFT\nPapel biodegradable",
+    "keyPoint2": "PROTECCIÓN\nMantiene frescura sin plásticos",
+    "keyPoint3": "PLANETA\nDecisiones responsables",
+    "conclusion": "bilan piensa en el futuro",
+    "hashtags": {
+      "tiktok": [
+        "#sustentable",
+        "#bilan",
+        "#ecofriendly",
+        "#planeta",
+        "#consciente"
+      ],
+      "instagram": [
+        "#EmpaqueEcologico",
+        "#Sustentabilidad",
+        "#Bilan",
+        "#EcoFriendly"
+      ],
+      "twitter": [
+        "#sustentable",
+        "#ecofriendly",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_PRODUCT_006_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_PRODUCT_006_tiktok_caption.txt",
+      "caption": "🔥 BILAN viene en empaque de papel kraft biodegradable\\n\\nNos importa tu salud Y el planeta. Papel kraft sustentable que protege tu producto mientr...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:12:36.278Z",
+      "renderTime": 50.2
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_PRODUCT_006_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_PRODUCT_006_instagram_caption.txt",
+      "caption": "💡 BILAN viene en empaque de papel kraft biodegradable\\n\\n✨ Nos importa tu salud Y el planeta. Papel kraft sustentable que protege tu producto mientras cuida el medio ambiente\\n\\nSalud + Sustentabilidad\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:12:36.279Z",
+      "renderTime": 34.9
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_PRODUCT_006_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_PRODUCT_006_whatsapp_caption.txt",
+      "caption": "📱 BILAN viene en empaque de papel kraft biodegradable\\n\\nNos importa tu salud Y el planeta. Pape...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:12:36.279Z",
+      "renderTime": 29.8
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_PRODUCT_006_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_PRODUCT_006_twitter_caption.txt",
+      "caption": "🧵 BILAN viene en empaque de papel kraft biodegradable\\n\\nHilo 👇\\n\\nNos importa tu salud Y el planeta. Papel kraft sustentable que protege tu producto mientras cuida el medio ambiente\\n\\nSalud + Sustentabilidad\\n\\n#electrolitos #hidrata...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:12:36.279Z",
+      "renderTime": 46.7
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_TIP_006",
+  "createdAt": "2026-02-10T18:33:15.267Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_TIP_006",
+    "type": "quicktip",
+    "topic": "durante-ejercicio",
+    "category": "tips",
+    "tip": "Toma 250ml cada 15-20 minutos durante ejercicio intenso",
+    "reason": "Pequeñas cantidades frecuentes mantienen tu hidratación estable sin sobrecargar tu estómago. Con electrolitos, aprovechas cada sorbo",
+    "cta": "Hidratación estratégica",
+    "title": "La Estrategia de los Sorbos",
+    "subtitle": "Timing perfecto durante el entreno",
+    "keyPoint1": "CANTIDAD\n250ml por intervalo",
+    "keyPoint2": "FRECUENCIA\nCada 15-20 minutos",
+    "keyPoint3": "BENEFICIO\nHidratación sin malestar",
+    "conclusion": "bilan es tu compañero de entreno",
+    "hashtags": {
+      "tiktok": [
+        "#fitness",
+        "#bilan",
+        "#gym",
+        "#workout",
+        "#hidratacion"
+      ],
+      "instagram": [
+        "#DuranteElEntreno",
+        "#HidratacionInteligente",
+        "#Bilan",
+        "#Workout"
+      ],
+      "twitter": [
+        "#fitness",
+        "#workout",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_TIP_006_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_TIP_006_tiktok_caption.txt",
+      "caption": "🔥 Toma 250ml cada 15-20 minutos durante ejercicio intenso\\n\\nPequeñas cantidades frecuentes mantienen tu hidratación estable sin sobrecargar tu es...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:33:15.267Z",
+      "renderTime": 65.4
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_TIP_006_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_TIP_006_instagram_caption.txt",
+      "caption": "💡 Toma 250ml cada 15-20 minutos durante ejercicio intenso\\n\\n✨ Pequeñas cantidades frecuentes mantienen tu hidratación estable sin sobrecargar tu estómago. Con electrolitos, aprovechas cada sorbo\\n\\nHidratación estratégica\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:33:15.267Z",
+      "renderTime": 44.3
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_TIP_006_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_TIP_006_whatsapp_caption.txt",
+      "caption": "📱 Toma 250ml cada 15-20 minutos durante ejercicio intenso\\n\\nPequeñas cantidades frecuentes mant...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:33:15.267Z",
+      "renderTime": 29.3
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_TIP_006_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_TIP_006_twitter_caption.txt",
+      "caption": "🧵 Toma 250ml cada 15-20 minutos durante ejercicio intenso\\n\\nHilo 👇\\n\\nPequeñas cantidades frecuentes mantienen tu hidratación estable sin sobrecargar tu estómago. Con electrolitos, aprovechas cada sorbo\\n\\nHidratación estratégica\\n\\n#...",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:33:15.267Z",
+      "renderTime": 44.8
+    }
+  }
+}
