@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_TIP_010",
+  "createdAt": "2026-02-10T18:46:31.915Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_TIP_010",
+    "type": "quicktip",
+    "topic": "hiponatremia-peligro",
+    "category": "tips",
+    "tip": "Tomar demasiada agua SIN electrolitos puede ser peligroso",
+    "reason": "La hiponatremia ocurre cuando diluyes demasiado tu sodio con agua pura. Síntomas: náusea, confusión, calambres. En casos extremos puede ser mortal",
+    "cta": "Hidratación inteligente",
+    "title": "El Peligro del Agua Sola",
+    "subtitle": "Por qué más agua no siempre es mejor",
+    "keyPoint1": "HIPONATREMIA\nSodio diluido en sangre",
+    "keyPoint2": "CAUSA\nMucha agua sin electrolitos",
+    "keyPoint3": "PREVENCIÓN\nAgua + electrolitos siempre",
+    "conclusion": "bilan previene la hiponatremia",
+    "hashtags": {
+      "tiktok": [
+        "#hiponatremia",
+        "#bilan",
+        "#salud",
+        "#hidratacion",
+        "#educacion"
+      ],
+      "instagram": [
+        "#HiponatremiaPrevention",
+        "#AguaConElectrolitos",
+        "#bilan",
+        "#SaludReal"
+      ],
+      "twitter": [
+        "#hiponatremia",
+        "#salud",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_TIP_010_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_TIP_010_tiktok_caption.txt",
+      "caption": "🔥 Tomar demasiada agua SIN electrolitos puede ser peligroso\n\nLa hiponatremia ocurre cuando diluyes demasiado tu sodio con agua pura. Síntomas: náusea, confusión, calambres. En casos extremos puede ser mortal\n\nHidratación inteligente\n\n#hiponatremia #bilan #salud #hidratacion #educacion",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:46:31.915Z",
+      "renderTime": 52.5
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_TIP_010_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_TIP_010_instagram_caption.txt",
+      "caption": "💡 Tomar demasiada agua SIN electrolitos puede ser peligroso\n\n✨ La hiponatremia ocurre cuando diluyes demasiado tu sodio con agua pura. Síntomas: náusea, confusión, calambres. En casos extremos puede ser mortal\n\nHidratación inteligente\n\n#HiponatremiaPrevention #AguaConElectrolitos #bilan #SaludReal",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:46:31.915Z",
+      "renderTime": 39.3
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_TIP_010_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_TIP_010_whatsapp_caption.txt",
+      "caption": "📱 Tomar demasiada agua SIN electrolitos puede ser peligroso\n\nLa hiponatremia ocurre cuando diluyes demasiado tu sodio con agua pura. Síntomas: náusea, confusión, calambres. En casos extremos puede ser mortal\n\nHidratación inteligente",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:46:31.915Z",
+      "renderTime": 29.1
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_TIP_010_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_TIP_010_twitter_caption.txt",
+      "caption": "🧵 Tomar demasiada agua SIN electrolitos puede ser peligroso\n\nHilo 👇\n\nLa hiponatremia ocurre cuando diluyes demasiado tu sodio con agua pura. Síntomas: náusea, confusión, calambres. En casos extremos puede ser mortal\n\nHidratación inteligente\n\n#hiponatremia #salud #bilan",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:46:31.915Z",
+      "renderTime": 45.3
+    }
+  }
+}

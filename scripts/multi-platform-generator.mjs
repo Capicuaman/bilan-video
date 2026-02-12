@@ -46,8 +46,8 @@ const CAPTION_TEMPLATES = {
   },
   instagram: {
     prefix: "💡",
-    style: "educational", 
-    hashtags: ["#ElectrolitosReales", "#HidratacionInteligente", "#Bilan", "#SaludBasadaEnCiencia"],
+    style: "educational",
+    hashtags: ["#ElectrolitosReales", "#HidratacionInteligente", "#bilan", "#SaludBasadaEnCiencia"],
     maxLength: 300
   },
   whatsapp: {

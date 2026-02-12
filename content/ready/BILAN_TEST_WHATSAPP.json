@@ -27,7 +27,7 @@
       "instagram": [
         "#RecuperacionInteligente",
         "#ElectrolitosReales",
-        "#Bilan",
+        "#bilan",
         "#PostWorkout"
       ],
       "twitter": [
@@ -42,7 +42,7 @@
     "whatsapp": {
       "videoFile": "out/whatsapp/BILAN_TEST_WHATSAPP_whatsapp.mp4",
       "captionFile": "out/whatsapp/BILAN_TEST_WHATSAPP_whatsapp_caption.txt",
-      "caption": "📱 Toma electrolitos 30 minutos después de entrenar\\n\\nTu cuerpo pierde sodio y potasio a través ...",
+      "caption": "📱 Toma electrolitos 30 minutos después de entrenar\n\nTu cuerpo pierde sodio y potasio a través del sudor y necesita reponerlos para recuperarse correctamente\n\nOptimiza tu recuperación",
       "status": "ready",
       "generatedAt": "2026-02-10T17:13:41.459Z",
       "renderTime": 29.1

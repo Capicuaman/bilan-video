@@ -19,7 +19,7 @@
     "whatsapp": {
       "videoFile": "out/whatsapp/DEMO_FULL_whatsapp.mp4",
       "captionFile": "out/whatsapp/DEMO_FULL_whatsapp_caption.txt",
-      "caption": "📱 Los electrolitos no son solo sal\\n\\nSon minerales esenciales: sodio, potasio y magnesio que tu...",
+      "caption": "📱 Los electrolitos no son solo sal\n\nSon minerales esenciales: sodio, potasio y magnesio que tu cuerpo necesita para funcionar correctamente\n\nHidrátate con ciencia",
       "status": "ready",
       "generatedAt": "2026-02-08T19:34:03.914Z",
       "renderTime": 24.6
@@ -27,7 +27,7 @@
     "twitter": {
       "videoFile": "out/twitter/DEMO_FULL_twitter.mp4",
       "captionFile": "out/twitter/DEMO_FULL_twitter_caption.txt",
-      "caption": "🧵 Los electrolitos no son solo sal\\n\\nHilo 👇\\n\\nSon minerales esenciales: sodio, potasio y magnesio que tu cuerpo necesita para funcionar correctamente\\n\\nHidrátate con ciencia\\n\\n#electrolitos #hidratacion #salud",
+      "caption": "🧵 Los electrolitos no son solo sal\n\nHilo 👇\n\nSon minerales esenciales: sodio, potasio y magnesio que tu cuerpo necesita para funcionar correctamente\n\nHidrátate con ciencia\n\n",
       "status": "ready",
       "generatedAt": "2026-02-08T19:34:03.914Z",
       "renderTime": 37.5
@@ -35,7 +35,7 @@
     "instagram": {
       "videoFile": "out/instagram/DEMO_FULL_instagram.mp4",
       "captionFile": "out/instagram/DEMO_FULL_instagram_caption.txt",
-      "caption": "💡 Los electrolitos no son solo sal\\n\\n✨ Son minerales esenciales: sodio, potasio y magnesio que tu cuerpo necesita para funcionar correctamente\\n\\nHidrátate con ciencia\\n\\n#ElectrolitosReales #HidratacionInteligente #Bilan #SaludBasadaEnCiencia",
+      "caption": "💡 Los electrolitos no son solo sal\n\n✨ Son minerales esenciales: sodio, potasio y magnesio que tu cuerpo necesita para funcionar correctamente\n\nHidrátate con ciencia\n\n",
       "status": "ready",
       "generatedAt": "2026-02-08T19:34:03.914Z",
       "renderTime": 28.4

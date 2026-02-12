@@ -1,0 +1,1409 @@
+{
+  "timestamp": "2026-02-10T17:27:02.106Z",
+  "totalContent": 28,
+  "totalVideos": 112,
+  "passed": 112,
+  "failed": 0,
+  "details": [
+    {
+      "contentId": "BILAN_FACT_001",
+      "platforms": {},
+      "startTime": "2026-02-10T17:27:02.163Z",
+      "status": "completed",
+      "renderTime": 164.8,
+      "endTime": "2026-02-10T17:29:46.979Z",
+      "qa": {
+        "contentId": "BILAN_FACT_001",
+        "timestamp": "2026-02-10T17:29:46.980Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2295578,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1682509,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1546199,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1894431,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_FACT_002",
+      "platforms": {},
+      "startTime": "2026-02-10T17:29:51.609Z",
+      "status": "completed",
+      "renderTime": 174.5,
+      "endTime": "2026-02-10T17:32:46.072Z",
+      "qa": {
+        "contentId": "BILAN_FACT_002",
+        "timestamp": "2026-02-10T17:32:46.072Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2513538,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1813076,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1677504,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1934480,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_FACT_003",
+      "platforms": {},
+      "startTime": "2026-02-10T17:32:50.678Z",
+      "status": "completed",
+      "renderTime": 175,
+      "endTime": "2026-02-10T17:35:45.632Z",
+      "qa": {
+        "contentId": "BILAN_FACT_003",
+        "timestamp": "2026-02-10T17:35:45.632Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2411229,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1793208,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1656331,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1964826,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_FACT_004",
+      "platforms": {},
+      "startTime": "2026-02-10T17:35:50.269Z",
+      "status": "completed",
+      "renderTime": 175.7,
+      "endTime": "2026-02-10T17:38:45.985Z",
+      "qa": {
+        "contentId": "BILAN_FACT_004",
+        "timestamp": "2026-02-10T17:38:45.985Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2535960,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1857811,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1721830,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1832501,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_FACT_005",
+      "platforms": {},
+      "startTime": "2026-02-10T17:38:50.640Z",
+      "status": "completed",
+      "renderTime": 177.5,
+      "endTime": "2026-02-10T17:41:48.172Z",
+      "qa": {
+        "contentId": "BILAN_FACT_005",
+        "timestamp": "2026-02-10T17:41:48.172Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2478907,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1810787,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1674616,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1838742,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_FACT_006",
+      "platforms": {},
+      "startTime": "2026-02-10T17:41:52.796Z",
+      "status": "completed",
+      "renderTime": 170.6,
+      "endTime": "2026-02-10T17:44:43.377Z",
+      "qa": {
+        "contentId": "BILAN_FACT_006",
+        "timestamp": "2026-02-10T17:44:43.377Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2530812,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1893963,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1757419,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1855806,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_FACT_007",
+      "platforms": {},
+      "startTime": "2026-02-10T17:44:47.351Z",
+      "status": "completed",
+      "renderTime": 174.7,
+      "endTime": "2026-02-10T17:47:42.046Z",
+      "qa": {
+        "contentId": "BILAN_FACT_007",
+        "timestamp": "2026-02-10T17:47:42.046Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2412529,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1817994,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1681635,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1928162,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_FACT_008",
+      "platforms": {},
+      "startTime": "2026-02-10T17:47:47.187Z",
+      "status": "completed",
+      "renderTime": 160.3,
+      "endTime": "2026-02-10T17:50:27.526Z",
+      "qa": {
+        "contentId": "BILAN_FACT_008",
+        "timestamp": "2026-02-10T17:50:27.526Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2323863,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1742799,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1607387,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1931312,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_FACT_009",
+      "platforms": {},
+      "startTime": "2026-02-10T17:50:31.671Z",
+      "status": "completed",
+      "renderTime": 187.4,
+      "endTime": "2026-02-10T17:53:39.051Z",
+      "qa": {
+        "contentId": "BILAN_FACT_009",
+        "timestamp": "2026-02-10T17:53:39.051Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2464136,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1774704,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1638637,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2023758,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_FACT_010",
+      "platforms": {},
+      "startTime": "2026-02-10T17:53:44.864Z",
+      "status": "completed",
+      "renderTime": 153.8,
+      "endTime": "2026-02-10T17:56:18.677Z",
+      "qa": {
+        "contentId": "BILAN_FACT_010",
+        "timestamp": "2026-02-10T17:56:18.677Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2425524,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1780642,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1645595,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1765226,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_PRODUCT_001",
+      "platforms": {},
+      "startTime": "2026-02-10T17:56:22.586Z",
+      "status": "completed",
+      "renderTime": 150.3,
+      "endTime": "2026-02-10T17:58:52.842Z",
+      "qa": {
+        "contentId": "BILAN_PRODUCT_001",
+        "timestamp": "2026-02-10T17:58:52.842Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2380006,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1766367,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1629366,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1918990,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_PRODUCT_002",
+      "platforms": {},
+      "startTime": "2026-02-10T17:58:56.528Z",
+      "status": "completed",
+      "renderTime": 153.8,
+      "endTime": "2026-02-10T18:01:30.365Z",
+      "qa": {
+        "contentId": "BILAN_PRODUCT_002",
+        "timestamp": "2026-02-10T18:01:30.365Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2403120,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1854755,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1717446,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1819462,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_PRODUCT_003",
+      "platforms": {},
+      "startTime": "2026-02-10T18:01:34.065Z",
+      "status": "completed",
+      "renderTime": 155.7,
+      "endTime": "2026-02-10T18:04:09.754Z",
+      "qa": {
+        "contentId": "BILAN_PRODUCT_003",
+        "timestamp": "2026-02-10T18:04:09.754Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2357828,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1772331,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1636143,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1845478,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_PRODUCT_004",
+      "platforms": {},
+      "startTime": "2026-02-10T18:04:13.791Z",
+      "status": "completed",
+      "renderTime": 167.4,
+      "endTime": "2026-02-10T18:07:01.160Z",
+      "qa": {
+        "contentId": "BILAN_PRODUCT_004",
+        "timestamp": "2026-02-10T18:07:01.160Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2478842,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1830332,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1694207,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1911547,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_PRODUCT_005",
+      "platforms": {},
+      "startTime": "2026-02-10T18:07:05.520Z",
+      "status": "completed",
+      "renderTime": 165.3,
+      "endTime": "2026-02-10T18:09:50.778Z",
+      "qa": {
+        "contentId": "BILAN_PRODUCT_005",
+        "timestamp": "2026-02-10T18:09:50.779Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2411266,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1846337,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1706513,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1833309,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_PRODUCT_006",
+      "platforms": {},
+      "startTime": "2026-02-10T18:09:54.610Z",
+      "status": "completed",
+      "renderTime": 161.7,
+      "endTime": "2026-02-10T18:12:36.283Z",
+      "qa": {
+        "contentId": "BILAN_PRODUCT_006",
+        "timestamp": "2026-02-10T18:12:36.283Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2306558,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1732383,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1595496,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1732210,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_001",
+      "platforms": {},
+      "startTime": "2026-02-10T18:12:40.552Z",
+      "status": "completed",
+      "renderTime": 171.7,
+      "endTime": "2026-02-10T18:15:32.284Z",
+      "qa": {
+        "contentId": "BILAN_TIP_001",
+        "timestamp": "2026-02-10T18:15:32.284Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2245910,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1692756,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1555475,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2020286,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_002",
+      "platforms": {},
+      "startTime": "2026-02-10T18:15:44.503Z",
+      "status": "completed",
+      "renderTime": 239.8,
+      "endTime": "2026-02-10T18:19:44.312Z",
+      "qa": {
+        "contentId": "BILAN_TIP_002",
+        "timestamp": "2026-02-10T18:19:44.312Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2334520,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1716515,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1579886,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1790516,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_003",
+      "platforms": {},
+      "startTime": "2026-02-10T18:19:51.280Z",
+      "status": "completed",
+      "renderTime": 187.4,
+      "endTime": "2026-02-10T18:22:58.656Z",
+      "qa": {
+        "contentId": "BILAN_TIP_003",
+        "timestamp": "2026-02-10T18:22:58.656Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2223396,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1650182,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1514616,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1811033,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_004",
+      "platforms": {},
+      "startTime": "2026-02-10T18:23:03.942Z",
+      "status": "completed",
+      "renderTime": 199.2,
+      "endTime": "2026-02-10T18:26:23.172Z",
+      "qa": {
+        "contentId": "BILAN_TIP_004",
+        "timestamp": "2026-02-10T18:26:23.172Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2528517,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1835655,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1698479,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1841504,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_005",
+      "platforms": {},
+      "startTime": "2026-02-10T18:26:31.742Z",
+      "status": "completed",
+      "renderTime": 206.8,
+      "endTime": "2026-02-10T18:29:58.588Z",
+      "qa": {
+        "contentId": "BILAN_TIP_005",
+        "timestamp": "2026-02-10T18:29:58.588Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2578837,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1855191,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1719045,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1714424,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_006",
+      "platforms": {},
+      "startTime": "2026-02-10T18:30:10.452Z",
+      "status": "completed",
+      "renderTime": 184.9,
+      "endTime": "2026-02-10T18:33:15.323Z",
+      "qa": {
+        "contentId": "BILAN_TIP_006",
+        "timestamp": "2026-02-10T18:33:15.323Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2422265,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1785280,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1648696,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1861536,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_007",
+      "platforms": {},
+      "startTime": "2026-02-10T18:33:24.269Z",
+      "status": "completed",
+      "renderTime": 244.9,
+      "endTime": "2026-02-10T18:37:29.182Z",
+      "qa": {
+        "contentId": "BILAN_TIP_007",
+        "timestamp": "2026-02-10T18:37:29.182Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2317670,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1754493,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1618058,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1780540,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_008",
+      "platforms": {},
+      "startTime": "2026-02-10T18:37:39.126Z",
+      "status": "completed",
+      "renderTime": 173.9,
+      "endTime": "2026-02-10T18:40:33.072Z",
+      "qa": {
+        "contentId": "BILAN_TIP_008",
+        "timestamp": "2026-02-10T18:40:33.072Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2581674,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1867673,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1731010,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1848693,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_009",
+      "platforms": {},
+      "startTime": "2026-02-10T18:40:37.691Z",
+      "status": "completed",
+      "renderTime": 180.2,
+      "endTime": "2026-02-10T18:43:37.854Z",
+      "qa": {
+        "contentId": "BILAN_TIP_009",
+        "timestamp": "2026-02-10T18:43:37.854Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2275757,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1727828,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1592298,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1893450,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_010",
+      "platforms": {},
+      "startTime": "2026-02-10T18:43:45.569Z",
+      "status": "completed",
+      "renderTime": 166.4,
+      "endTime": "2026-02-10T18:46:31.921Z",
+      "qa": {
+        "contentId": "BILAN_TIP_010",
+        "timestamp": "2026-02-10T18:46:31.921Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2484951,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1882007,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1745633,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1842370,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_011",
+      "platforms": {},
+      "startTime": "2026-02-10T18:46:36.374Z",
+      "status": "completed",
+      "renderTime": 167.5,
+      "endTime": "2026-02-10T18:49:23.852Z",
+      "qa": {
+        "contentId": "BILAN_TIP_011",
+        "timestamp": "2026-02-10T18:49:23.852Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2409235,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1805214,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1669219,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1878047,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    },
+    {
+      "contentId": "BILAN_TIP_012",
+      "platforms": {},
+      "startTime": "2026-02-10T18:49:27.881Z",
+      "status": "completed",
+      "renderTime": 162.7,
+      "endTime": "2026-02-10T18:52:10.627Z",
+      "qa": {
+        "contentId": "BILAN_TIP_012",
+        "timestamp": "2026-02-10T18:52:10.627Z",
+        "platforms": {
+          "tiktok": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 2339423,
+            "issues": [],
+            "status": "passed"
+          },
+          "instagram": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1712771,
+            "issues": [],
+            "status": "passed"
+          },
+          "whatsapp": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1575542,
+            "issues": [],
+            "status": "passed"
+          },
+          "twitter": {
+            "fileExists": true,
+            "hasAudio": true,
+            "correctSize": true,
+            "audioLevel": -11.8,
+            "fileSize": 1857747,
+            "issues": [],
+            "status": "passed"
+          }
+        }
+      }
+    }
+  ]
+}

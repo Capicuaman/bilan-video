@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_TIP_009",
+  "createdAt": "2026-02-10T18:43:37.846Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_TIP_009",
+    "type": "quicktip",
+    "topic": "viajes-altitud",
+    "category": "tips",
+    "tip": "Viajes y altitud aumentan tu necesidad de hidratación",
+    "reason": "El aire de avión y la altura hacen que pierdas agua más rápido por respiración. Lleva electrolitos en polvo y toma regularmente",
+    "cta": "Viaja hidratado",
+    "title": "Hidratación en Viajes",
+    "subtitle": "Combate el jet lag con electrolitos",
+    "keyPoint1": "AVIÓN\nAire seco aumenta pérdida",
+    "keyPoint2": "ALTITUD\nRespiración más rápida = más pérdida",
+    "keyPoint3": "SOLUCIÓN\nElectrolitos portátiles",
+    "conclusion": "bilan es tu compañero de viaje perfecto",
+    "hashtags": {
+      "tiktok": [
+        "#viajes",
+        "#bilan",
+        "#jetlag",
+        "#travel",
+        "#hidratacion"
+      ],
+      "instagram": [
+        "#TravelTips",
+        "#HidratacionEnVuelo",
+        "#bilan",
+        "#Viajeros"
+      ],
+      "twitter": [
+        "#travel",
+        "#viajes",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_TIP_009_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_TIP_009_tiktok_caption.txt",
+      "caption": "🔥 Viajes y altitud aumentan tu necesidad de hidratación\n\nEl aire de avión y la altura hacen que pierdas agua más rápido por respiración. Lleva electrolitos en polvo y toma regularmente\n\nViaja hidratado\n\n#viajes #bilan #jetlag #travel #hidratacion",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:43:37.847Z",
+      "renderTime": 60.2
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_TIP_009_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_TIP_009_instagram_caption.txt",
+      "caption": "💡 Viajes y altitud aumentan tu necesidad de hidratación\n\n✨ El aire de avión y la altura hacen que pierdas agua más rápido por respiración. Lleva electrolitos en polvo y toma regularmente\n\nViaja hidratado\n\n#TravelTips #HidratacionEnVuelo #bilan #Viajeros",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:43:37.847Z",
+      "renderTime": 46.9
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_TIP_009_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_TIP_009_whatsapp_caption.txt",
+      "caption": "📱 Viajes y altitud aumentan tu necesidad de hidratación\n\nEl aire de avión y la altura hacen que pierdas agua más rápido por respiración. Lleva electrolitos en polvo y toma regularmente\n\nViaja hidratado",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:43:37.847Z",
+      "renderTime": 28.4
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_TIP_009_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_TIP_009_twitter_caption.txt",
+      "caption": "🧵 Viajes y altitud aumentan tu necesidad de hidratación\n\nHilo 👇\n\nEl aire de avión y la altura hacen que pierdas agua más rápido por respiración. Lleva electrolitos en polvo y toma regularmente\n\nViaja hidratado\n\n#travel #viajes #bilan",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:43:37.847Z",
+      "renderTime": 44.6
+    }
+  }
+}

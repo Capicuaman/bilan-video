@@ -117,11 +117,11 @@ export const EducationalLandscape: React.FC<EducationalLandscapeProps> = ({
     config: brand.animation.spring,
   });
 
-  // Logo timing - show at beginning, fade out COMPLETELY before conclusion
+  // Logo timing - visible from frame 0 for thumbnails, fade out COMPLETELY before conclusion
   const logoOpacity = interpolate(
     frame,
-    [0, 15, conclusionStart - 35, conclusionStart - 15],
-    [0, 1, 1, 0],
+    [0, 1, conclusionStart - 35, conclusionStart - 15],
+    [1, 1, 1, 0],
     { extrapolateRight: "clamp" },
   );
 

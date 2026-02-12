@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_TIP_011",
+  "createdAt": "2026-02-10T18:49:23.845Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_TIP_011",
+    "type": "quicktip",
+    "topic": "clima-calor",
+    "category": "tips",
+    "tip": "En climas cálidos puedes perder más de 2 litros de sudor por hora",
+    "reason": "El calor extremo dispara tu sudoración para enfriarte. Si solo repones agua, pierdes electrolitos críticos y tu rendimiento colapsa",
+    "cta": "Combate el calor",
+    "title": "Hidratación en Calor Extremo",
+    "subtitle": "Cuando el sudor no para",
+    "keyPoint1": "PÉRDIDA\nHasta 2L+ por hora",
+    "keyPoint2": "ELECTROLITOS\n1000-2000mg sodio perdido",
+    "keyPoint3": "REPOSICIÓN\nAgua + electrolitos cada 20 min",
+    "conclusion": "bilan te mantiene funcionando en el calor",
+    "hashtags": {
+      "tiktok": [
+        "#calor",
+        "#bilan",
+        "#verano",
+        "#hidratacion",
+        "#sudor"
+      ],
+      "instagram": [
+        "#CalorExtremo",
+        "#HidratacionVerano",
+        "#bilan",
+        "#Summer"
+      ],
+      "twitter": [
+        "#calor",
+        "#verano",
+        "#hidratacion"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_TIP_011_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_TIP_011_tiktok_caption.txt",
+      "caption": "🔥 En climas cálidos puedes perder más de 2 litros de sudor por hora\n\nEl calor extremo dispara tu sudoración para enfriarte. Si solo repones agua, pierdes electrolitos críticos y tu rendimiento colapsa\n\nCombate el calor\n\n#calor #bilan #verano #hidratacion #sudor",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:49:23.845Z",
+      "renderTime": 49.8
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_TIP_011_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_TIP_011_instagram_caption.txt",
+      "caption": "💡 En climas cálidos puedes perder más de 2 litros de sudor por hora\n\n✨ El calor extremo dispara tu sudoración para enfriarte. Si solo repones agua, pierdes electrolitos críticos y tu rendimiento colapsa\n\nCombate el calor\n\n#CalorExtremo #HidratacionVerano #bilan #Summer",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:49:23.845Z",
+      "renderTime": 39.8
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_TIP_011_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_TIP_011_whatsapp_caption.txt",
+      "caption": "📱 En climas cálidos puedes perder más de 2 litros de sudor por hora\n\nEl calor extremo dispara tu sudoración para enfriarte. Si solo repones agua, pierdes electrolitos críticos y tu rendimiento colapsa\n\nCombate el calor",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:49:23.845Z",
+      "renderTime": 30.6
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_TIP_011_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_TIP_011_twitter_caption.txt",
+      "caption": "🧵 En climas cálidos puedes perder más de 2 litros de sudor por hora\n\nHilo 👇\n\nEl calor extremo dispara tu sudoración para enfriarte. Si solo repones agua, pierdes electrolitos críticos y tu rendimiento colapsa\n\nCombate el calor\n\n#calor #verano #hidratacion",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:49:23.845Z",
+      "renderTime": 47.1
+    }
+  }
+}

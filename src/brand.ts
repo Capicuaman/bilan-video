@@ -1,4 +1,4 @@
-// BILAN Brand Guidelines for Remotion Videos
+// bilan Brand Guidelines for Remotion Videos
 // Updated: Montserrat Bold, Blue color, Large fonts for accessibility
 
 export const brand = {

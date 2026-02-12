@@ -1,0 +1,44 @@
+{
+  "contentId": "BILAN_FACT_001_TEST",
+  "createdAt": "2026-02-11T22:12:44.097Z",
+  "status": "ready",
+  "content": {
+    "tip": "Tu cuerpo es 60% agua y 0.5% electrolitos",
+    "reason": "Esta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el balance correcto, nada funciona como debe",
+    "cta": "Conoce tu cuerpo"
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_FACT_001_TEST_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_FACT_001_TEST_tiktok_caption.txt",
+      "caption": "🔥 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\nEsta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el ba...",
+      "status": "ready",
+      "generatedAt": "2026-02-11T22:12:44.097Z",
+      "renderTime": 54.5
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_FACT_001_TEST_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_FACT_001_TEST_whatsapp_caption.txt",
+      "caption": "📱 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\nEsta proporción es esencial para todas las funcio...",
+      "status": "ready",
+      "generatedAt": "2026-02-11T22:12:44.097Z",
+      "renderTime": 30.7
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_FACT_001_TEST_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_FACT_001_TEST_twitter_caption.txt",
+      "caption": "🧵 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\nHilo 👇\\n\\nEsta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el balance correcto, nada funciona como debe\\n\\nConoce tu cuerpo\\n\\n#electrolitos #h...",
+      "status": "ready",
+      "generatedAt": "2026-02-11T22:12:44.097Z",
+      "renderTime": 50.5
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_FACT_001_TEST_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_FACT_001_TEST_instagram_caption.txt",
+      "caption": "💡 Tu cuerpo es 60% agua y 0.5% electrolitos\\n\\n✨ Esta proporción es esencial para todas las funciones vitales: desde pensar hasta moverte. Sin el balance correcto, nada funciona como debe\\n\\nConoce tu cuerpo\\n\\n#ElectrolitosReales #HidratacionInteligente #bilan #SaludBasadaEnCiencia",
+      "status": "ready",
+      "generatedAt": "2026-02-11T22:12:44.097Z",
+      "renderTime": 36.2
+    }
+  }
+}

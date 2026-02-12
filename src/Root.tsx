@@ -16,8 +16,12 @@ import { QuickTipVideo as QuickTipVideoTest5 } from "./templates/QuickTipVideo-t
 import { MasterVideo, getMasterVideoDuration } from "./templates/MasterVideo";
 import { BrandIntro } from "./components/BrandIntro";
 import { BrandIntroPerfected } from "./components/BrandIntroPerfected";
+import { BrandIntroWhatsApp } from "./components/BrandIntroWhatsApp";
+import { BrandIntroInstagram } from "./components/BrandIntroInstagram";
+import { BrandIntroStandard } from "./components/BrandIntroStandard";
 import { BrandOutro } from "./components/BrandOutro";
 import { BrandOutroPerfected } from "./components/BrandOutroPerfected";
+import { BrandOutroLoopable } from "./components/BrandOutroLoopable";
 
 // TikTok vertical format
 const WIDTH = 1080;
@@ -82,6 +86,65 @@ export const RemotionRoot: React.FC = () => {
         defaultProps={{
           cta: "¡Guarda este video!",
           handle: "@bilan.mx",
+        }}
+      />
+
+      {/* ============================================ */}
+      {/* PLATFORM-SPECIFIC INTROS/OUTROS */}
+      {/* ============================================ */}
+
+      {/* Brand Intro WhatsApp - 2 seconds, square format */}
+      <Composition
+        id="BrandIntroWhatsApp"
+        component={BrandIntroWhatsApp}
+        durationInFrames={FPS * 2}
+        fps={FPS}
+        width={1080}
+        height={1080}
+        defaultProps={{
+          tagline: "hidratación inteligente",
+        }}
+      />
+
+      {/* Brand Intro Instagram - 2 seconds, square format */}
+      <Composition
+        id="BrandIntroInstagram"
+        component={BrandIntroInstagram}
+        durationInFrames={FPS * 2}
+        fps={FPS}
+        width={1080}
+        height={1080}
+        defaultProps={{
+          tagline: "hidratación inteligente",
+        }}
+      />
+
+      {/* Brand Intro Standard - 2.5 seconds for TikTok/Twitter */}
+      <Composition
+        id="BrandIntroStandard"
+        component={BrandIntroStandard}
+        durationInFrames={FPS * 2.5}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+        defaultProps={{
+          tagline: "hidratación inteligente",
+        }}
+      />
+
+      {/* Brand Outro Loopable - Logo visible on last frame for seamless looping */}
+      <Composition
+        id="BrandOutroLoopable"
+        component={BrandOutroLoopable}
+        durationInFrames={FPS * 4}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+        defaultProps={{
+          cta: "¡Guarda este video!",
+          handle: "@bilan.electrolitos",
+          website: "www.bilan.mx",
+          showActionPrompts: true,
         }}
       />
 

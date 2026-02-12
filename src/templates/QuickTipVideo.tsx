@@ -67,11 +67,11 @@ export const QuickTipVideo: React.FC<QuickTipProps> = ({
     config: { damping: 10 },
   });
 
-  // Logo animation - fade out COMPLETELY before CTA so only one logo shows at a time
+  // Logo animation - visible from frame 0 for thumbnails, fade out COMPLETELY before CTA so only one logo shows at a time
   const logoOpacity = interpolate(
     frame,
-    [0, 15, ctaStart - 30, ctaStart - 15],
-    [0, 1, 1, 0],
+    [0, 1, ctaStart - 30, ctaStart - 15],
+    [1, 1, 1, 0],
     { extrapolateRight: "clamp" },
   );
 

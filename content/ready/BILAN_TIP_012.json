@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_TIP_012",
+  "createdAt": "2026-02-10T18:52:10.611Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_TIP_012",
+    "type": "quicktip",
+    "topic": "resaca-recovery",
+    "category": "tips",
+    "tip": "Los electrolitos pueden ayudar con la resaca",
+    "reason": "El alcohol te deshidrata y te vacía de electrolitos. Tomar bilan antes de dormir y al despertar ayuda a tu cuerpo a recuperarse más rápido",
+    "cta": "Recuperación inteligente",
+    "title": "Recovery Después de la Fiesta",
+    "subtitle": "Electrolitos vs resaca",
+    "keyPoint1": "CAUSA\nAlcohol = deshidratación masiva",
+    "keyPoint2": "TIMING\nAntes de dormir y al despertar",
+    "keyPoint3": "EFECTO\nRecuperación más rápida",
+    "conclusion": "bilan minimiza el daño de ayer",
+    "hashtags": {
+      "tiktok": [
+        "#resaca",
+        "#bilan",
+        "#recovery",
+        "#fiesta",
+        "#hangover"
+      ],
+      "instagram": [
+        "#HangoverRecovery",
+        "#ElectrolitosAlRescate",
+        "#bilan",
+        "#Weekend"
+      ],
+      "twitter": [
+        "#hangover",
+        "#recovery",
+        "#bilan"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_TIP_012_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_TIP_012_tiktok_caption.txt",
+      "caption": "🔥 Los electrolitos pueden ayudar con la resaca\n\nEl alcohol te deshidrata y te vacía de electrolitos. Tomar bilan antes de dormir y al despertar ayuda a tu cuerpo a recuperarse más rápido\n\nRecuperación inteligente\n\n#resaca #bilan #recovery #fiesta #hangover",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:52:10.611Z",
+      "renderTime": 48.1
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_TIP_012_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_TIP_012_instagram_caption.txt",
+      "caption": "💡 Los electrolitos pueden ayudar con la resaca\n\n✨ El alcohol te deshidrata y te vacía de electrolitos. Tomar bilan antes de dormir y al despertar ayuda a tu cuerpo a recuperarse más rápido\n\nRecuperación inteligente\n\n#HangoverRecovery #ElectrolitosAlRescate #bilan #Weekend",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:52:10.611Z",
+      "renderTime": 41.5
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_TIP_012_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_TIP_012_whatsapp_caption.txt",
+      "caption": "📱 Los electrolitos pueden ayudar con la resaca\n\nEl alcohol te deshidrata y te vacía de electrolitos. Tomar bilan antes de dormir y al despertar ayuda a tu cuerpo a recuperarse más rápido\n\nRecuperación inteligente",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:52:10.611Z",
+      "renderTime": 27.7
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_TIP_012_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_TIP_012_twitter_caption.txt",
+      "caption": "🧵 Los electrolitos pueden ayudar con la resaca\n\nHilo 👇\n\nEl alcohol te deshidrata y te vacía de electrolitos. Tomar bilan antes de dormir y al despertar ayuda a tu cuerpo a recuperarse más rápido\n\nRecuperación inteligente\n\n#hangover #recovery #bilan",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:52:10.611Z",
+      "renderTime": 45.3
+    }
+  }
+}

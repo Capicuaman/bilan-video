@@ -1,0 +1,75 @@
+{
+  "contentId": "BILAN_TIP_008",
+  "createdAt": "2026-02-10T18:40:33.065Z",
+  "status": "ready",
+  "content": {
+    "contentId": "BILAN_TIP_008",
+    "type": "quicktip",
+    "topic": "cafeina-hidratacion",
+    "category": "tips",
+    "tip": "El café no te deshidrata tanto como crees (pero ayuda tener electrolitos)",
+    "reason": "Consumo moderado de cafeína tiene efecto diurético mínimo. Pero si tomas mucho café, balancea con agua y electrolitos para mantener todo en orden",
+    "cta": "Café con balance",
+    "title": "Café y Hidratación",
+    "subtitle": "La verdad sobre la cafeína",
+    "keyPoint1": "MITO\nEl café NO deshidrata tanto",
+    "keyPoint2": "EXCESO\nMuchas tazas SÍ aumentan pérdida",
+    "keyPoint3": "BALANCE\nAgua + electrolitos = perfecto",
+    "conclusion": "bilan balancea tu consumo de cafeína",
+    "hashtags": {
+      "tiktok": [
+        "#cafe",
+        "#bilan",
+        "#hidratacion",
+        "#mitos",
+        "#salud"
+      ],
+      "instagram": [
+        "#CafeYHidratacion",
+        "#MitosDerribados",
+        "#bilan",
+        "#CoffeeLover"
+      ],
+      "twitter": [
+        "#cafe",
+        "#hidratacion",
+        "#mitos"
+      ],
+      "whatsapp": []
+    }
+  },
+  "platforms": {
+    "tiktok": {
+      "videoFile": "out/tiktok/BILAN_TIP_008_tiktok.mp4",
+      "captionFile": "out/tiktok/BILAN_TIP_008_tiktok_caption.txt",
+      "caption": "🔥 El café no te deshidrata tanto como crees (pero ayuda tener electrolitos)\n\nConsumo moderado de cafeína tiene efecto diurético mínimo. Pero si tomas mucho café, balancea con agua y electrolitos para mantener todo en orden\n\nCafé con balance\n\n#cafe #bilan #hidratacion #mitos #salud",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:40:33.065Z",
+      "renderTime": 62.2
+    },
+    "instagram": {
+      "videoFile": "out/instagram/BILAN_TIP_008_instagram.mp4",
+      "captionFile": "out/instagram/BILAN_TIP_008_instagram_caption.txt",
+      "caption": "💡 El café no te deshidrata tanto como crees (pero ayuda tener electrolitos)\n\n✨ Consumo moderado de cafeína tiene efecto diurético mínimo. Pero si tomas mucho café, balancea con agua y electrolitos para mantener todo en orden\n\nCafé con balance\n\n#CafeYHidratacion #MitosDerribados #bilan #CoffeeLover",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:40:33.065Z",
+      "renderTime": 34.8
+    },
+    "whatsapp": {
+      "videoFile": "out/whatsapp/BILAN_TIP_008_whatsapp.mp4",
+      "captionFile": "out/whatsapp/BILAN_TIP_008_whatsapp_caption.txt",
+      "caption": "📱 El café no te deshidrata tanto como crees (pero ayuda tener electrolitos)\n\nConsumo moderado de cafeína tiene efecto diurético mínimo. Pero si tomas mucho café, balancea con agua y electrolitos para mantener todo en orden\n\nCafé con balance",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:40:33.065Z",
+      "renderTime": 28.8
+    },
+    "twitter": {
+      "videoFile": "out/twitter/BILAN_TIP_008_twitter.mp4",
+      "captionFile": "out/twitter/BILAN_TIP_008_twitter_caption.txt",
+      "caption": "🧵 El café no te deshidrata tanto como crees (pero ayuda tener electrolitos)\n\nHilo 👇\n\nConsumo moderado de cafeína tiene efecto diurético mínimo. Pero si tomas mucho café, balancea con agua y electrolitos para mantener todo en orden\n\nCafé con balance\n\n#cafe #hidratacion #mitos",
+      "status": "ready",
+      "generatedAt": "2026-02-10T18:40:33.065Z",
+      "renderTime": 47.9
+    }
+  }
+}
