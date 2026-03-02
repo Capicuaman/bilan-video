@@ -1,54 +1,80 @@
-# Remotion video
+# bilan-video
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+Remotion-based video pipeline for bilan electrolitos social content.
 
-Welcome to your Remotion project!
+---
 
-## Commands
+## Quick Start
 
-**Install Dependencies**
+### Level 1 — Single TikTok
 
-```console
-npm i
+```bash
+# 1. Write your content JSON
+cp content/ready/example.json content/ready/my-tip.json
+# edit my-tip.json
+
+# 2. Render
+npm run render -- --from-file content/ready/my-tip.json
+
+# 3. Find your video in out/
 ```
 
-**Start Preview**
+### Level 2 — All 4 Platforms at Once
 
-```console
+```bash
+npm run render -- --from-file content/ready/my-tip.json --platforms tiktok,whatsapp,instagram,twitter
+```
+
+Outputs to `out/` with platform suffixes.
+
+### Level 3 — Batch from Queue
+
+Drop JSON files into `content/scheduled/` then:
+
+```bash
+npm run render:batch
+```
+
+Processes all queued content and moves rendered files to `out/`.
+
+### Level 4 — Visual Preview
+
+```bash
 npm run dev
 ```
 
-**Render video**
+Opens Remotion Studio at `localhost:3000` with 10 compositions.
 
-```console
-npx remotion render
+---
+
+## Compositions (10 total)
+
+| ID | Format | Use |
+|----|--------|-----|
+| `QuickTip` | 1080×1920 TikTok | Raw quick tip |
+| `QuickTipWhatsApp` | 1080×1080 Square | WhatsApp status |
+| `QuickTipInstagram` | 1080×1080 Square | Instagram post |
+| `EducationalTwitter` | 1920×1080 Landscape | Twitter/X video |
+| `MasterQuickTip` | 1080×1920 TikTok | Branded (intro + outro) |
+| `MasterMythbusting` | 1080×1920 TikTok | Branded mythbusting |
+| `MasterEducational` | 1080×1920 TikTok | Branded educational |
+| `MasterTrending` | 1080×1920 TikTok | Branded trending/POV |
+| `PreviewBrandIntroPerfected` | 1080×1920 | Studio preview only |
+| `PreviewBrandOutroPerfected` | 1080×1920 | Studio preview only |
+
+---
+
+## Content Scripts
+
+```bash
+npm run content          # content-manager: list, validate, move files
+npm run render:batch     # batch-automation: process content/scheduled/
 ```
 
-**Upgrade Remotion**
-
-```console
-npx remotion upgrade
-```
+---
 
 ## Docs
 
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+- `docs/GUIDELINES.md` — brand voice, visual rules, content strategy
+- `docs/DATA-FORMAT.md` — JSON input format for all templates
+- `docs/PIPELINE.md` — multi-platform rendering pipeline details

@@ -28,8 +28,9 @@
   "scripts": {
     "dev": "remotion studio",
     "build": "remotion bundle",
-    "render": "node batch-render.mjs",
-    "render:single": "remotion render",
+    "render": "node scripts/multi-platform-generator.mjs",
+    "render:batch": "node scripts/batch-automation.mjs",
+    "content": "node scripts/content-manager.mjs",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"
   },
