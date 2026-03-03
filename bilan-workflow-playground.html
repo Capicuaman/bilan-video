@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bilan-video Workflow Playground</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #21253a;
+    --border: #2e3150;
+    --text: #e2e4f0;
+    --muted: #6b7098;
+    --accent: #7c6af7;
+    --accent2: #4fc3a1;
+    --accent3: #f7a26a;
+    --accent4: #f76a8a;
+    --accent5: #6ad4f7;
+    --node-content: #1e3a5f;
+    --node-render: #1e3a2a;
+    --node-template: #3a1e5f;
+    --node-output: #3a2a1e;
+    --node-script: #1e3030;
+    --selected: #7c6af7;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 48px 1fr 180px;
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  header h1 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+  header span {
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .presets {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+  }
+  .preset-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .preset-btn:hover, .preset-btn.active {
+    border-color: var(--accent);
+    color: var(--text);
+    background: rgba(124,106,247,0.15);
+  }
+
+  /* MAIN */
+  main {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    overflow: hidden;
+  }
+
+  /* SIDEBAR */
+  aside {
+    border-right: 1px solid var(--border);
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 16px;
+    gap: 16px;
+  }
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .filter-group { display: flex; flex-direction: column; gap: 6px; }
+  .filter-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+    font-size: 12px;
+  }
+  .filter-item:hover { background: var(--surface2); }
+  .filter-item.active {
+    background: var(--surface2);
+    border-color: var(--border);
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Detail panel in sidebar */
+  .detail-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+    min-height: 120px;
+    transition: all 0.2s;
+  }
+  .detail-card h3 {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .detail-card .cmd {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 11px;
+    background: rgba(0,0,0,0.3);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--accent2);
+    display: inline-block;
+    margin: 2px 0;
+  }
+  .detail-card .tag {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin: 2px;
+    font-weight: 600;
+  }
+  .tag-tiktok { background: rgba(252,29,29,0.2); color: #ff6b7a; }
+  .tag-insta { background: rgba(225,48,108,0.2); color: #e1306c; }
+  .tag-whatsapp { background: rgba(79,195,161,0.2); color: var(--accent2); }
+  .tag-square { background: rgba(247,162,106,0.2); color: var(--accent3); }
+  .tag-landscape { background: rgba(106,212,247,0.2); color: var(--accent5); }
+
+  .tip {
+    font-size: 11px;
+    color: var(--muted);
+    padding: 6px 8px;
+    background: rgba(124,106,247,0.08);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    margin-top: 8px;
+  }
+
+  /* CANVAS */
+  .canvas-wrap {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(124,106,247,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(79,195,161,0.04) 0%, transparent 50%);
+  }
+  svg#diagram {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* BOTTOM PROMPT */
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: stretch;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  .prompt-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text);
+    overflow-y: auto;
+    max-height: 156px;
+  }
+  #copy-btn {
+    background: var(--accent);
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: center;
+    height: 36px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  #copy-btn:hover { background: #9180ff; }
+  #copy-btn.copied { background: var(--accent2); }
+
+  /* tooltip */
+  #tooltip {
+    position: fixed;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: var(--text);
+    pointer-events: none;
+    max-width: 200px;
+    line-height: 1.5;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+</style>
+</head>
+<body>
+
+<div id="tooltip"></div>
+
+<header>
+  <h1>bilan-video</h1>
+  <span>workflow explorer</span>
+  <div class="presets">
+    <button class="preset-btn active" data-preset="full">Full Pipeline</button>
+    <button class="preset-btn" data-preset="content">Content First</button>
+    <button class="preset-btn" data-preset="render">Render Focus</button>
+    <button class="preset-btn" data-preset="platforms">Platforms</button>
+  </div>
+</header>
+
+<main>
+  <aside>
+    <div>
+      <div class="section-label">Pipeline Stages</div>
+      <div class="filter-group" id="stage-filters">
+        <div class="filter-item active" data-stage="content">
+          <div class="dot" style="background:#6ad4f7"></div>
+          <span>1. Content (JSON)</span>
+        </div>
+        <div class="filter-item active" data-stage="script">
+          <div class="dot" style="background:#7c6af7"></div>
+          <span>2. Scripts</span>
+        </div>
+        <div class="filter-item active" data-stage="template">
+          <div class="dot" style="background:#c084fc"></div>
+          <span>3. Templates</span>
+        </div>
+        <div class="filter-item active" data-stage="render">
+          <div class="dot" style="background:#4fc3a1"></div>
+          <span>4. Render Engine</span>
+        </div>
+        <div class="filter-item active" data-stage="output">
+          <div class="dot" style="background:#f7a26a"></div>
+          <span>5. Output Videos</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Selected Node</div>
+      <div class="detail-card" id="detail-panel">
+        <h3>Click any node to inspect</h3>
+        <div style="color: var(--muted); margin-top: 6px;">
+          Hover over nodes for quick info.<br>
+          Click to see commands, file paths, and productivity tips.
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Productivity Flows</div>
+      <div class="filter-group">
+        <div class="filter-item" data-flow="quickrender" style="cursor:pointer">
+          <div class="dot" style="background:#4fc3a1"></div>
+          <span>Quick single render</span>
+        </div>
+        <div class="filter-item" data-flow="batch" style="cursor:pointer">
+          <div class="dot" style="background:#f7a26a"></div>
+          <span>Batch all content</span>
+        </div>
+        <div class="filter-item" data-flow="preview" style="cursor:pointer">
+          <div class="dot" style="background:#7c6af7"></div>
+          <span>Preview & iterate</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="canvas-wrap">
+    <svg id="diagram" viewBox="0 0 860 480" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <!-- Arrow markers -->
+        <marker id="arrow-blue" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#6ad4f7" opacity="0.8"/>
+        </marker>
+        <marker id="arrow-purple" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#7c6af7" opacity="0.8"/>
+        </marker>
+        <marker id="arrow-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#4fc3a1" opacity="0.8"/>
+        </marker>
+        <marker id="arrow-orange" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#f7a26a" opacity="0.8"/>
+        </marker>
+        <marker id="arrow-muted" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#6b7098" opacity="0.6"/>
+        </marker>
+        <!-- glow filter -->
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="glow-strong">
+          <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- ── BACKGROUND LANE LABELS ── -->
+      <text x="14" y="100" font-size="9" fill="#6b7098" font-family="monospace" letter-spacing="1" transform="rotate(-90,14,100)">CONTENT</text>
+      <text x="14" y="210" font-size="9" fill="#6b7098" font-family="monospace" letter-spacing="1" transform="rotate(-90,14,210)">SCRIPTS</text>
+      <text x="14" y="310" font-size="9" fill="#6b7098" font-family="monospace" letter-spacing="1" transform="rotate(-90,14,310)">TEMPLATES</text>
+      <text x="14" y="430" font-size="9" fill="#6b7098" font-family="monospace" letter-spacing="1" transform="rotate(-90,14,430)">OUTPUT</text>
+
+      <!-- ── LANE DIVIDERS ── -->
+      <line x1="30" y1="135" x2="840" y2="135" stroke="#2e3150" stroke-width="1" stroke-dasharray="4,6" opacity="0.5"/>
+      <line x1="30" y1="250" x2="840" y2="250" stroke="#2e3150" stroke-width="1" stroke-dasharray="4,6" opacity="0.5"/>
+      <line x1="30" y1="360" x2="840" y2="360" stroke="#2e3150" stroke-width="1" stroke-dasharray="4,6" opacity="0.5"/>
+
+      <!-- ══════════════════════ CONNECTIONS (draw under nodes) ══════════════════════ -->
+
+      <!-- JSON → multi-platform-generator -->
+      <path d="M 190 88 C 270 88 280 175 360 175" stroke="#6ad4f7" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow-blue)" opacity="0.7"/>
+
+      <!-- JSON → batch-automation -->
+      <path d="M 190 88 C 240 88 240 185 290 185 C 340 185 330 185 440 185" stroke="#6ad4f7" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arrow-blue)" opacity="0.5"/>
+
+      <!-- multi-platform-gen → Remotion -->
+      <path d="M 520 175 C 590 175 600 290 650 290" stroke="#7c6af7" stroke-width="2" fill="none" marker-end="url(#arrow-purple)" opacity="0.8"/>
+
+      <!-- batch-automation → Remotion -->
+      <path d="M 560 188 C 620 188 620 285 650 290" stroke="#7c6af7" stroke-width="1.5" fill="none" stroke-dasharray="6,3" marker-end="url(#arrow-purple)" opacity="0.6"/>
+
+      <!-- npm run dev → Remotion Studio preview -->
+      <path d="M 130 185 C 160 185 160 290 180 290 C 200 290 200 290 250 290" stroke="#c084fc" stroke-width="1.5" fill="none" stroke-dasharray="3,4" marker-end="url(#arrow-muted)" opacity="0.5"/>
+
+      <!-- Templates → Remotion Engine -->
+      <path d="M 140 310 C 200 310 350 310 620 300" stroke="#c084fc" stroke-width="1.5" fill="none" stroke-dasharray="4,4" marker-end="url(#arrow-muted)" opacity="0.4"/>
+      <path d="M 310 310 C 380 310 500 305 620 298" stroke="#c084fc" stroke-width="1.5" fill="none" stroke-dasharray="4,4" marker-end="url(#arrow-muted)" opacity="0.4"/>
+      <path d="M 480 310 C 530 310 580 305 628 295" stroke="#c084fc" stroke-width="1.5" fill="none" stroke-dasharray="4,4" marker-end="url(#arrow-muted)" opacity="0.4"/>
+      <path d="M 640 310 C 660 310 670 305 648 296" stroke="#c084fc" stroke-width="1.5" fill="none" stroke-dasharray="4,4" marker-end="url(#arrow-muted)" opacity="0.4"/>
+
+      <!-- Remotion → Output videos -->
+      <path d="M 700 315 C 700 370 250 400 210 415" stroke="#4fc3a1" stroke-width="2" fill="none" marker-end="url(#arrow-green)" opacity="0.7"/>
+      <path d="M 700 315 C 700 370 430 400 430 415" stroke="#4fc3a1" stroke-width="2" fill="none" marker-end="url(#arrow-green)" opacity="0.7"/>
+      <path d="M 700 315 C 700 370 630 395 660 415" stroke="#4fc3a1" stroke-width="2" fill="none" marker-end="url(#arrow-green)" opacity="0.7"/>
+
+      <!-- ══════════════════════ NODES ══════════════════════ -->
+
+      <!-- ─ CONTENT LAYER ─ -->
+      <!-- JSON Content Files -->
+      <g class="node" data-id="json" data-stage="content"
+         data-label="JSON Content Files"
+         data-file="content/*.json"
+         data-desc="Your content lives here as structured JSON. Each file drives one render cycle. Fields: title, body, tip, platform, template."
+         data-cmd=""
+         data-tip="One JSON file = one batch of renders. Keep content/ clean — never edit rendered outputs."
+         transform="translate(60, 60)">
+        <rect width="140" height="56" rx="8" fill="#0e2233" stroke="#6ad4f7" stroke-width="1.5"/>
+        <rect width="140" height="4" rx="4" fill="#6ad4f7" opacity="0.8"/>
+        <text x="70" y="22" text-anchor="middle" font-size="12" font-weight="600" fill="#6ad4f7" font-family="monospace">content/</text>
+        <text x="70" y="36" text-anchor="middle" font-size="10" fill="#a0c8e0">*.json</text>
+        <text x="70" y="50" text-anchor="middle" font-size="9" fill="#6b7098">structured video data</text>
+      </g>
+
+      <!-- ─ SCRIPTS LAYER ─ -->
+      <!-- npm run dev -->
+      <g class="node" data-id="dev" data-stage="script"
+         data-label="npm run dev"
+         data-file="scripts/ (Remotion Studio)"
+         data-desc="Opens Remotion Studio — the visual preview tool. Use this when iterating on templates, checking animations, or reviewing timing before committing to a full render."
+         data-cmd="npm run dev"
+         data-tip="Use FIRST when developing a template. Hot-reloads on save. Not for production renders."
+         transform="translate(50, 155)">
+        <rect width="120" height="52" rx="8" fill="#1a1230" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="60" y="20" text-anchor="middle" font-size="11" font-weight="600" fill="#c084fc" font-family="monospace">npm run dev</text>
+        <text x="60" y="34" text-anchor="middle" font-size="10" fill="#9a7fc8">Remotion Studio</text>
+        <text x="60" y="47" text-anchor="middle" font-size="9" fill="#6b7098">preview + iterate</text>
+      </g>
+
+      <!-- multi-platform-generator -->
+      <g class="node" data-id="mpg" data-stage="script"
+         data-label="multi-platform-generator"
+         data-file="scripts/multi-platform-generator.mjs"
+         data-desc="The main render script. Reads your JSON content, determines which compositions to render, and dispatches Remotion renders for each platform (TikTok, Instagram, WhatsApp). This is the primary production path."
+         data-cmd="npm run render"
+         data-tip="Primary workflow: edit JSON → npm run render. Handles all platforms in one pass."
+         transform="translate(280, 155)">
+        <rect width="200" height="52" rx="8" fill="#160e2e" stroke="#7c6af7" stroke-width="2"/>
+        <rect width="200" height="4" rx="4" fill="#7c6af7" opacity="0.8"/>
+        <text x="100" y="22" text-anchor="middle" font-size="11" font-weight="600" fill="#a08ef7" font-family="monospace">npm run render</text>
+        <text x="100" y="35" text-anchor="middle" font-size="10" fill="#8070c0">multi-platform-generator</text>
+        <text x="100" y="48" text-anchor="middle" font-size="9" fill="#6b7098">production · all platforms</text>
+      </g>
+
+      <!-- batch-automation -->
+      <g class="node" data-id="batch" data-stage="script"
+         data-label="batch-automation"
+         data-file="scripts/batch-automation.mjs"
+         data-desc="Renders all content files in sequence. Use when you have a queue of content/ JSON files ready and want to render everything in one go overnight or before a posting schedule."
+         data-cmd="npm run render:batch"
+         data-tip="Best for bulk production runs — queue up content then let it render unattended."
+         transform="translate(360, 160)">
+        <!-- offset slightly to show overlap with mpg -->
+        <rect x="120" width="160" height="48" rx="8" fill="#1a1a10" stroke="#f7a26a" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <text x="200" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#f7a26a" font-family="monospace">render:batch</text>
+        <text x="200" y="31" text-anchor="middle" font-size="10" fill="#c08060">batch-automation</text>
+        <text x="200" y="44" text-anchor="middle" font-size="9" fill="#6b7098">queue · overnight runs</text>
+      </g>
+
+      <!-- ─ TEMPLATES LAYER ─ -->
+      <!-- QuickTip -->
+      <g class="node" data-id="quicktip" data-stage="template"
+         data-label="QuickTip"
+         data-file="src/templates/QuickTipVideo.tsx"
+         data-desc="Short-form tip video. 9:16 vertical for TikTok/Reels. Fast-paced, bold typography. Compositions: QuickTip (TikTok), QuickTipWhatsApp, QuickTipInstagram."
+         data-cmd=""
+         data-tip="Most versatile template — works across all 3 platforms with platform-specific comps."
+         transform="translate(50, 278)">
+        <rect width="120" height="52" rx="8" fill="#1e0e40" stroke="#c084fc" stroke-width="1.5"/>
+        <text x="60" y="20" text-anchor="middle" font-size="12" font-weight="600" fill="#c084fc">QuickTip</text>
+        <text x="60" y="34" text-anchor="middle" font-size="9" fill="#9070b8">9:16 · TikTok/IG/WA</text>
+        <text x="60" y="47" text-anchor="middle" font-size="9" fill="#6b7098">QuickTipVideo.tsx</text>
+      </g>
+
+      <!-- Educational -->
+      <g class="node" data-id="edu" data-stage="template"
+         data-label="EducationalVideo"
+         data-file="src/templates/EducationalVideo.tsx"
+         data-desc="Deep-dive educational content. Multiple sections, step-by-step layout. EducationalTwitter (16:9) and EducationalLandscape compositions."
+         data-cmd=""
+         data-tip="Use for electrolyte science explanations, mechanism of action, research summaries."
+         transform="translate(220, 278)">
+        <rect width="130" height="52" rx="8" fill="#1e0e40" stroke="#c084fc" stroke-width="1.5"/>
+        <text x="65" y="20" text-anchor="middle" font-size="11" font-weight="600" fill="#c084fc">Educational</text>
+        <text x="65" y="34" text-anchor="middle" font-size="9" fill="#9070b8">16:9 · Twitter/Landscape</text>
+        <text x="65" y="47" text-anchor="middle" font-size="9" fill="#6b7098">EducationalVideo.tsx</text>
+      </g>
+
+      <!-- Mythbusting -->
+      <g class="node" data-id="myth" data-stage="template"
+         data-label="MythbustingVideo"
+         data-file="src/templates/MythbustingVideo.tsx"
+         data-desc="Myth vs fact format. Bold contrast layout showing what's wrong vs what's true. MasterMythbusting composition. High engagement format for debunking common myths."
+         data-cmd=""
+         data-tip="Best for debunking electrolyte myths — high virality potential."
+         transform="translate(400, 278)">
+        <rect width="130" height="52" rx="8" fill="#1e0e40" stroke="#c084fc" stroke-width="1.5"/>
+        <text x="65" y="20" text-anchor="middle" font-size="11" font-weight="600" fill="#c084fc">Mythbusting</text>
+        <text x="65" y="34" text-anchor="middle" font-size="9" fill="#9070b8">9:16 · TikTok/IG</text>
+        <text x="65" y="47" text-anchor="middle" font-size="9" fill="#6b7098">MythbustingVideo.tsx</text>
+      </g>
+
+      <!-- Trending -->
+      <g class="node" data-id="trend" data-stage="template"
+         data-label="TrendingVideo"
+         data-file="src/templates/TrendingVideo.tsx"
+         data-desc="Trend-jacking template. Hooks into current social trends. MasterTrending composition. Fast cuts, meme-aware layout."
+         data-cmd=""
+         data-tip="Use when jumping on a trend — fast to produce, high reach potential."
+         transform="translate(580, 278)">
+        <rect width="120" height="52" rx="8" fill="#1e0e40" stroke="#c084fc" stroke-width="1.5"/>
+        <text x="60" y="20" text-anchor="middle" font-size="11" font-weight="600" fill="#c084fc">Trending</text>
+        <text x="60" y="34" text-anchor="middle" font-size="9" fill="#9070b8">9:16 · TikTok</text>
+        <text x="60" y="47" text-anchor="middle" font-size="9" fill="#6b7098">TrendingVideo.tsx</text>
+      </g>
+
+      <!-- ─ RENDER ENGINE ─ -->
+      <!-- Remotion Engine -->
+      <g class="node" data-id="remotion" data-stage="render"
+         data-label="Remotion Render Engine"
+         data-file="src/Root.tsx (10 compositions)"
+         data-desc="Remotion renders React components to MP4. 10 compositions registered: QuickTip, QuickTipWhatsApp, QuickTipInstagram, EducationalTwitter, MasterQuickTip, MasterMythbusting, MasterEducational, MasterTrending, PreviewBrandIntroPerfected, PreviewBrandOutroPerfected."
+         data-cmd="npx remotion render"
+         data-tip="Remotion compiles React → video frames → MP4 via ffmpeg. GPU helps but CPU works fine."
+         transform="translate(580, 260)">
+        <rect width="185" height="60" rx="8" fill="#0e2620" stroke="#4fc3a1" stroke-width="2"/>
+        <rect width="185" height="4" rx="4" fill="#4fc3a1" opacity="0.9"/>
+        <text x="92" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#4fc3a1">Remotion</text>
+        <text x="92" y="36" text-anchor="middle" font-size="10" fill="#60c0a0">React → MP4</text>
+        <text x="92" y="50" text-anchor="middle" font-size="9" fill="#6b7098">10 compositions · src/Root.tsx</text>
+      </g>
+
+      <!-- ─ OUTPUT LAYER ─ -->
+      <!-- TikTok/9:16 -->
+      <g class="node" data-id="tiktok" data-stage="output"
+         data-label="TikTok Output"
+         data-file="out/tiktok/*.mp4"
+         data-desc="9:16 vertical videos (1080×1920) for TikTok and Instagram Reels. Rendered by QuickTip, Mythbusting, Trending compositions."
+         data-cmd=""
+         data-tip="9:16 is the most important format — highest reach on TikTok."
+         transform="translate(100, 408)">
+        <rect width="120" height="46" rx="8" fill="#1a0e0a" stroke="#f76a8a" stroke-width="1.5"/>
+        <text x="60" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#f76a8a">TikTok</text>
+        <text x="60" y="31" text-anchor="middle" font-size="9" fill="#c06070">1080×1920 · 9:16</text>
+        <text x="60" y="43" text-anchor="middle" font-size="9" fill="#6b7098">out/tiktok/</text>
+      </g>
+
+      <!-- Instagram/Square -->
+      <g class="node" data-id="instagram" data-stage="output"
+         data-label="Instagram Output"
+         data-file="out/instagram/*.mp4"
+         data-desc="Square (1:1) and Stories (9:16) for Instagram. QuickTipSquare comp handles the 1:1 format."
+         data-cmd=""
+         data-tip="Square format still wins for feed posts — higher visible area than landscape."
+         transform="translate(340, 408)">
+        <rect width="130" height="46" rx="8" fill="#1a0e0a" stroke="#e1306c" stroke-width="1.5"/>
+        <text x="65" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#e1306c">Instagram</text>
+        <text x="65" y="31" text-anchor="middle" font-size="9" fill="#c06080">1:1 + 9:16</text>
+        <text x="65" y="43" text-anchor="middle" font-size="9" fill="#6b7098">out/instagram/</text>
+      </g>
+
+      <!-- WhatsApp/Landscape -->
+      <g class="node" data-id="whatsapp" data-stage="output"
+         data-label="WhatsApp Output"
+         data-file="out/whatsapp/*.mp4"
+         data-desc="Landscape 16:9 and WhatsApp-optimized vertical formats. EducationalLandscape and QuickTipWhatsApp compositions."
+         data-cmd=""
+         data-tip="WhatsApp shares happen in groups — landscape works well for forwarded content."
+         transform="translate(580, 408)">
+        <rect width="130" height="46" rx="8" fill="#0a1a10" stroke="#4fc3a1" stroke-width="1.5"/>
+        <text x="65" y="18" text-anchor="middle" font-size="11" font-weight="600" fill="#4fc3a1">WhatsApp</text>
+        <text x="65" y="31" text-anchor="middle" font-size="9" fill="#40a080">16:9 + 9:16</text>
+        <text x="65" y="43" text-anchor="middle" font-size="9" fill="#6b7098">out/whatsapp/</text>
+      </g>
+
+      <!-- ── STEP LABELS ── -->
+      <text x="50" y="460" font-size="9" fill="#6b7098" font-family="monospace">① Write JSON</text>
+      <text x="200" y="460" font-size="9" fill="#6b7098" font-family="monospace">② npm run render</text>
+      <text x="400" y="460" font-size="9" fill="#6b7098" font-family="monospace">③ Remotion compiles</text>
+      <text x="620" y="460" font-size="9" fill="#6b7098" font-family="monospace">④ MP4 ready</text>
+
+    </svg>
+  </div>
+</main>
+
+<footer>
+  <div class="prompt-box" id="prompt-output">
+    I'm working in the <strong>bilan-video</strong> Remotion pipeline. Click a node to generate a focused task prompt.
+  </div>
+  <button id="copy-btn">Copy Prompt</button>
+</footer>
+
+<script>
+// ──────────────────────────────────────────────
+// STATE
+// ──────────────────────────────────────────────
+const state = {
+  preset: 'full',
+  visibleStages: new Set(['content','script','template','render','output']),
+  selectedNode: null,
+  activeFlow: null,
+};
+
+const NODE_DATA = {
+  json: {
+    label: 'JSON Content Files',
+    file: 'content/*.json',
+    desc: 'Your content lives here as structured JSON. Each file drives one render cycle. Fields: title, body, tip, platform, template.',
+    cmd: null,
+    tip: 'One JSON file = one batch of renders. Keep content/ clean — never edit rendered outputs.',
+    tags: [],
+  },
+  dev: {
+    label: 'npm run dev',
+    file: 'Remotion Studio preview',
+    desc: 'Opens Remotion Studio — the visual preview tool. Use when iterating on templates, checking animations, or reviewing timing before a full render.',
+    cmd: 'npm run dev',
+    tip: 'Use FIRST when developing a template. Hot-reloads on save. Not for production renders.',
+    tags: [],
+  },
+  mpg: {
+    label: 'multi-platform-generator',
+    file: 'scripts/multi-platform-generator.mjs',
+    desc: 'The main render script. Reads JSON content, determines which compositions to render, dispatches Remotion renders for each platform.',
+    cmd: 'npm run render',
+    tip: 'Primary workflow: edit JSON → npm run render. Handles all platforms in one pass.',
+    tags: [],
+  },
+  batch: {
+    label: 'batch-automation',
+    file: 'scripts/batch-automation.mjs',
+    desc: 'Renders all content files in sequence. Use when you have a queue of JSON files and want to render everything in one go.',
+    cmd: 'npm run render:batch',
+    tip: 'Best for bulk production runs — queue up content then let it render unattended.',
+    tags: [],
+  },
+  quicktip: {
+    label: 'QuickTipVideo',
+    file: 'src/templates/QuickTipVideo.tsx',
+    desc: 'Short-form tip video. 9:16 vertical. Bold typography. Comps: QuickTip, QuickTipWhatsApp, QuickTipInstagram.',
+    cmd: null,
+    tip: 'Most versatile template — works across all 3 platforms with dedicated compositions.',
+    tags: ['tiktok','insta','whatsapp'],
+  },
+  edu: {
+    label: 'EducationalVideo',
+    file: 'src/templates/EducationalVideo.tsx',
+    desc: 'Deep-dive educational content. Multiple sections, step-by-step layout. Comps: EducationalTwitter (16:9), EducationalLandscape.',
+    cmd: null,
+    tip: 'Use for electrolyte science, mechanism of action, research summaries.',
+    tags: ['landscape'],
+  },
+  myth: {
+    label: 'MythbustingVideo',
+    file: 'src/templates/MythbustingVideo.tsx',
+    desc: 'Myth vs fact format. Bold contrast layout. MasterMythbusting composition. High engagement for debunking.',
+    cmd: null,
+    tip: 'Best for debunking electrolyte myths — high virality potential.',
+    tags: ['tiktok','insta'],
+  },
+  trend: {
+    label: 'TrendingVideo',
+    file: 'src/templates/TrendingVideo.tsx',
+    desc: 'Trend-jacking template. Hooks into current social trends. MasterTrending composition. Fast cuts, meme-aware layout.',
+    cmd: null,
+    tip: 'Use when jumping on a trend — fast to produce, high reach potential.',
+    tags: ['tiktok'],
+  },
+  remotion: {
+    label: 'Remotion Engine',
+    file: 'src/Root.tsx (10 compositions)',
+    desc: 'Remotion renders React components to MP4. 10 compositions: QuickTip, QuickTipWhatsApp, QuickTipInstagram, EducationalTwitter, MasterQuickTip, MasterMythbusting, MasterEducational, MasterTrending, PreviewBrandIntroPerfected, PreviewBrandOutroPerfected.',
+    cmd: null,
+    tip: 'All compositions are registered in src/Root.tsx. Remotion compiles React → video frames → MP4 via ffmpeg.',
+    tags: [],
+  },
+  tiktok: {
+    label: 'TikTok Output',
+    file: 'out/tiktok/*.mp4',
+    desc: '9:16 vertical videos (1080×1920) for TikTok and Instagram Reels. Rendered by QuickTip, Mythbusting, Trending compositions.',
+    cmd: null,
+    tip: '9:16 is the highest-reach format — prioritize this for new content.',
+    tags: ['tiktok'],
+  },
+  instagram: {
+    label: 'Instagram Output',
+    file: 'out/instagram/*.mp4',
+    desc: 'Square (1:1) and Stories (9:16) for Instagram. QuickTipSquare comp handles the 1:1 format.',
+    cmd: null,
+    tip: 'Square format wins for feed posts — more visible area than landscape.',
+    tags: ['insta','square'],
+  },
+  whatsapp: {
+    label: 'WhatsApp Output',
+    file: 'out/whatsapp/*.mp4',
+    desc: 'Landscape 16:9 and WhatsApp-optimized vertical formats. EducationalLandscape and QuickTipWhatsApp compositions.',
+    cmd: null,
+    tip: 'WhatsApp shares in groups — landscape works well for forwarded content.',
+    tags: ['whatsapp','landscape'],
+  },
+};
+
+const FLOWS = {
+  quickrender: {
+    label: 'Quick Single Render',
+    prompt: `I need to do a quick single render in bilan-video.
+Workflow: edit content/*.json → run "npm run render" → check out/[platform]/*.mp4.
+The multi-platform-generator.mjs handles platform routing automatically.
+Help me render a single piece of content for one specific platform.`,
+  },
+  batch: {
+    label: 'Batch All Content',
+    prompt: `I want to batch-render all pending content in bilan-video.
+Workflow: verify all JSON files in content/ are ready → run "npm run render:batch" → monitor progress.
+batch-automation.mjs processes them sequentially.
+Help me set up a batch render run for all content files.`,
+  },
+  preview: {
+    label: 'Preview & Iterate',
+    prompt: `I'm iterating on a template in bilan-video and need the preview workflow.
+Workflow: run "npm run dev" → open Remotion Studio → select composition → adjust template code → hot-reload.
+Key templates are in src/templates/. Compositions registered in src/Root.tsx.
+Help me iterate on a specific template using the Studio preview.`,
+  },
+};
+
+const PRESETS = {
+  full: {
+    stages: ['content','script','template','render','output'],
+    selected: null,
+    desc: 'Full pipeline view',
+  },
+  content: {
+    stages: ['content','script'],
+    selected: 'json',
+    desc: 'Content creation focus',
+  },
+  render: {
+    stages: ['script','render','output'],
+    selected: 'mpg',
+    desc: 'Render workflow focus',
+  },
+  platforms: {
+    stages: ['template','render','output'],
+    selected: 'remotion',
+    desc: 'Platform output focus',
+  },
+};
+
+// ──────────────────────────────────────────────
+// DOM REFS
+// ──────────────────────────────────────────────
+const nodes = document.querySelectorAll('.node');
+const stageFilters = document.querySelectorAll('#stage-filters .filter-item');
+const detailPanel = document.getElementById('detail-panel');
+const promptOutput = document.getElementById('prompt-output');
+const copyBtn = document.getElementById('copy-btn');
+const tooltip = document.getElementById('tooltip');
+
+// ──────────────────────────────────────────────
+// RENDER
+// ──────────────────────────────────────────────
+function renderAll() {
+  renderNodes();
+  renderStageFilters();
+  renderDetail();
+  renderPrompt();
+}
+
+function renderNodes() {
+  nodes.forEach(node => {
+    const stage = node.dataset.stage;
+    const id = node.dataset.id;
+    const visible = state.visibleStages.has(stage);
+    const selected = state.selectedNode === id;
+
+    node.style.opacity = visible ? '1' : '0.15';
+    node.style.pointerEvents = visible ? 'auto' : 'none';
+
+    // highlight selected
+    const rect = node.querySelector('rect:first-child');
+    if (rect) {
+      if (selected) {
+        rect.setAttribute('filter', 'url(#glow-strong)');
+        rect.style.strokeWidth = '2.5';
+      } else {
+        rect.removeAttribute('filter');
+        rect.style.strokeWidth = '';
+      }
+    }
+  });
+}
+
+function renderStageFilters() {
+  stageFilters.forEach(item => {
+    const stage = item.dataset.stage;
+    item.classList.toggle('active', state.visibleStages.has(stage));
+  });
+}
+
+function renderDetail() {
+  const id = state.selectedNode;
+  if (!id) {
+    detailPanel.innerHTML = `<h3>Click any node to inspect</h3>
+      <div style="color: var(--muted); margin-top: 6px;">
+        Hover over nodes for quick info.<br>
+        Click to see commands, file paths, and productivity tips.
+      </div>`;
+    return;
+  }
+  const d = NODE_DATA[id];
+  if (!d) return;
+
+  const tagMap = {
+    tiktok: ['tag-tiktok','TikTok'],
+    insta: ['tag-insta','Instagram'],
+    whatsapp: ['tag-whatsapp','WhatsApp'],
+    square: ['tag-square','1:1'],
+    landscape: ['tag-landscape','16:9'],
+  };
+  const tagsHtml = d.tags.map(t => {
+    const [cls, label] = tagMap[t] || ['',''];
+    return `<span class="tag ${cls}">${label}</span>`;
+  }).join('');
+
+  detailPanel.innerHTML = `
+    <h3>${d.label}</h3>
+    <div style="font-family: monospace; font-size: 10px; color: var(--muted); margin-bottom: 8px;">${d.file}</div>
+    ${tagsHtml ? `<div style="margin-bottom: 8px;">${tagsHtml}</div>` : ''}
+    <div style="color: var(--text); margin-bottom: 8px; font-size: 11px;">${d.desc}</div>
+    ${d.cmd ? `<div class="cmd">$ ${d.cmd}</div>` : ''}
+    ${d.tip ? `<div class="tip">${d.tip}</div>` : ''}
+  `;
+}
+
+function renderPrompt() {
+  // If a flow is active, use flow prompt
+  if (state.activeFlow) {
+    const flow = FLOWS[state.activeFlow];
+    promptOutput.textContent = flow.prompt;
+    return;
+  }
+
+  const id = state.selectedNode;
+  if (!id) {
+    promptOutput.textContent = 'Select a node or flow above to generate a focused task prompt.';
+    return;
+  }
+
+  const d = NODE_DATA[id];
+  const visibleStages = [...state.visibleStages].join(', ');
+  const parts = [];
+
+  parts.push(`I'm working in the bilan-video Remotion pipeline, focusing on "${d.label}" (${d.file}).`);
+
+  if (d.cmd) {
+    parts.push(`The relevant command is: ${d.cmd}`);
+  }
+
+  parts.push(d.desc);
+
+  if (d.tip) {
+    parts.push(`Context: ${d.tip}`);
+  }
+
+  parts.push(`Currently viewing stages: ${visibleStages}. How should I work with this part of the pipeline?`);
+
+  promptOutput.textContent = parts.join('\n\n');
+}
+
+// ──────────────────────────────────────────────
+// EVENTS
+// ──────────────────────────────────────────────
+nodes.forEach(node => {
+  node.style.cursor = 'pointer';
+  node.style.transition = 'opacity 0.2s';
+
+  node.addEventListener('click', () => {
+    state.selectedNode = state.selectedNode === node.dataset.id ? null : node.dataset.id;
+    state.activeFlow = null;
+    // deactivate flow items
+    document.querySelectorAll('[data-flow]').forEach(el => el.classList.remove('active'));
+    renderAll();
+  });
+
+  node.addEventListener('mouseenter', (e) => {
+    const d = NODE_DATA[node.dataset.id];
+    if (!d) return;
+    tooltip.innerHTML = `<strong>${d.label}</strong><br><span style="font-family:monospace;font-size:10px;color:var(--muted)">${d.file}</span>`;
+    tooltip.style.opacity = '1';
+    positionTooltip(e);
+  });
+
+  node.addEventListener('mousemove', positionTooltip);
+
+  node.addEventListener('mouseleave', () => {
+    tooltip.style.opacity = '0';
+  });
+});
+
+function positionTooltip(e) {
+  const x = e.clientX + 14;
+  const y = e.clientY + 14;
+  tooltip.style.left = x + 'px';
+  tooltip.style.top = y + 'px';
+}
+
+// Stage filters
+stageFilters.forEach(item => {
+  item.addEventListener('click', () => {
+    const stage = item.dataset.stage;
+    if (state.visibleStages.has(stage)) {
+      if (state.visibleStages.size > 1) {
+        state.visibleStages.delete(stage);
+      }
+    } else {
+      state.visibleStages.add(stage);
+    }
+    state.preset = 'custom';
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    renderAll();
+  });
+});
+
+// Presets
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const p = btn.dataset.preset;
+    const preset = PRESETS[p];
+    state.preset = p;
+    state.visibleStages = new Set(preset.stages);
+    state.selectedNode = preset.selected;
+    state.activeFlow = null;
+    document.querySelectorAll('[data-flow]').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderAll();
+  });
+});
+
+// Flow items
+document.querySelectorAll('[data-flow]').forEach(item => {
+  item.addEventListener('click', () => {
+    const flow = item.dataset.flow;
+    state.activeFlow = state.activeFlow === flow ? null : flow;
+    state.selectedNode = null;
+    document.querySelectorAll('[data-flow]').forEach(el => el.classList.remove('active'));
+    if (state.activeFlow) {
+      item.classList.add('active');
+      // show all stages
+      state.visibleStages = new Set(['content','script','template','render','output']);
+    }
+    renderAll();
+  });
+});
+
+// Copy button
+copyBtn.addEventListener('click', () => {
+  const text = promptOutput.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    copyBtn.textContent = 'Copied!';
+    copyBtn.classList.add('copied');
+    setTimeout(() => {
+      copyBtn.textContent = 'Copy Prompt';
+      copyBtn.classList.remove('copied');
+    }, 1500);
+  });
+});
+
+// ──────────────────────────────────────────────
+// INIT
+// ──────────────────────────────────────────────
+renderAll();
+</script>
+</body>
+</html>
