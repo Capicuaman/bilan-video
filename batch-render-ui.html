@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bilan · Batch Render Control</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1117;
+    --bg2: #181c27;
+    --bg3: #1e2335;
+    --bg4: #242840;
+    --border: #2a3050;
+    --accent: #22c55e;
+    --accent2: #3b82f6;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --text3: #64748b;
+    --warn: #f59e0b;
+    --error: #ef4444;
+    --tiktok: #ff0050;
+    --instagram: #e1306c;
+    --whatsapp: #25d366;
+    --twitter: #1d9bf0;
+    --radius: 8px;
+    --font: system-ui, -apple-system, sans-serif;
+    --font-mono: 'Cascadia Code', 'Fira Code', monospace;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 13px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    gap: 16px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; }
+  .logo-dot { width: 24px; height: 24px; background: var(--accent); border-radius: 50%; }
+  .logo-name { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; }
+  .logo-sub { font-size: 11px; color: var(--text3); margin-top: 1px; }
+  .header-stats { display: flex; gap: 24px; }
+  .stat { text-align: center; }
+  .stat-val { font-size: 18px; font-weight: 700; color: var(--accent); line-height: 1; }
+  .stat-lbl { font-size: 10px; color: var(--text3); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Main layout */
+  .main { display: flex; flex: 1; overflow: hidden; }
+
+  /* Left: Queue */
+  .queue-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-right: 1px solid var(--border);
+  }
+
+  .panel-header {
+    padding: 10px 16px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .panel-title { font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text2); }
+
+  .search-input {
+    flex: 1;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    padding: 5px 10px;
+    font-size: 12px;
+    font-family: var(--font);
+    outline: none;
+  }
+  .search-input:focus { border-color: var(--accent2); }
+
+  .filter-btn {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text2);
+    padding: 5px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .filter-btn.active { background: var(--bg4); border-color: var(--accent2); color: var(--accent2); }
+
+  .queue-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .queue-list::-webkit-scrollbar { width: 4px; }
+  .queue-list::-webkit-scrollbar-track { background: transparent; }
+  .queue-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* Content card */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 10px;
+    align-items: start;
+    cursor: default;
+    transition: border-color 0.15s;
+  }
+  .card:hover { border-color: #3a4060; }
+  .card.dimmed { opacity: 0.4; }
+
+  .card-rank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .rank-num { font-size: 11px; font-weight: 700; color: var(--text3); }
+  .score-ring {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .score-high { background: rgba(34,197,94,0.15); color: #22c55e; border: 1.5px solid #22c55e; }
+  .score-mid  { background: rgba(245,158,11,0.15); color: #f59e0b; border: 1.5px solid #f59e0b; }
+  .score-low  { background: rgba(100,116,139,0.15); color: #64748b; border: 1.5px solid #64748b; }
+
+  .card-body { min-width: 0; }
+  .card-top { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
+  .card-id { font-size: 10px; font-family: var(--font-mono); color: var(--text3); }
+  .type-badge {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+  .type-product  { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .type-quicktip { background: rgba(34,197,94,0.2); color: #4ade80; }
+  .type-fact     { background: rgba(168,85,247,0.2); color: #c084fc; }
+
+  .card-title { font-weight: 600; font-size: 12px; color: var(--text); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card-tip { font-size: 11px; color: var(--text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .card-platforms { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+  .platform-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .platform-toggle .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .platform-toggle .lbl { font-size: 10px; font-weight: 600; }
+
+  .pt-tiktok    { background: rgba(255,0,80,0.1);   border-color: rgba(255,0,80,0.3);   color: #ff6090; }
+  .pt-instagram { background: rgba(225,48,108,0.1); border-color: rgba(225,48,108,0.3); color: #f06090; }
+  .pt-twitter   { background: rgba(29,155,240,0.1); border-color: rgba(29,155,240,0.3); color: #60b4f0; }
+  .pt-whatsapp  { background: rgba(37,211,102,0.1); border-color: rgba(37,211,102,0.3); color: #40d070; }
+
+  .pt-tiktok    .dot { background: #ff0050; }
+  .pt-instagram .dot { background: #e1306c; }
+  .pt-twitter   .dot { background: #1d9bf0; }
+  .pt-whatsapp  .dot { background: #25d366; }
+
+  .platform-toggle.off { background: var(--bg3); border-color: var(--border); color: var(--text3); opacity: 0.45; }
+  .platform-toggle.off .dot { background: var(--text3); }
+
+  /* Load zone */
+  #load-zone {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 40px;
+    text-align: center;
+  }
+  .load-icon { font-size: 48px; opacity: 0.4; }
+  .load-title { font-size: 16px; font-weight: 600; }
+  .load-sub { color: var(--text3); max-width: 320px; line-height: 1.5; }
+  .load-btn {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: var(--radius);
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .load-btn:hover { opacity: 0.9; }
+
+  /* Right panel */
+  .controls-panel {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+  .controls-panel::-webkit-scrollbar { width: 4px; }
+  .controls-panel::-webkit-scrollbar-thumb { background: var(--border); }
+
+  .section {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text3);
+    margin-bottom: 12px;
+  }
+
+  /* Platform quota controls */
+  .quota-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .quota-platform {
+    width: 80px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .quota-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .qd-tiktok    { background: #ff0050; }
+  .qd-instagram { background: #e1306c; }
+  .qd-twitter   { background: #1d9bf0; }
+  .qd-whatsapp  { background: #25d366; }
+
+  .quota-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border);
+    outline: none;
+    cursor: pointer;
+  }
+  .quota-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--accent2);
+    cursor: pointer;
+    border: 2px solid var(--bg);
+  }
+  .quota-val {
+    width: 28px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent2);
+    font-family: var(--font-mono);
+  }
+
+  /* Queue summary */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .summary-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 10px;
+  }
+  .summary-card-val { font-size: 20px; font-weight: 700; color: var(--text); line-height: 1; }
+  .summary-card-lbl { font-size: 10px; color: var(--text3); margin-top: 3px; }
+
+  .platform-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .pb-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+  }
+  .pb-platform { width: 72px; font-weight: 600; }
+  .pb-bar-wrap { flex: 1; background: var(--border); border-radius: 2px; height: 4px; }
+  .pb-bar { height: 4px; border-radius: 2px; transition: width 0.3s; }
+  .pb-bar-tiktok    { background: #ff0050; }
+  .pb-bar-instagram { background: #e1306c; }
+  .pb-bar-twitter   { background: #1d9bf0; }
+  .pb-bar-whatsapp  { background: #25d366; }
+  .pb-count { width: 20px; text-align: right; font-weight: 700; color: var(--text2); font-family: var(--font-mono); }
+
+  /* Render order preview */
+  .render-order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ro-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 8px;
+    background: var(--bg3);
+    border-radius: var(--radius);
+    font-size: 11px;
+  }
+  .ro-num { width: 16px; font-weight: 700; color: var(--text3); font-family: var(--font-mono); text-align: right; }
+  .ro-title { flex: 1; color: var(--text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ro-platforms { display: flex; gap: 3px; }
+  .ro-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+  /* Sort controls */
+  .sort-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .sort-btn {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text2);
+    padding: 4px 8px;
+    font-size: 10px;
+    cursor: pointer;
+    font-family: var(--font);
+  }
+  .sort-btn.active { background: var(--bg4); border-color: var(--accent2); color: var(--accent2); }
+
+  /* Action buttons */
+  .action-section { padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .action-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: var(--radius);
+    border: none;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: opacity 0.15s;
+  }
+  .action-btn:hover { opacity: 0.88; }
+  .btn-primary { background: var(--accent); color: #000; }
+  .btn-secondary { background: var(--bg3); color: var(--text2); border: 1px solid var(--border); }
+  .btn-command {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text3);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 8px 10px;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .btn-command:hover { border-color: var(--accent2); color: var(--text); }
+  .copy-lbl { font-size: 9px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.4px; flex-shrink: 0; }
+
+  /* Toast */
+  #toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(60px);
+    background: var(--bg4);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    font-weight: 600;
+    pointer-events: none;
+    transition: transform 0.2s;
+    z-index: 9999;
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Empty state */
+  .empty { text-align: center; padding: 40px 20px; color: var(--text3); }
+
+  /* Supabase connection status badge */
+  .sb-badge {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    white-space: nowrap;
+  }
+  .sb-badge:hover { border-color: #3ecf8e; }
+  .sb-badge .sb-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text3); flex-shrink: 0; }
+  .sb-badge.connected { border-color: rgba(62,207,142,0.4); color: #3ecf8e; }
+  .sb-badge.connected .sb-dot { background: #3ecf8e; box-shadow: 0 0 6px #3ecf8e; }
+  .sb-badge.connecting .sb-dot { background: var(--warn); animation: pulse 1s infinite; }
+  .sb-badge.error { border-color: rgba(239,68,68,0.4); color: var(--error); }
+  .sb-badge.error .sb-dot { background: var(--error); }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* Supabase drawer */
+  #sb-drawer {
+    position: fixed;
+    top: 0; right: -380px;
+    width: 380px;
+    height: 100vh;
+    background: var(--bg2);
+    border-left: 1px solid var(--border);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.25s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: -8px 0 32px rgba(0,0,0,0.4);
+  }
+  #sb-drawer.open { right: 0; }
+  .sb-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .sb-drawer-title { font-weight: 700; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+  .sb-logo { color: #3ecf8e; font-size: 16px; }
+  .sb-close { background: none; border: none; color: var(--text3); cursor: pointer; font-size: 18px; padding: 2px 6px; border-radius: 4px; }
+  .sb-close:hover { background: var(--bg3); color: var(--text); }
+
+  .sb-body { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+  .sb-body::-webkit-scrollbar { width: 4px; }
+  .sb-body::-webkit-scrollbar-thumb { background: var(--border); }
+
+  .sb-field { display: flex; flex-direction: column; gap: 5px; }
+  .sb-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text3); }
+  .sb-input {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    padding: 8px 10px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    outline: none;
+    width: 100%;
+  }
+  .sb-input:focus { border-color: #3ecf8e; }
+  .sb-input::placeholder { color: var(--text3); }
+
+  .sb-hint { font-size: 10px; color: var(--text3); line-height: 1.4; }
+
+  .sb-connect-btn {
+    width: 100%;
+    padding: 10px;
+    background: #3ecf8e;
+    color: #000;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font);
+    transition: opacity 0.15s;
+  }
+  .sb-connect-btn:hover { opacity: 0.88; }
+  .sb-connect-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+  .sb-status-box {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    font-size: 11px;
+    color: var(--text2);
+    line-height: 1.5;
+    display: none;
+  }
+  .sb-status-box.visible { display: block; }
+  .sb-status-box.ok  { border-color: rgba(62,207,142,0.4); color: #3ecf8e; }
+  .sb-status-box.err { border-color: rgba(239,68,68,0.4);  color: var(--error); }
+
+  .sb-section-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text3);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sb-table-list { display: flex; flex-direction: column; gap: 4px; }
+  .sb-table-btn {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text2);
+    padding: 7px 10px;
+    font-size: 11px;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--font-mono);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sb-table-btn:hover { border-color: #3ecf8e; color: #3ecf8e; }
+  .sb-table-count { font-size: 10px; color: var(--text3); }
+
+  .sb-fetch-btn {
+    width: 100%;
+    padding: 10px;
+    background: var(--bg4);
+    color: #3ecf8e;
+    border: 1px solid rgba(62,207,142,0.4);
+    border-radius: var(--radius);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: var(--font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.15s;
+  }
+  .sb-fetch-btn:hover { background: rgba(62,207,142,0.1); }
+  .sb-fetch-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .sb-push-btn {
+    width: 100%;
+    padding: 8px;
+    background: var(--bg3);
+    color: var(--text2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.15s;
+  }
+  .sb-push-btn:hover { border-color: #3ecf8e; color: #3ecf8e; }
+  .sb-push-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* Overlay */
+  #sb-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 199;
+  }
+  #sb-overlay.visible { display: block; }
+
+  /* Supabase load option in load zone */
+  .load-divider { display: flex; align-items: center; gap: 12px; color: var(--text3); font-size: 11px; width: 100%; max-width: 320px; }
+  .load-divider::before, .load-divider::after { content:''; flex:1; height:1px; background: var(--border); }
+  .load-btn-sb {
+    background: rgba(62,207,142,0.1);
+    color: #3ecf8e;
+    border: 1px solid rgba(62,207,142,0.4);
+    border-radius: var(--radius);
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font);
+    transition: all 0.15s;
+  }
+  .load-btn-sb:hover { background: rgba(62,207,142,0.2); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    <div>
+      <div class="logo-name">bilan</div>
+      <div class="logo-sub">Batch Render Control</div>
+    </div>
+  </div>
+  <div class="header-stats">
+    <div class="stat"><div class="stat-val" id="h-total">—</div><div class="stat-lbl">Total Renders</div></div>
+    <div class="stat"><div class="stat-val" id="h-content">—</div><div class="stat-lbl">Content Items</div></div>
+    <div class="stat"><div class="stat-val" id="h-time">—</div><div class="stat-lbl">Est. Time</div></div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:center;">
+    <button class="sb-badge" id="sb-badge" onclick="toggleDrawer()" title="Supabase connection">
+      <span class="sb-dot"></span>
+      <span id="sb-badge-label">Supabase</span>
+    </button>
+    <label for="folder-input" class="load-btn" style="padding:7px 14px;font-size:11px;">
+      📂 Load content/ready/
+    </label>
+    <input type="file" id="folder-input" webkitdirectory multiple accept=".json" style="display:none">
+  </div>
+</header>
+
+<!-- Supabase overlay -->
+<div id="sb-overlay" onclick="toggleDrawer()"></div>
+
+<!-- Supabase drawer -->
+<div id="sb-drawer">
+  <div class="sb-drawer-header">
+    <div class="sb-drawer-title">
+      <span class="sb-logo">⚡</span> Supabase Connection
+    </div>
+    <button class="sb-close" onclick="toggleDrawer()">✕</button>
+  </div>
+  <div class="sb-body">
+
+    <!-- Credentials -->
+    <div>
+      <div class="sb-section-title" style="margin-bottom:12px;">Credentials</div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="sb-field">
+          <label class="sb-label">Project URL</label>
+          <input class="sb-input" id="sb-url" placeholder="https://xxxx.supabase.co" autocomplete="off">
+        </div>
+        <div class="sb-field">
+          <label class="sb-label">Anon / Public Key</label>
+          <input class="sb-input" id="sb-key" type="password" placeholder="eyJhbGci..." autocomplete="off">
+          <div class="sb-hint">Your anon key is safe — read-only by default in Supabase RLS.</div>
+        </div>
+        <button class="sb-connect-btn" id="sb-connect-btn" onclick="connectSupabase()">Connect</button>
+        <div class="sb-status-box" id="sb-status"></div>
+      </div>
+    </div>
+
+    <!-- Tables (shown after connect) -->
+    <div id="sb-tables-section" style="display:none">
+      <div class="sb-section-title" style="margin-bottom:12px;">Content Table</div>
+      <div class="sb-field" style="margin-bottom:10px;">
+        <label class="sb-label">Table name</label>
+        <input class="sb-input" id="sb-table" placeholder="content" value="content">
+        <div class="sb-hint">Table must have a <code style="color:#3ecf8e">content</code> JSONB column or flat columns (content_id, type, title, tip…).</div>
+      </div>
+      <button class="sb-fetch-btn" id="sb-fetch-btn" onclick="fetchFromSupabase()">
+        ⬇ Fetch Content from Supabase
+      </button>
+    </div>
+
+    <!-- Push queue (shown after content loaded) -->
+    <div id="sb-push-section" style="display:none">
+      <div class="sb-section-title" style="margin-bottom:12px;">Push Render Queue</div>
+      <div class="sb-hint" style="margin-bottom:10px;">Save current batch config to a <code style="color:#3ecf8e">render_queue</code> table in Supabase for tracking or triggering automated renders.</div>
+      <div class="sb-field" style="margin-bottom:10px;">
+        <label class="sb-label">Queue table</label>
+        <input class="sb-input" id="sb-queue-table" placeholder="render_queue" value="render_queue">
+      </div>
+      <button class="sb-push-btn" id="sb-push-btn" onclick="pushQueueToSupabase()">
+        ⬆ Push Queue to Supabase
+      </button>
+    </div>
+
+    <!-- Schema helper -->
+    <div id="sb-schema-section" style="display:none">
+      <div class="sb-section-title" style="margin-bottom:10px;">SQL Schema Helper</div>
+      <div class="sb-hint" style="margin-bottom:8px;">Run this in the Supabase SQL editor to create the expected tables:</div>
+      <button class="btn-command" style="font-size:9px;line-height:1.6;height:auto;padding:10px;display:block;width:100%;text-align:left;white-space:pre-wrap;" onclick="copySchema(this)">-- Content table (matches your JSON structure)
+create table content (
+  content_id text primary key,
+  status text,
+  created_at timestamptz default now(),
+  content jsonb,
+  platforms jsonb
+);
+
+-- Render queue table
+create table render_queue (
+  id uuid default gen_random_uuid() primary key,
+  generated_at timestamptz default now(),
+  total_renders int,
+  item_count int,
+  quotas jsonb,
+  render_queue jsonb,
+  status text default 'pending'
+);<span class="copy-lbl" style="display:block;margin-top:6px;">Copy SQL</span></button>
+    </div>
+
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- Left: Queue -->
+  <div class="queue-panel">
+    <div class="panel-header">
+      <span class="panel-title">Render Queue</span>
+      <input class="search-input" id="search" placeholder="Search content..." oninput="renderQueue()">
+      <button class="filter-btn active" data-filter="all" onclick="setFilter('all',this)">All</button>
+      <button class="filter-btn" data-filter="productinfo" onclick="setFilter('productinfo',this)">Product</button>
+      <button class="filter-btn" data-filter="quicktip" onclick="setFilter('quicktip',this)">Tips</button>
+      <button class="filter-btn" data-filter="scientificfact" onclick="setFilter('scientificfact',this)">Facts</button>
+    </div>
+
+    <div id="load-zone">
+      <div class="load-icon">🎬</div>
+      <div class="load-title">Load your content</div>
+      <div class="load-sub">Paste JSON, browse a local folder, or fetch from Supabase.</div>
+      <textarea id="paste-input" placeholder="Paste JSON here — single item or array of items…"
+        style="width:100%;max-width:420px;height:90px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);padding:10px;font-size:11px;font-family:var(--font-mono);resize:none;outline:none;line-height:1.5;"
+        onpaste="setTimeout(()=>onPasteInput(this.value),0)"
+        oninput="onPasteInput(this.value)"></textarea>
+      <div id="paste-feedback" style="font-size:11px;color:var(--text3);max-width:420px;text-align:center;display:none;"></div>
+      <div class="load-divider">or</div>
+      <label for="folder-input" class="load-btn">📂 Browse local folder</label>
+      <div class="load-divider">or</div>
+      <button class="load-btn-sb" onclick="toggleDrawer()">⚡ Connect to Supabase</button>
+    </div>
+
+    <div id="queue-list" class="queue-list" style="display:none"></div>
+  </div>
+
+  <!-- Right: Controls -->
+  <div class="controls-panel">
+
+    <!-- Platform Quotas -->
+    <div class="section">
+      <div class="section-title">Platform Quotas</div>
+      <div id="quota-controls">
+        <div class="quota-row">
+          <div class="quota-platform"><span class="quota-dot qd-tiktok"></span>TikTok</div>
+          <input type="range" class="quota-slider" id="q-tiktok" min="0" max="28" value="28" oninput="onQuotaChange()">
+          <div class="quota-val" id="qv-tiktok">28</div>
+        </div>
+        <div class="quota-row">
+          <div class="quota-platform"><span class="quota-dot qd-instagram"></span>Instagram</div>
+          <input type="range" class="quota-slider" id="q-instagram" min="0" max="28" value="15" oninput="onQuotaChange()">
+          <div class="quota-val" id="qv-instagram">15</div>
+        </div>
+        <div class="quota-row">
+          <div class="quota-platform"><span class="quota-dot qd-twitter"></span>Twitter</div>
+          <input type="range" class="quota-slider" id="q-twitter" min="0" max="28" value="10" oninput="onQuotaChange()">
+          <div class="quota-val" id="qv-twitter">10</div>
+        </div>
+        <div class="quota-row">
+          <div class="quota-platform"><span class="quota-dot qd-whatsapp"></span>WhatsApp</div>
+          <input type="range" class="quota-slider" id="q-whatsapp" min="0" max="28" value="8" oninput="onQuotaChange()">
+          <div class="quota-val" id="qv-whatsapp">8</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sort -->
+    <div class="section">
+      <div class="section-title">Sort By</div>
+      <div class="sort-row">
+        <button class="sort-btn active" data-sort="score" onclick="setSort('score',this)">Conversion Score</button>
+        <button class="sort-btn" data-sort="type" onclick="setSort('type',this)">Type</button>
+        <button class="sort-btn" data-sort="id" onclick="setSort('id',this)">ID</button>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="section">
+      <div class="section-title">Queue Summary</div>
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-card-val" id="s-renders">—</div>
+          <div class="summary-card-lbl">Total Renders</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-val" id="s-items">—</div>
+          <div class="summary-card-lbl">Content Items</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-val" id="s-time">—</div>
+          <div class="summary-card-lbl">Est. Time</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-card-val" id="s-size">—</div>
+          <div class="summary-card-lbl">Est. Output</div>
+        </div>
+      </div>
+      <div class="platform-breakdown" id="pb-breakdown"></div>
+    </div>
+
+    <!-- Render Order Preview -->
+    <div class="section">
+      <div class="section-title">Render Order (Top 8)</div>
+      <div class="render-order-list" id="render-order"></div>
+    </div>
+
+    <!-- Actions -->
+    <div class="action-section">
+      <button class="action-btn btn-primary" onclick="exportConfig()">⬇ Export batch-config.json</button>
+      <button class="action-btn" id="sb-push-action" onclick="pushQueueToSupabase()"
+        style="background:rgba(62,207,142,0.1);color:#3ecf8e;border:1px solid rgba(62,207,142,0.3);display:none;">
+        ⚡ Push Queue to Supabase
+      </button>
+      <button class="action-btn btn-secondary" onclick="copyAll()">📋 Copy All Captions</button>
+      <div style="font-size:10px;color:var(--text3);margin:4px 0 2px;">Run render command:</div>
+      <button class="btn-command" onclick="copyCommand(this)">
+        <span>node batch-render-master.mjs --config batch-config.json</span>
+        <span class="copy-lbl">Copy</span>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<div id="toast">Copied!</div>
+
+<script>
+// ── State ──────────────────────────────────────────────────
+let allContent = [];      // raw loaded items
+let scored = [];          // scored + ranked items
+let platformStates = {};  // { contentId: { tiktok: bool, instagram: bool, ... } }
+let quotas = { tiktok: 28, instagram: 15, twitter: 10, whatsapp: 8 };
+let sortMode = 'score';
+let filterType = 'all';
+
+const PLATFORMS = ['tiktok', 'instagram', 'twitter', 'whatsapp'];
+const PLATFORM_COLORS = { tiktok: '#ff0050', instagram: '#e1306c', twitter: '#1d9bf0', whatsapp: '#25d366' };
+
+// Seconds per render per platform (based on observed render times)
+const RENDER_SECS = { tiktok: 52, instagram: 35, twitter: 55, whatsapp: 30 };
+// MB per render
+const RENDER_MB   = { tiktok: 1.8, instagram: 1.5, twitter: 1.8, whatsapp: 1.4 };
+
+// ── Scoring ────────────────────────────────────────────────
+function scoreContent(item) {
+  const type  = item.content?.type || '';
+  const topic = item.content?.topic || '';
+  const cta   = (item.content?.cta || '').toLowerCase();
+  let s = 0;
+
+  // Base by content type
+  if      (type === 'productinfo')    s += 40;
+  else if (type === 'quicktip')       s += 32;
+  else if (type === 'scientificfact') s += 22;
+
+  // Topic (exercise audience converts best)
+  if (/ejercicio|post-ejercicio|rendimiento|entrenamiento/.test(topic)) s += 18;
+  else if (/hidratacion|recuperacion/.test(topic))                      s += 12;
+  else if (/composicion|electrolitos|corporal/.test(topic))             s += 8;
+  else                                                                   s += 4;
+
+  // CTA strength
+  const powerWords = ['optimiza','mejora','prueba','descubre','obtén','empieza','compra','activa'];
+  if (powerWords.some(w => cta.includes(w))) s += 15;
+  else if (cta.length > 0)                   s += 8;
+
+  // Hashtag density (TikTok discoverability proxy)
+  const tags = item.content?.hashtags?.tiktok?.length || 0;
+  s += Math.min(tags * 2, 10);
+
+  return Math.min(Math.round(s), 100);
+}
+
+function platformScore(item, platform) {
+  const base = scoreContent(item);
+  const type = item.content?.type || '';
+  // Platform-specific multipliers based on content type performance
+  const mult = {
+    tiktok:    { quicktip: 1.25, scientificfact: 1.1,  productinfo: 0.85 },
+    instagram: { quicktip: 1.0,  scientificfact: 1.0,  productinfo: 1.35 },
+    twitter:   { quicktip: 0.95, scientificfact: 1.2,  productinfo: 0.8  },
+    whatsapp:  { quicktip: 1.1,  scientificfact: 0.9,  productinfo: 1.0  },
+  };
+  return Math.min(Math.round(base * (mult[platform]?.[type] || 1.0)), 100);
+}
+
+// ── File loading ───────────────────────────────────────────
+document.getElementById('folder-input').addEventListener('change', async (e) => {
+  const files = [...e.target.files].filter(f => f.name.endsWith('.json') && !f.name.startsWith('TEST'));
+  if (!files.length) return;
+
+  allContent = [];
+  for (const file of files) {
+    try {
+      const text = await file.text();
+      const data = JSON.parse(text);
+      if (data.contentId && data.content) {
+        allContent.push({ ...data, _filename: file.name });
+      }
+    } catch {}
+  }
+
+  if (!allContent.length) { alert('No valid content files found.'); return; }
+
+  initContent();
+});
+
+function initContent() {
+  // Score all items
+  scored = allContent.map(item => ({
+    ...item,
+    _score: scoreContent(item),
+    _platformScores: Object.fromEntries(PLATFORMS.map(p => [p, platformScore(item, p)]))
+  }));
+
+  // Initialize platform states using quotas
+  applyQuotasToStates();
+
+  // Update slider max
+  PLATFORMS.forEach(p => {
+    document.getElementById(`q-${p}`).max = allContent.length;
+  });
+
+  document.getElementById('load-zone').style.display = 'none';
+  document.getElementById('queue-list').style.display = 'flex';
+
+  renderQueue();
+  updateSummary();
+}
+
+// ── Quota application ──────────────────────────────────────
+function applyQuotasToStates() {
+  // For each platform, enable top-N items by platform-specific score
+  const sortedByScore = [...scored].sort((a, b) => b._score - a._score);
+
+  sortedByScore.forEach((item, globalRank) => {
+    if (!platformStates[item.contentId]) platformStates[item.contentId] = {};
+  });
+
+  PLATFORMS.forEach(platform => {
+    const sorted = [...scored].sort((a, b) => b._platformScores[platform] - a._platformScores[platform]);
+    sorted.forEach((item, i) => {
+      platformStates[item.contentId][platform] = i < quotas[platform];
+    });
+  });
+}
+
+function onQuotaChange() {
+  PLATFORMS.forEach(p => {
+    quotas[p] = parseInt(document.getElementById(`q-${p}`).value);
+    document.getElementById(`qv-${p}`).textContent = quotas[p];
+  });
+  applyQuotasToStates();
+  renderQueue();
+  updateSummary();
+}
+
+// ── Sort & Filter ──────────────────────────────────────────
+let sortBtns = [];
+function setSort(mode, btn) {
+  sortMode = mode;
+  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderQueue();
+}
+
+function setFilter(type, btn) {
+  filterType = type;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderQueue();
+}
+
+function getSorted() {
+  let items = [...scored];
+  const q = document.getElementById('search')?.value?.toLowerCase() || '';
+  if (q) items = items.filter(i =>
+    i.contentId.toLowerCase().includes(q) ||
+    (i.content?.title||'').toLowerCase().includes(q) ||
+    (i.content?.tip||'').toLowerCase().includes(q)
+  );
+  if (filterType !== 'all') items = items.filter(i => i.content?.type === filterType);
+
+  switch(sortMode) {
+    case 'score': return items.sort((a,b) => b._score - a._score);
+    case 'type':  return items.sort((a,b) => (a.content?.type||'').localeCompare(b.content?.type||''));
+    case 'id':    return items.sort((a,b) => a.contentId.localeCompare(b.contentId));
+  }
+  return items;
+}
+
+// ── Render queue cards ─────────────────────────────────────
+function typeLabel(type) {
+  if (type === 'productinfo')    return ['Product',  'type-product'];
+  if (type === 'quicktip')       return ['Quick Tip','type-quicktip'];
+  if (type === 'scientificfact') return ['Fact',     'type-fact'];
+  return [type, 'type-quicktip'];
+}
+
+function scoreClass(s) {
+  if (s >= 70) return 'score-high';
+  if (s >= 50) return 'score-mid';
+  return 'score-low';
+}
+
+function renderQueue() {
+  if (!scored.length) return;
+  const list = document.getElementById('queue-list');
+  const items = getSorted();
+
+  if (!items.length) {
+    list.innerHTML = '<div class="empty">No items match your filter.</div>';
+    return;
+  }
+
+  list.innerHTML = items.map((item, i) => {
+    const [tl, tc] = typeLabel(item.content?.type);
+    const sc = item._score;
+    const states = platformStates[item.contentId] || {};
+    const activePlatforms = PLATFORMS.filter(p => states[p]);
+    const dimmed = activePlatforms.length === 0 ? 'dimmed' : '';
+
+    const platformToggles = PLATFORMS.map(p => {
+      const on = states[p] ? '' : 'off';
+      const pscore = item._platformScores[p];
+      return `<div class="platform-toggle pt-${p} ${on}" onclick="togglePlatform('${item.contentId}','${p}',this)" title="Score: ${pscore}">
+        <span class="dot"></span><span class="lbl">${p.charAt(0).toUpperCase()+p.slice(1)}</span>
+      </div>`;
+    }).join('');
+
+    return `<div class="card ${dimmed}" id="card-${item.contentId}">
+      <div class="card-rank">
+        <span class="rank-num">#${i+1}</span>
+        <div class="score-ring ${scoreClass(sc)}">${sc}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <span class="card-id">${item.contentId}</span>
+          <span class="type-badge ${tc}">${tl}</span>
+        </div>
+        <div class="card-title">${item.content?.title || '—'}</div>
+        <div class="card-tip">${item.content?.tip || ''}</div>
+      </div>
+      <div class="card-platforms">${platformToggles}</div>
+    </div>`;
+  }).join('');
+
+  updateSummary();
+}
+
+function togglePlatform(contentId, platform, el) {
+  if (!platformStates[contentId]) platformStates[contentId] = {};
+  platformStates[contentId][platform] = !platformStates[contentId][platform];
+  el.classList.toggle('off');
+
+  // Update card dimming
+  const card = document.getElementById(`card-${contentId}`);
+  if (card) {
+    const any = PLATFORMS.some(p => platformStates[contentId][p]);
+    card.classList.toggle('dimmed', !any);
+  }
+
+  // Sync quota slider
+  const count = Object.values(platformStates)
+    .filter(s => s[platform]).length;
+  quotas[platform] = count;
+  document.getElementById(`q-${platform}`).value = count;
+  document.getElementById(`qv-${platform}`).textContent = count;
+
+  updateSummary();
+}
+
+// ── Summary ────────────────────────────────────────────────
+function updateSummary() {
+  if (!scored.length) return;
+
+  let totalRenders = 0;
+  const platformCounts = { tiktok: 0, instagram: 0, twitter: 0, whatsapp: 0 };
+  let estSecs = 0;
+  let estMB = 0;
+  let activeItems = 0;
+
+  scored.forEach(item => {
+    const states = platformStates[item.contentId] || {};
+    let itemActive = false;
+    PLATFORMS.forEach(p => {
+      if (states[p]) {
+        totalRenders++;
+        platformCounts[p]++;
+        estSecs += RENDER_SECS[p];
+        estMB   += RENDER_MB[p];
+        itemActive = true;
+      }
+    });
+    if (itemActive) activeItems++;
+  });
+
+  // Time formatting
+  const mins = Math.round(estSecs / 60);
+  const timeStr = mins >= 60 ? `${Math.floor(mins/60)}h ${mins%60}m` : `${mins}m`;
+
+  // Update header
+  document.getElementById('h-total').textContent   = totalRenders;
+  document.getElementById('h-content').textContent = activeItems;
+  document.getElementById('h-time').textContent    = timeStr;
+
+  // Update summary cards
+  document.getElementById('s-renders').textContent = totalRenders;
+  document.getElementById('s-items').textContent   = activeItems;
+  document.getElementById('s-time').textContent    = timeStr;
+  document.getElementById('s-size').textContent    = `${Math.round(estMB)}MB`;
+
+  // Platform breakdown
+  const maxCount = Math.max(...Object.values(platformCounts), 1);
+  document.getElementById('pb-breakdown').innerHTML = PLATFORMS.map(p => {
+    const count = platformCounts[p];
+    const pct = Math.round((count / maxCount) * 100);
+    return `<div class="pb-row">
+      <span class="pb-platform" style="color:${PLATFORM_COLORS[p]}">${p.charAt(0).toUpperCase()+p.slice(1)}</span>
+      <div class="pb-bar-wrap"><div class="pb-bar pb-bar-${p}" style="width:${pct}%"></div></div>
+      <span class="pb-count">${count}</span>
+    </div>`;
+  }).join('');
+
+  // Render order (top 8 by score, only active items)
+  const active = scored
+    .filter(i => PLATFORMS.some(p => platformStates[i.contentId]?.[p]))
+    .sort((a,b) => b._score - a._score)
+    .slice(0, 8);
+
+  document.getElementById('render-order').innerHTML = active.map((item, i) => {
+    const states = platformStates[item.contentId] || {};
+    const dots = PLATFORMS.filter(p => states[p])
+      .map(p => `<div class="ro-dot" style="background:${PLATFORM_COLORS[p]}"></div>`)
+      .join('');
+    return `<div class="ro-item">
+      <span class="ro-num">${i+1}</span>
+      <span class="ro-title">${item.content?.title || item.contentId}</span>
+      <div class="ro-platforms">${dots}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── Export ─────────────────────────────────────────────────
+function buildConfig() {
+  const queue = [];
+  const sortedItems = [...scored].sort((a,b) => b._score - a._score);
+
+  sortedItems.forEach((item, globalRank) => {
+    const states = platformStates[item.contentId] || {};
+    const activePlatforms = PLATFORMS.filter(p => states[p]);
+    if (!activePlatforms.length) return;
+
+    queue.push({
+      rank: globalRank + 1,
+      contentId: item.contentId,
+      file: `content/ready/${item._filename}`,
+      conversionScore: item._score,
+      platformScores: item._platformScores,
+      platforms: activePlatforms,
+      content: {
+        type: item.content?.type,
+        title: item.content?.title,
+        topic: item.content?.topic,
+      }
+    });
+  });
+
+  return {
+    generated: new Date().toISOString(),
+    totalRenders: queue.reduce((s, i) => s + i.platforms.length, 0),
+    itemCount: queue.length,
+    quotas,
+    renderQueue: queue
+  };
+}
+
+function exportConfig() {
+  if (!scored.length) { toast('Load content files first'); return; }
+  const config = buildConfig();
+  const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'batch-config.json';
+  a.click();
+  toast('batch-config.json downloaded!');
+}
+
+function copyCommand(el) {
+  const cmd = 'node batch-render-master.mjs --config batch-config.json';
+  navigator.clipboard.writeText(cmd).then(() => toast('Command copied!'));
+}
+
+function copyAll() {
+  if (!scored.length) { toast('Load content files first'); return; }
+  const lines = [];
+  scored
+    .filter(i => PLATFORMS.some(p => platformStates[i.contentId]?.[p]))
+    .sort((a,b) => b._score - a._score)
+    .forEach(item => {
+      lines.push(`\n=== ${item.contentId} ===`);
+      PLATFORMS.forEach(p => {
+        if (platformStates[item.contentId]?.[p]) {
+          const cap = item.platforms?.[p]?.caption;
+          if (cap) lines.push(`[${p.toUpperCase()}]\n${cap}`);
+        }
+      });
+    });
+  navigator.clipboard.writeText(lines.join('\n')).then(() => toast('All captions copied!'));
+}
+
+// ── Toast ──────────────────────────────────────────────────
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ── Paste input ────────────────────────────────────────────
+let _pasteTimer;
+function onPasteInput(text) {
+  clearTimeout(_pasteTimer);
+  _pasteTimer = setTimeout(() => _tryLoadPaste(text), 150);
+}
+
+function setPasteFeedback(msg, color) {
+  const el = document.getElementById('paste-feedback');
+  el.textContent = msg;
+  el.style.color = color || 'var(--text3)';
+  el.style.display = msg ? 'block' : 'none';
+}
+
+function _tryLoadPaste(text) {
+  if (!text.trim()) return;
+
+  // Parse JSON
+  let parsed;
+  try {
+    parsed = JSON.parse(text);
+  } catch (e) {
+    setPasteFeedback('✗ Invalid JSON — ' + e.message, 'var(--error)');
+    return;
+  }
+
+  // Normalize: accept single object or array
+  const items = Array.isArray(parsed) ? parsed : [parsed];
+
+  // Flexible matching: support top-level contentId or nested content.contentId
+  const loaded = items.map(d => {
+    if (d.contentId && d.content) return d;
+    // Wrapped in a data/record key
+    if (d.data && d.data.contentId) return d.data;
+    if (d.record && d.record.contentId) return d.record;
+    // Flat row from Supabase (content_id instead of contentId)
+    if (d.content_id) return { ...d, contentId: d.content_id };
+    return null;
+  }).filter(Boolean);
+
+  if (!loaded.length) {
+    setPasteFeedback(`✗ No valid content found. Need objects with "contentId" + "content" fields. Got keys: ${Object.keys(items[0]||{}).join(', ')}`, 'var(--error)');
+    return;
+  }
+
+  allContent = loaded.map(d => ({ ...d, _filename: `${d.contentId}.json` }));
+  initContent();
+  document.getElementById('paste-input').value = '';
+  setPasteFeedback('');
+  toast(`Loaded ${allContent.length} item${allContent.length > 1 ? 's' : ''} from clipboard`);
+}
+
+// ── Supabase ───────────────────────────────────────────────
+let sbClient = null;
+let sbConnected = false;
+
+const SB_STORAGE_KEY = 'bilan_sb_config';
+
+function toggleDrawer() {
+  const drawer = document.getElementById('sb-drawer');
+  const overlay = document.getElementById('sb-overlay');
+  const open = drawer.classList.toggle('open');
+  overlay.classList.toggle('visible', open);
+  if (open) loadSbConfig();
+}
+
+function loadSbConfig() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(SB_STORAGE_KEY) || '{}');
+    if (saved.url) document.getElementById('sb-url').value = saved.url;
+    if (saved.key) document.getElementById('sb-key').value = saved.key;
+    if (saved.table) document.getElementById('sb-table').value = saved.table;
+    if (saved.queueTable) document.getElementById('sb-queue-table').value = saved.queueTable;
+    if (saved.url && saved.key && sbConnected) {
+      document.getElementById('sb-tables-section').style.display = 'block';
+      document.getElementById('sb-schema-section').style.display = 'block';
+    }
+  } catch {}
+}
+
+function saveSbConfig() {
+  localStorage.setItem(SB_STORAGE_KEY, JSON.stringify({
+    url:        document.getElementById('sb-url').value.trim(),
+    key:        document.getElementById('sb-key').value.trim(),
+    table:      document.getElementById('sb-table').value.trim() || 'content',
+    queueTable: document.getElementById('sb-queue-table').value.trim() || 'render_queue',
+  }));
+}
+
+async function connectSupabase() {
+  const url = document.getElementById('sb-url').value.trim();
+  const key = document.getElementById('sb-key').value.trim();
+  const btn = document.getElementById('sb-connect-btn');
+  const status = document.getElementById('sb-status');
+
+  if (!url || !key) { showSbStatus('Please enter both URL and anon key.', 'err'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Connecting…';
+  setSbBadge('connecting', 'Connecting…');
+  showSbStatus('Testing connection…', '');
+
+  try {
+    sbClient = supabase.createClient(url, key);
+    // Test with a lightweight query
+    const { error } = await sbClient.from('_pgsodium_key').select('id').limit(1);
+    // Ignore "relation does not exist" — that just means connection works
+    const connOk = !error || error.code === '42P01' || error.message?.includes('does not exist');
+    if (!connOk) throw new Error(error.message);
+
+    sbConnected = true;
+    saveSbConfig();
+
+    setSbBadge('connected', 'Connected');
+    showSbStatus('✓ Connected to Supabase', 'ok');
+    document.getElementById('sb-tables-section').style.display = 'block';
+    document.getElementById('sb-schema-section').style.display = 'block';
+    if (scored.length) {
+      document.getElementById('sb-push-section').style.display = 'block';
+      document.getElementById('sb-push-action').style.display = 'flex';
+    }
+  } catch (err) {
+    sbConnected = false;
+    sbClient = null;
+    setSbBadge('error', 'Error');
+    showSbStatus('✗ ' + err.message, 'err');
+  }
+
+  btn.disabled = false;
+  btn.textContent = sbConnected ? 'Reconnect' : 'Connect';
+}
+
+function setSbBadge(state, label) {
+  const badge = document.getElementById('sb-badge');
+  badge.className = 'sb-badge ' + state;
+  document.getElementById('sb-badge-label').textContent = label;
+}
+
+function showSbStatus(msg, type) {
+  const el = document.getElementById('sb-status');
+  el.textContent = msg;
+  el.className = 'sb-status-box visible' + (type ? ' ' + type : '');
+}
+
+async function fetchFromSupabase() {
+  if (!sbClient) { toast('Connect to Supabase first'); toggleDrawer(); return; }
+  const table = document.getElementById('sb-table').value.trim() || 'content';
+  const btn = document.getElementById('sb-fetch-btn');
+  btn.disabled = true;
+  btn.textContent = 'Fetching…';
+
+  try {
+    const { data, error } = await sbClient.from(table).select('*').order('created_at', { ascending: false });
+    if (error) throw new Error(error.message);
+    if (!data?.length) throw new Error(`No rows found in table "${table}"`);
+
+    // Map Supabase rows → allContent format
+    allContent = data.map(row => {
+      // Case 1: row has a top-level `content` JSONB column (matches our JSON file structure)
+      if (row.content && typeof row.content === 'object' && row.content.type) {
+        return {
+          contentId: row.content_id || row.contentId || row.id,
+          status: row.status || 'ready',
+          createdAt: row.created_at,
+          content: row.content,
+          platforms: row.platforms || {},
+          _filename: `${row.content_id || row.id}.json`,
+          _source: 'supabase',
+        };
+      }
+      // Case 2: flat columns → build content object
+      return {
+        contentId: row.content_id || row.id,
+        status: row.status || 'ready',
+        createdAt: row.created_at,
+        content: {
+          contentId: row.content_id || row.id,
+          type: row.type || row.content_type || 'quicktip',
+          topic: row.topic || '',
+          category: row.category || '',
+          tip: row.tip || row.body || '',
+          reason: row.reason || '',
+          cta: row.cta || '',
+          title: row.title || '',
+          subtitle: row.subtitle || '',
+          hashtags: row.hashtags || { tiktok: [], instagram: [], twitter: [], whatsapp: [] },
+        },
+        platforms: row.platforms || {},
+        _filename: `${row.content_id || row.id}.json`,
+        _source: 'supabase',
+      };
+    }).filter(i => i.contentId && i.content?.type);
+
+    if (!allContent.length) throw new Error('No valid content rows found (need contentId + type)');
+
+    initContent();
+    saveSbConfig();
+    showSbStatus(`✓ Loaded ${allContent.length} items from "${table}"`, 'ok');
+    document.getElementById('sb-push-section').style.display = 'block';
+    document.getElementById('sb-push-action').style.display = 'flex';
+    toggleDrawer();
+    toast(`Loaded ${allContent.length} items from Supabase`);
+  } catch (err) {
+    showSbStatus('✗ ' + err.message, 'err');
+  }
+
+  btn.disabled = false;
+  btn.textContent = '⬇ Fetch Content from Supabase';
+}
+
+async function pushQueueToSupabase() {
+  if (!sbClient) { toast('Connect to Supabase first'); toggleDrawer(); return; }
+  if (!scored.length) { toast('Load content first'); return; }
+
+  const queueTable = document.getElementById('sb-queue-table')?.value.trim() || 'render_queue';
+  const config = buildConfig();
+
+  const btn = document.getElementById('sb-push-action');
+  const drawerBtn = document.getElementById('sb-push-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Pushing…'; }
+  if (drawerBtn) { drawerBtn.disabled = true; drawerBtn.textContent = 'Pushing…'; }
+
+  try {
+    const { error } = await sbClient.from(queueTable).insert({
+      generated_at: config.generated,
+      total_renders: config.totalRenders,
+      item_count: config.itemCount,
+      quotas: config.quotas,
+      render_queue: config.renderQueue,
+      status: 'pending',
+    });
+    if (error) throw new Error(error.message);
+    toast('Queue pushed to Supabase!');
+    showSbStatus(`✓ Queue pushed to "${queueTable}"`, 'ok');
+  } catch (err) {
+    toast('Push failed: ' + err.message);
+    showSbStatus('✗ ' + err.message, 'err');
+  }
+
+  if (btn) { btn.disabled = false; btn.textContent = '⚡ Push Queue to Supabase'; }
+  if (drawerBtn) { drawerBtn.disabled = false; drawerBtn.textContent = '⬆ Push Queue to Supabase'; }
+}
+
+function copySchema(el) {
+  const sql = el.innerText.replace('Copy SQL', '').trim();
+  navigator.clipboard.writeText(sql).then(() => toast('SQL copied!'));
+}
+
+// Restore connection state on load
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = JSON.parse(localStorage.getItem(SB_STORAGE_KEY) || '{}');
+  if (saved.url && saved.key) {
+    setSbBadge('', 'Supabase · saved');
+  }
+});
+
+// ── Try auto-fetch if served via HTTP
+if (location.protocol !== 'file:') {
+  const files = [
+    'BILAN_FACT_001','BILAN_FACT_002','BILAN_FACT_003','BILAN_FACT_004','BILAN_FACT_005',
+    'BILAN_FACT_006','BILAN_FACT_007','BILAN_FACT_008','BILAN_FACT_009','BILAN_FACT_010',
+    'BILAN_TIP_001','BILAN_TIP_002','BILAN_TIP_003','BILAN_TIP_004','BILAN_TIP_005',
+    'BILAN_TIP_006','BILAN_TIP_007','BILAN_TIP_008','BILAN_TIP_009','BILAN_TIP_010',
+    'BILAN_TIP_011','BILAN_TIP_012',
+    'BILAN_PRODUCT_001','BILAN_PRODUCT_002','BILAN_PRODUCT_003',
+    'BILAN_PRODUCT_004','BILAN_PRODUCT_005','BILAN_PRODUCT_006'
+  ];
+
+  Promise.all(
+    files.map(f =>
+      fetch(`content/ready/${f}.json`)
+        .then(r => r.ok ? r.json() : null)
+        .catch(() => null)
+    )
+  ).then(results => {
+    allContent = results
+      .filter(Boolean)
+      .map((d, i) => ({ ...d, _filename: `${files[i]}.json` }));
+    if (allContent.length) initContent();
+  });
+}
+</script>
+</body>
+</html>

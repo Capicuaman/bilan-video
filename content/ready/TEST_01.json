@@ -1,0 +1,20 @@
+{
+  "contentId": "TEST_01",
+  "createdAt": "2026-03-03T00:11:30.447Z",
+  "status": "ready",
+  "content": {
+    "tip": "Toma agua antes de sentir sed",
+    "reason": "Cuando sientes sed, tu cuerpo ya está pidiendo hidratación",
+    "cta": "Mantente hidratado con bilan"
+  },
+  "platforms": {
+    "twitter": {
+      "videoFile": "out/twitter/TEST_01_twitter.mp4",
+      "captionFile": "out/twitter/TEST_01_twitter_caption.txt",
+      "caption": "🧵 Toma agua antes de sentir sed\\n\\nHilo 👇\\n\\nCuando sientes sed, tu cuerpo ya está pidiendo hidratación\\n\\nMantente hidratado con bilan\\n\\n#electrolitos #hidratacion #salud",
+      "status": "ready",
+      "generatedAt": "2026-03-03T00:11:30.447Z",
+      "renderTime": 44.7
+    }
+  }
+}

@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Critique · bilan-video</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #21253a;
+    --border: #2e3150;
+    --text: #e2e4f0;
+    --muted: #6b7098;
+    --accent: #7c6af7;
+    --pending-color: #d4a017;
+    --pending-bg: rgba(212,160,23,0.08);
+    --approved-color: #3fb950;
+    --approved-bg: rgba(63,185,80,0.08);
+    --rejected-color: #f85149;
+    --rejected-bg: rgba(248,81,73,0.06);
+    --code-bg: #161b22;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 48px 1fr 190px;
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    flex-shrink: 0;
+  }
+  header h1 { font-size: 13px; font-weight: 600; color: var(--accent); }
+  .file-tabs { display: flex; gap: 4px; margin-left: 8px; }
+  .file-tab {
+    font-size: 11px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .file-tab:hover { color: var(--text); background: var(--surface2); }
+  .file-tab.active { border-color: var(--accent); color: var(--text); background: rgba(124,106,247,0.12); }
+  .stats {
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+  }
+  .stat { display: flex; align-items: center; gap: 4px; }
+  .stat-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+  /* MAIN: two panels */
+  main {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  /* DOCUMENT PANEL */
+  .doc-panel {
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+    background: var(--code-bg);
+    padding: 0;
+  }
+  .doc-line {
+    display: flex;
+    min-height: 22px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+  .doc-line:hover { background: rgba(255,255,255,0.02); }
+  .doc-line.has-suggestion { border-left-color: var(--pending-color); background: var(--pending-bg); }
+  .doc-line.approved { border-left-color: var(--approved-color); background: var(--approved-bg); }
+  .doc-line.rejected { border-left-color: var(--rejected-color); background: var(--rejected-bg); opacity: 0.5; }
+  .doc-line.highlighted { background: rgba(124,106,247,0.12) !important; border-left-color: var(--accent) !important; }
+
+  .line-num {
+    width: 44px;
+    text-align: right;
+    padding: 0 10px 0 4px;
+    color: var(--muted);
+    user-select: none;
+    flex-shrink: 0;
+    font-size: 11px;
+  }
+  .line-content {
+    flex: 1;
+    padding: 0 8px;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .line-content code { color: #79c0ff; }
+  .line-content .kw { color: #ff7b72; }
+  .line-content .str { color: #a5d6ff; }
+  .line-content .fn { color: #d2a8ff; }
+  .line-content .cm { color: #8b949e; font-style: italic; }
+  .line-content .num { color: #79c0ff; }
+  /* markdown in doc */
+  .line-content .h1 { color: #e2e4f0; font-size: 14px; font-weight: 700; }
+  .line-content .h2 { color: #c8cad8; font-size: 13px; font-weight: 600; }
+  .line-content .h3 { color: #aeb0c0; font-size: 12px; font-weight: 600; }
+  .line-content .code-inline { background: rgba(255,255,255,0.08); padding: 1px 4px; border-radius: 3px; font-family: monospace; color: #a5d6ff; }
+  .line-content strong { font-weight: 700; color: #e2e4f0; }
+  .line-content em { font-style: italic; }
+
+  /* SUGGESTIONS PANEL */
+  .sugg-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .sugg-header {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .filter-tab {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .filter-tab:hover { color: var(--text); }
+  .filter-tab.active { background: var(--surface2); color: var(--text); border-color: var(--accent); }
+
+  .sugg-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sugg-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+  .sugg-card:hover { border-color: var(--accent); }
+  .sugg-card.approved { border-color: var(--approved-color); background: rgba(63,185,80,0.05); }
+  .sugg-card.rejected { border-color: var(--rejected-color); opacity: 0.55; }
+  .sugg-card.active-card { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+
+  .sugg-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .line-ref {
+    font-size: 10px;
+    font-family: monospace;
+    color: var(--accent);
+    background: rgba(124,106,247,0.12);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  .category-tag {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .cat-clarity { background: rgba(247,162,106,0.2); color: #f7a26a; }
+  .cat-ux { background: rgba(106,212,247,0.2); color: #6ad4f7; }
+  .cat-code { background: rgba(192,132,252,0.2); color: #c084fc; }
+  .cat-design { background: rgba(247,106,138,0.2); color: #f76a8a; }
+  .cat-arch { background: rgba(79,195,161,0.2); color: #4fc3a1; }
+
+  .sugg-text {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .sugg-actions {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .action-btn {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .action-btn:hover { color: var(--text); background: var(--surface); }
+  .action-btn.approve:hover { border-color: var(--approved-color); color: var(--approved-color); }
+  .action-btn.reject:hover { border-color: var(--rejected-color); color: var(--rejected-color); }
+  .action-btn.reset { border-color: var(--border); }
+
+  .comment-area {
+    margin-top: 8px;
+  }
+  .comment-area textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 11px;
+    color: var(--text);
+    font-family: inherit;
+    resize: vertical;
+    min-height: 52px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .comment-area textarea:focus { border-color: var(--accent); }
+  .comment-area textarea::placeholder { color: var(--muted); }
+
+  /* ADD CUSTOM */
+  .add-custom {
+    border-top: 1px solid var(--border);
+    padding: 8px;
+    flex-shrink: 0;
+  }
+  .add-custom textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 11px;
+    color: var(--text);
+    font-family: inherit;
+    resize: none;
+    height: 36px;
+    outline: none;
+    transition: border-color 0.15s, height 0.15s;
+  }
+  .add-custom textarea:focus { border-color: var(--accent); height: 60px; }
+  .add-custom textarea::placeholder { color: var(--muted); }
+  .add-btn {
+    margin-top: 4px;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: block;
+    width: 100%;
+  }
+  .add-btn:hover { border-color: var(--accent); color: var(--text); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: stretch;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+  .prompt-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--text);
+    overflow-y: auto;
+    max-height: 166px;
+    white-space: pre-wrap;
+  }
+  #copy-btn {
+    background: var(--accent);
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    align-self: center;
+    height: 36px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  #copy-btn:hover { background: #9180ff; }
+  #copy-btn.copied { background: #3fb950; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Document Critique</h1>
+  <div class="file-tabs" id="file-tabs">
+    <button class="file-tab active" data-file="edu">EducationalLandscape.tsx</button>
+    <button class="file-tab" data-file="workflow">WORKFLOW.md</button>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-dot" style="background:var(--pending-color)"></div><span id="stat-pending">0 pending</span></div>
+    <div class="stat"><div class="stat-dot" style="background:var(--approved-color)"></div><span id="stat-approved">0 approved</span></div>
+    <div class="stat"><div class="stat-dot" style="background:var(--rejected-color)"></div><span id="stat-rejected">0 rejected</span></div>
+  </div>
+</header>
+
+<main>
+  <div class="doc-panel" id="doc-panel"></div>
+  <div class="sugg-panel">
+    <div class="sugg-header">
+      <button class="filter-tab active" data-filter="all">All</button>
+      <button class="filter-tab" data-filter="pending">Pending</button>
+      <button class="filter-tab" data-filter="approved">Approved</button>
+      <button class="filter-tab" data-filter="rejected">Rejected</button>
+    </div>
+    <div class="sugg-list" id="sugg-list"></div>
+    <div class="add-custom">
+      <textarea id="custom-input" placeholder="Add your own note or request…"></textarea>
+      <button class="add-btn" id="add-btn">+ Add note</button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="prompt-box" id="prompt-output">Approve suggestions or add notes — the prompt will appear here.</div>
+  <button id="copy-btn">Copy Prompt</button>
+</footer>
+
+<script>
+// ──────────────────────────────────────────────
+// DOCUMENT CONTENT
+// ──────────────────────────────────────────────
+const DOCS = {
+  edu: {
+    title: 'EducationalLandscape.tsx',
+    path: 'src/templates/EducationalLandscape.tsx',
+    lines: `import {
+  AbsoluteFill,
+  useCurrentFrame,
+  useVideoConfig,
+  interpolate,
+  spring,
+  Img,
+  staticFile,
+  Audio,
+} from "remotion";
+import { brand, getFontStack } from "../brand";
+
+interface EducationalLandscapeProps {
+  title: string;
+  subtitle: string;
+  keyPoint1: string;
+  keyPoint2: string;
+  keyPoint3: string;
+  conclusion: string;
+  brandColor?: string;
+  showLogo?: boolean;
+}
+
+export const EducationalLandscape: React.FC<EducationalLandscapeProps> = ({
+  title,
+  subtitle,
+  keyPoint1,
+  keyPoint2,
+  keyPoint3,
+  conclusion,
+  brandColor = brand.colors.primary,
+  showLogo = true,
+}) => {
+  const frame = useCurrentFrame();
+  const { fps, width, height } = useVideoConfig();
+
+  // Timing for landscape format (slightly longer for education)
+  const titleStart = 0;
+  const titleEnd = fps * 3;
+  const subtitleStart = fps * 2;
+  const subtitleEnd = fps * 5;
+  const keyPointsStart = fps * 4;
+  const keyPointsEnd = fps * 12;
+  const conclusionStart = fps * 12;
+
+  // Title animations
+  const titleOpacity = interpolate(
+    frame,
+    [titleStart, titleStart + 15, titleEnd - 10, titleEnd],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" },
+  );
+  const titleScale = spring({
+    frame: frame - titleStart,
+    fps,
+    config: brand.animation.spring,
+  });
+
+  // Subtitle animations
+  const subtitleOpacity = interpolate(
+    frame,
+    [subtitleStart, subtitleStart + 15, subtitleEnd - 10, subtitleEnd],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" },
+  );
+
+  // Key points animations (staggered)
+  const keyPoint1Opacity = interpolate(
+    frame,
+    [keyPointsStart, keyPointsStart + 15, keyPointsEnd - 20, keyPointsEnd - 10],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" },
+  );
+  const keyPoint1Slide = interpolate(
+    frame,
+    [keyPointsStart, keyPointsStart + 20],
+    [-100, 0],
+    { extrapolateRight: "clamp" },
+  );
+
+  const keyPoint2Opacity = interpolate(
+    frame,
+    [keyPointsStart + 20, keyPointsStart + 35, keyPointsEnd - 15, keyPointsEnd - 5],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" },
+  );
+  const keyPoint2Slide = interpolate(
+    frame,
+    [keyPointsStart + 20, keyPointsStart + 40],
+    [-100, 0],
+    { extrapolateRight: "clamp" },
+  );
+
+  const keyPoint3Opacity = interpolate(
+    frame,
+    [keyPointsStart + 40, keyPointsStart + 55, keyPointsEnd - 10, keyPointsEnd],
+    [0, 1, 1, 0],
+    { extrapolateRight: "clamp" },
+  );
+  const keyPoint3Slide = interpolate(
+    frame,
+    [keyPointsStart + 40, keyPointsStart + 60],
+    [-100, 0],
+    { extrapolateRight: "clamp" },
+  );
+
+  // Conclusion animations
+  const conclusionOpacity = interpolate(
+    frame,
+    [conclusionStart, conclusionStart + 15],
+    [0, 1],
+    { extrapolateRight: "clamp" },
+  );
+  const conclusionScale = spring({
+    frame: frame - conclusionStart,
+    fps,
+    config: brand.animation.spring,
+  });
+
+  // Logo timing - visible from frame 0 for thumbnails, fade out COMPLETELY before conclusion
+  const logoOpacity = interpolate(
+    frame,
+    [0, 1, conclusionStart - 35, conclusionStart - 15],
+    [1, 1, 1, 0],
+    { extrapolateRight: "clamp" },
+  );
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: brandColor }}>
+      {/* Background Music */}
+      <Audio
+        src={staticFile("audio/music/ambient-quick-start.mp3")}
+        volume={0.3}
+        startFrom={0}
+      />
+
+      {/* Background with subtle gradient for landscape */}
+      <AbsoluteFill
+        style={{
+          background: \`linear-gradient(45deg, \${brandColor} 0%, \${brand.colors.backgroundAlt} 100%)\`,
+        }}
+      />
+
+      {/* Logo - Top left for landscape format */}
+      {showLogo && (
+        <AbsoluteFill
+          style={{
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+            padding: 60,
+            opacity: logoOpacity,
+          }}
+        >
+          <Img
+            src={staticFile("logo-white.png")}
+            style={{
+              width: 300,
+              height: "auto",
+              filter: "drop-shadow(2px 2px 8px rgba(0,0,0,0.3))",
+            }}
+          />
+        </AbsoluteFill>
+      )}
+
+      {/* Title Section */}
+      <AbsoluteFill
+        style={{
+          justifyContent: "flex-start",
+          alignItems: "center",
+          paddingTop: 200,
+          paddingLeft: 60,
+          paddingRight: 60,
+          opacity: titleOpacity,
+          transform: \`scale(\${titleScale})\`,
+        }}
+      >
+        <div
+          style={{
+            fontFamily: getFontStack("heading"),
+            fontSize: 72,
+            fontWeight: "bold",
+            color: brand.colors.white,
+            textAlign: "center",
+            lineHeight: 1.1,
+            textShadow: "3px 3px 6px rgba(0,0,0,0.4)",
+            maxWidth: "90%",
+          }}
+        >
+          {title}
+        </div>
+      </AbsoluteFill>
+
+      {/* Subtitle Section */}
+      <AbsoluteFill
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: 100,
+          paddingLeft: 60,
+          paddingRight: 60,
+          opacity: subtitleOpacity,
+        }}
+      >
+        <div
+          style={{
+            fontFamily: getFontStack("heading"),
+            fontSize: 48,
+            fontWeight: "bold",
+            color: brand.colors.white,
+            textAlign: "center",
+            lineHeight: 1.2,
+            textShadow: "2px 2px 4px rgba(0,0,0,0.4)",
+            maxWidth: "85%",
+          }}
+        >
+          {subtitle}
+        </div>
+      </AbsoluteFill>
+
+      {/* Key Points Section - Horizontal layout for landscape */}
+      <AbsoluteFill
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          paddingLeft: 80,
+          paddingRight: 80,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          {/* Key Point 1 */}
+          <div style={{ fontFamily: getFontStack("heading"), fontSize: 36, fontWeight: "bold", color: brand.colors.white, textAlign: "center", lineHeight: 1.3, padding: 30, backgroundColor: "rgba(255, 255, 255, 0.1)", borderRadius: 20, backdropFilter: "blur(10px)", border: "2px solid rgba(255, 255, 255, 0.2)", flex: 1, opacity: keyPoint1Opacity, transform: \`translateX(\${keyPoint1Slide}px)\`, minHeight: 200, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {keyPoint1}
+          </div>
+
+          {/* Key Point 2 */}
+          <div style={{ fontFamily: getFontStack("heading"), fontSize: 36, fontWeight: "bold", color: brand.colors.white, textAlign: "center", lineHeight: 1.3, padding: 30, backgroundColor: "rgba(34, 197, 94, 0.2)", borderRadius: 20, backdropFilter: "blur(10px)", border: "2px solid rgba(34, 197, 94, 0.4)", flex: 1, opacity: keyPoint2Opacity, transform: \`translateX(\${keyPoint2Slide}px)\`, minHeight: 200, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {keyPoint2}
+          </div>
+
+          {/* Key Point 3 */}
+          <div style={{ fontFamily: getFontStack("heading"), fontSize: 36, fontWeight: "bold", color: brand.colors.white, textAlign: "center", lineHeight: 1.3, padding: 30, backgroundColor: "rgba(255, 255, 255, 0.1)", borderRadius: 20, backdropFilter: "blur(10px)", border: "2px solid rgba(255, 255, 255, 0.2)", flex: 1, opacity: keyPoint3Opacity, transform: \`translateX(\${keyPoint3Slide}px)\`, minHeight: 200, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            {keyPoint3}
+          </div>
+        </div>
+      </AbsoluteFill>
+
+      {/* Conclusion/CTA Section */}
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: conclusionOpacity, transform: \`scale(\${conclusionScale})\` }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", maxWidth: "90%" }}>
+          <Img src={staticFile("logo-white.png")} style={{ width: 500, height: "auto", filter: "drop-shadow(3px 3px 12px rgba(0,0,0,0.4))", marginBottom: 30 }} />
+          <div style={{ fontFamily: getFontStack("heading"), fontSize: 64, fontWeight: "bold", color: brand.colors.white, textAlign: "center", textShadow: "3px 3px 8px rgba(0,0,0,0.6)", textTransform: "lowercase", marginBottom: 40, letterSpacing: 2 }}>
+            hidratación inteligente
+          </div>
+          <div style={{ fontFamily: getFontStack("heading"), fontSize: 42, fontWeight: "bold", color: brand.colors.white, textAlign: "center", lineHeight: 1.2, textShadow: "3px 3px 6px rgba(0,0,0,0.4)", padding: 40, backgroundColor: "rgba(255, 255, 255, 0.15)", borderRadius: 20, border: "3px solid rgba(255, 255, 255, 0.3)" }}>
+            {conclusion}
+          </div>
+        </div>
+      </AbsoluteFill>
+
+      {/* Decorative elements */}
+      <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "flex-start", padding: 60 }}>
+        <div style={{ width: 60, height: 60, backgroundColor: brand.colors.accentGreen, borderRadius: "50%", opacity: 0.5, transform: \`rotate(\${frame * 0.3}deg)\` }} />
+      </AbsoluteFill>
+      <AbsoluteFill style={{ justifyContent: "flex-start", alignItems: "flex-end", padding: 60 }}>
+        <div style={{ width: 40, height: 40, backgroundColor: brand.colors.accentGreen, borderRadius: "50%", opacity: 0.4, transform: \`rotate(\${-frame * 0.2}deg)\` }} />
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};`.split('\n'),
+    suggestions: [
+      { id: 1, lineRef: 'Line 131', startLine: 131, endLine: 133, suggestion: 'Audio src is hardcoded to ambient-quick-start.mp3. Add an optional audioSrc prop so different videos can use different music without editing the template.', category: 'arch', status: 'pending', userComment: '' },
+      { id: 2, lineRef: 'Line 157', startLine: 155, endLine: 162, suggestion: 'Logo width is hardcoded at 300px. It would be more robust to use a percentage of canvas width (e.g. width * 0.2) so it scales if the composition dimensions change.', category: 'code', status: 'pending', userComment: '' },
+      { id: 3, lineRef: 'Line 171', startLine: 170, endLine: 171, suggestion: 'paddingTop: 200 is a magic number meant to "leave space for the logo." This is brittle — tie it to a variable or derive it from logo height so it stays correct if the logo changes.', category: 'code', status: 'pending', userComment: '' },
+      { id: 4, lineRef: 'Lines 229–233', startLine: 229, endLine: 233, suggestion: 'The key points flex row has no gap property — cards will be flush against each other. Add gap: 20 (or similar) for visible breathing room between the three cards.', category: 'design', status: 'pending', userComment: '' },
+      { id: 5, lineRef: 'Lines 263–281', startLine: 263, endLine: 281, suggestion: 'Key Point 2 has a hardcoded green tint (rgba(34,197,94,0.2)) while points 1 and 3 are plain white/transparent. This creates an unintentional visual hierarchy that may not match the content. Either make all consistent or document why point 2 is always highlighted.', category: 'design', status: 'pending', userComment: '' },
+      { id: 6, lineRef: 'Line 254', startLine: 253, endLine: 256, suggestion: 'Each key point card uses both flex: 1 (from parent) and display: "flex" on itself. The inner display:flex is correct for centering content, but the outer flex:1 means all three cards always reserve equal space — even before they animate in. Consider whether this causes layout shifts during the staggered entry.', category: 'ux', status: 'pending', userComment: '' },
+      { id: 7, lineRef: 'Line 255', startLine: 253, endLine: 256, suggestion: 'The translateX slide animation starts at -100px but cards in a flex row still occupy their layout space during animation. The visual result may be cards sliding in from off-position without the layout gap closing. Verify this looks right in Studio — consider using opacity-only entry or absolute positioning for the slide.', category: 'ux', status: 'pending', userComment: '' },
+      { id: 8, lineRef: 'Line 257', startLine: 257, endLine: 260, suggestion: '"hidratación inteligente" is hardcoded as a string. If the brand tagline ever changes, this needs a code edit. Add a tagline prop (with this as the default value) so it can be overridden from content JSON.', category: 'arch', status: 'pending', userComment: '' },
+    ]
+  },
+  workflow: {
+    title: 'WORKFLOW.md',
+    path: 'docs/WORKFLOW.md',
+    lines: `# bilan-video Workflow Reference
+
+## The 4-Stage Pipeline
+
+### 1. Content (\`content/*.json\`)
+You write a JSON file describing the video — the title, body text, tip, which platform it's for, which template to use. This is the only thing you author manually. The JSON is the "source of truth."
+
+### 2. Script (\`npm run render\`)
+\`multi-platform-generator.mjs\` reads your JSON, figures out which Remotion compositions to render (based on platform/template fields), and fires off the render commands. You run one command and it handles all platforms automatically.
+
+For bulk work, \`npm run render:batch\` loops over all JSON files in \`content/\` and renders them sequentially — good for overnight runs.
+
+### 3. Templates (\`src/templates/*.tsx\`)
+These are React components that define how the video looks. Remotion treats them like web pages — animated React → video frames → MP4 via ffmpeg. The templates (QuickTip, Educational, Mythbusting, Trending) are registered as compositions in \`src/Root.tsx\`. Each composition is a named render target with its own dimensions and duration.
+
+### 4. Output (\`out/[platform]/*.mp4\`)
+Final MP4 files, organized by platform. You never touch these directly.
+
+---
+
+## The Two Modes
+
+| Mode | Command | When to use |
+|---|---|---|
+| Preview | \`npm run dev\` | Designing/iterating on a template. Hot-reloads, visual Studio UI. |
+| Production | \`npm run render\` | Content is ready. Renders real MP4s. |
+
+---
+
+## The Mental Model
+
+\`\`\`
+You write JSON → script routes it → template styles it → Remotion renders it → MP4 drops in out/
+\`\`\`
+
+The key insight is separation of concerns: content (JSON) never touches layout (templates), and rendering (scripts) is just the bridge between them. To make a new video you only touch the JSON.
+
+---
+
+## Interactive Reference
+
+The pipeline playground is at: \`bilan-workflow-playground.html\` (project root).`.split('\n'),
+    suggestions: [
+      { id: 1, lineRef: 'Lines 5–7', startLine: 5, endLine: 7, suggestion: 'The JSON section doesn\'t show what fields are actually required. Add a minimal example JSON snippet so this is a usable reference without opening DATA-FORMAT.md.', category: 'clarity', status: 'pending', userComment: '' },
+      { id: 2, lineRef: 'Lines 9–11', startLine: 9, endLine: 11, suggestion: 'The Script section describes what multi-platform-generator does but not how it decides which compositions to use. Add a sentence explaining the routing logic (e.g. which JSON fields map to which compositions).', category: 'clarity', status: 'pending', userComment: '' },
+      { id: 3, lineRef: 'Lines 13–15', startLine: 13, endLine: 15, suggestion: 'Templates section lists 4 templates but doesn\'t mention QuickTipSquare or EducationalLandscape. Either list all 6 or note that there are format variants.', category: 'clarity', status: 'pending', userComment: '' },
+      { id: 4, lineRef: 'Lines 22–26', startLine: 22, endLine: 26, suggestion: 'The Two Modes table is missing npm run render:batch and npm run lint. Consider a third row or a brief note about additional commands.', category: 'clarity', status: 'pending', userComment: '' },
+      { id: 5, lineRef: 'Lines 40–42', startLine: 40, endLine: 42, suggestion: 'The Interactive Reference section at the end is sparse. Add a brief line describing what the playground does so this doc is self-contained even if the HTML file is missing.', category: 'clarity', status: 'pending', userComment: '' },
+    ]
+  }
+};
+
+// ──────────────────────────────────────────────
+// STATE
+// ──────────────────────────────────────────────
+let state = {
+  activeFile: 'edu',
+  activeFilter: 'all',
+  activeCardId: null,
+  suggestions: JSON.parse(JSON.stringify(DOCS.edu.suggestions)),
+  customCounter: 100,
+};
+
+// ──────────────────────────────────────────────
+// RENDER DOC
+// ──────────────────────────────────────────────
+function renderDoc() {
+  const panel = document.getElementById('doc-panel');
+  const doc = DOCS[state.activeFile];
+  const lines = doc.lines;
+  const suggs = state.suggestions;
+
+  panel.innerHTML = '';
+  lines.forEach((rawLine, i) => {
+    const lineNum = i + 1;
+    const sugg = suggs.find(s => {
+      const start = s.startLine || (parseInt((s.lineRef.match(/\d+/) || [])[0]) - 1);
+      const end = s.endLine || start;
+      return lineNum >= start && lineNum <= end;
+    });
+
+    const div = document.createElement('div');
+    div.className = 'doc-line';
+    div.dataset.line = lineNum;
+
+    if (sugg) {
+      div.classList.add('has-suggestion');
+      if (sugg.status === 'approved') div.classList.remove('has-suggestion'), div.classList.add('approved');
+      if (sugg.status === 'rejected') div.classList.remove('has-suggestion'), div.classList.add('rejected');
+      if (state.activeCardId === sugg.id) div.classList.add('highlighted');
+      div.style.cursor = 'pointer';
+      div.addEventListener('click', () => activateCard(sugg.id));
+    }
+
+    div.innerHTML = `<span class="line-num">${lineNum}</span><span class="line-content">${escapeAndStyle(rawLine, state.activeFile)}</span>`;
+    panel.appendChild(div);
+  });
+}
+
+function escapeAndStyle(line, fileType) {
+  const esc = line.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  if (fileType === 'workflow') return styleMarkdown(esc);
+  return styleCode(esc);
+}
+
+function styleMarkdown(line) {
+  if (line.startsWith('# ')) return `<span class="h1">${line}</span>`;
+  if (line.startsWith('## ')) return `<span class="h2">${line}</span>`;
+  if (line.startsWith('### ')) return `<span class="h3">${line}</span>`;
+  if (line.startsWith('---')) return `<span style="color:var(--border)">───────────────────────</span>`;
+  return line
+    .replace(/`([^`]+)`/g, '<span class="code-inline">$1</span>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+}
+
+function styleCode(line) {
+  // Comments
+  if (line.trim().startsWith('//') || line.trim().startsWith('{/*')) {
+    return `<span class="cm">${line}</span>`;
+  }
+  // Basic keyword highlight (simple, not a parser)
+  return line
+    .replace(/\b(import|export|const|let|return|from|interface|type)\b/g, '<span class="kw">$1</span>')
+    .replace(/"([^"]+)"/g, '<span class="str">"$1"</span>')
+    .replace(/\b(\d+)\b/g, '<span class="num">$1</span>');
+}
+
+// ──────────────────────────────────────────────
+// RENDER SUGGESTIONS
+// ──────────────────────────────────────────────
+const CATEGORIES = {
+  clarity: 'cat-clarity',
+  ux: 'cat-ux',
+  code: 'cat-code',
+  design: 'cat-design',
+  arch: 'cat-arch',
+};
+
+function renderSuggestions() {
+  const list = document.getElementById('sugg-list');
+  const filter = state.activeFilter;
+  const filtered = state.suggestions.filter(s => filter === 'all' || s.status === filter);
+
+  list.innerHTML = '';
+  if (filtered.length === 0) {
+    list.innerHTML = `<div style="color:var(--muted);font-size:12px;padding:12px;text-align:center;">No ${filter} items.</div>`;
+    return;
+  }
+
+  filtered.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'sugg-card';
+    card.dataset.id = s.id;
+    if (s.status === 'approved') card.classList.add('approved');
+    if (s.status === 'rejected') card.classList.add('rejected');
+    if (state.activeCardId === s.id) card.classList.add('active-card');
+
+    const catClass = CATEGORIES[s.category] || 'cat-code';
+
+    const actionButtons = s.status === 'pending'
+      ? `<button class="action-btn approve" data-action="approve" data-id="${s.id}">✓ Approve</button>
+         <button class="action-btn reject" data-action="reject" data-id="${s.id}">✗ Reject</button>
+         <button class="action-btn" data-action="comment" data-id="${s.id}">💬 Note</button>`
+      : `<button class="action-btn reset" data-action="reset" data-id="${s.id}">↺ Reset</button>
+         <button class="action-btn" data-action="comment" data-id="${s.id}">💬 Note</button>`;
+
+    const commentHtml = s.showComment
+      ? `<div class="comment-area"><textarea data-comment="${s.id}" placeholder="Add a note…">${s.userComment}</textarea></div>`
+      : (s.userComment ? `<div style="font-size:11px;color:var(--muted);margin-top:6px;font-style:italic;padding:4px 0;">"${s.userComment}"</div>` : '');
+
+    card.innerHTML = `
+      <div class="sugg-meta">
+        <span class="line-ref">${s.lineRef}</span>
+        <span class="category-tag ${catClass}">${s.category}</span>
+      </div>
+      <div class="sugg-text">${s.suggestion}</div>
+      <div class="sugg-actions">${actionButtons}</div>
+      ${commentHtml}
+    `;
+
+    card.addEventListener('click', (e) => {
+      if (e.target.dataset.action || e.target.dataset.comment) return;
+      activateCard(s.id);
+    });
+
+    list.appendChild(card);
+  });
+
+  // Action button handlers
+  list.querySelectorAll('[data-action]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = parseInt(btn.dataset.id);
+      const action = btn.dataset.action;
+      const sugg = state.suggestions.find(s => s.id === id);
+      if (!sugg) return;
+      if (action === 'approve') sugg.status = 'approved';
+      if (action === 'reject') sugg.status = 'rejected';
+      if (action === 'reset') sugg.status = 'pending';
+      if (action === 'comment') sugg.showComment = !sugg.showComment;
+      renderAll();
+    });
+  });
+
+  // Comment textarea handlers
+  list.querySelectorAll('[data-comment]').forEach(ta => {
+    ta.addEventListener('input', () => {
+      const id = parseInt(ta.dataset.comment);
+      const sugg = state.suggestions.find(s => s.id === id);
+      if (sugg) { sugg.userComment = ta.value; updatePrompt(); }
+    });
+  });
+}
+
+function activateCard(id) {
+  state.activeCardId = state.activeCardId === id ? null : id;
+  renderAll();
+  if (state.activeCardId) {
+    // Scroll doc to line
+    const sugg = state.suggestions.find(s => s.id === id);
+    if (sugg) {
+      const targetLine = sugg.startLine || parseInt((sugg.lineRef.match(/\d+/) || [])[0]);
+      const lineEl = document.querySelector(`.doc-line[data-line="${targetLine}"]`);
+      if (lineEl) lineEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    // Scroll suggestion into view
+    const card = document.querySelector(`.sugg-card[data-id="${id}"]`);
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+// ──────────────────────────────────────────────
+// STATS
+// ──────────────────────────────────────────────
+function renderStats() {
+  const pending = state.suggestions.filter(s => s.status === 'pending').length;
+  const approved = state.suggestions.filter(s => s.status === 'approved').length;
+  const rejected = state.suggestions.filter(s => s.status === 'rejected').length;
+  document.getElementById('stat-pending').textContent = `${pending} pending`;
+  document.getElementById('stat-approved').textContent = `${approved} approved`;
+  document.getElementById('stat-rejected').textContent = `${rejected} rejected`;
+}
+
+// ──────────────────────────────────────────────
+// PROMPT
+// ──────────────────────────────────────────────
+function updatePrompt() {
+  const doc = DOCS[state.activeFile];
+  const approved = state.suggestions.filter(s => s.status === 'approved');
+  const withComments = state.suggestions.filter(s => s.userComment?.trim() && s.status !== 'approved');
+  const rejected = state.suggestions.filter(s => s.status === 'rejected');
+
+  if (approved.length === 0 && withComments.length === 0) {
+    document.getElementById('prompt-output').textContent = 'Approve suggestions or add notes — the prompt will appear here.';
+    return;
+  }
+
+  let parts = [];
+  parts.push(`Please update ${doc.path} with the following changes:\n`);
+
+  if (approved.length > 0) {
+    parts.push('## Approved Changes\n');
+    approved.forEach(s => {
+      let line = `${s.lineRef}: ${s.suggestion}`;
+      if (s.userComment?.trim()) line += `\n  → Note: ${s.userComment.trim()}`;
+      parts.push(line);
+    });
+  }
+
+  if (withComments.length > 0) {
+    parts.push('\n## Additional Notes\n');
+    withComments.forEach(s => {
+      parts.push(`${s.lineRef}: ${s.userComment.trim()}`);
+    });
+  }
+
+  if (rejected.length > 0) {
+    parts.push(`\n## Keep As-Is (${rejected.length} suggestion${rejected.length > 1 ? 's' : ''} rejected — do not change these)`);
+    rejected.forEach(s => parts.push(`  - ${s.lineRef}`));
+  }
+
+  document.getElementById('prompt-output').textContent = parts.join('\n');
+}
+
+function renderAll() {
+  renderDoc();
+  renderSuggestions();
+  renderStats();
+  updatePrompt();
+}
+
+// ──────────────────────────────────────────────
+// EVENTS
+// ──────────────────────────────────────────────
+// File tabs
+document.getElementById('file-tabs').addEventListener('click', e => {
+  const tab = e.target.closest('.file-tab');
+  if (!tab) return;
+  const file = tab.dataset.file;
+  if (file === state.activeFile) return;
+  state.activeFile = file;
+  state.activeCardId = null;
+  state.activeFilter = 'all';
+  state.suggestions = JSON.parse(JSON.stringify(DOCS[file].suggestions));
+  document.querySelectorAll('.file-tab').forEach(t => t.classList.toggle('active', t.dataset.file === file));
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.toggle('active', t.dataset.filter === 'all'));
+  renderAll();
+});
+
+// Filter tabs
+document.querySelectorAll('.filter-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.activeFilter = btn.dataset.filter;
+    document.querySelectorAll('.filter-tab').forEach(t => t.classList.toggle('active', t === btn));
+    renderSuggestions();
+  });
+});
+
+// Add custom note
+document.getElementById('add-btn').addEventListener('click', () => {
+  const input = document.getElementById('custom-input');
+  const text = input.value.trim();
+  if (!text) return;
+  state.suggestions.push({
+    id: ++state.customCounter,
+    lineRef: 'Custom',
+    startLine: null,
+    endLine: null,
+    suggestion: text,
+    category: 'clarity',
+    status: 'approved',
+    userComment: '',
+    showComment: false,
+  });
+  input.value = '';
+  renderAll();
+});
+
+// Copy button
+document.getElementById('copy-btn').addEventListener('click', () => {
+  const text = document.getElementById('prompt-output').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy Prompt'; btn.classList.remove('copied'); }, 1500);
+  });
+});
+
+// ──────────────────────────────────────────────
+// INIT
+// ──────────────────────────────────────────────
+renderAll();
+</script>
+</body>
+</html>

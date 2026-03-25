@@ -1,0 +1,192 @@
+{
+  "name": "bilan Video Creation System",
+  "children": [
+    {
+      "name": "Brand Identity",
+      "children": [
+        {
+          "name": "Naming",
+          "children": [
+            {
+              "name": "bilan (lowercase)"
+            },
+            {
+              "name": "hidratación inteligente (tagline)"
+            },
+            {
+              "name": "@bilan.mx (handle)"
+            }
+          ]
+        },
+        {
+          "name": "Visuals",
+          "children": [
+            {
+              "name": "Blue Background (#0066CC)"
+            },
+            {
+              "name": "Green Accents (#22c55e)"
+            },
+            {
+              "name": "Montserrat Bold Font"
+            },
+            {
+              "name": "White Text"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Content Pipeline",
+      "children": [
+        {
+          "name": "1. Content (JSON)",
+          "children": [
+            {
+              "name": "Source of Truth"
+            },
+            {
+              "name": "Defines Title and Tip"
+            }
+          ]
+        },
+        {
+          "name": "2. Script (Render)",
+          "children": [
+            {
+              "name": "Multi-platform Generator"
+            },
+            {
+              "name": "Batch Processing"
+            }
+          ]
+        },
+        {
+          "name": "3. Templates (React)",
+          "children": [
+            {
+              "name": "QuickTip"
+            },
+            {
+              "name": "Mythbusting"
+            },
+            {
+              "name": "Educational"
+            },
+            {
+              "name": "Trending"
+            }
+          ]
+        },
+        {
+          "name": "4. Output (MP4)",
+          "children": [
+            {
+              "name": "Organized by Platform"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Platform Mapping",
+      "children": [
+        {
+          "name": "TikTok",
+          "children": [
+            {
+              "name": "Vertical 9:16"
+            },
+            {
+              "name": "15s Duration"
+            }
+          ]
+        },
+        {
+          "name": "WhatsApp",
+          "children": [
+            {
+              "name": "Square 1:1"
+            },
+            {
+              "name": "12s Duration"
+            }
+          ]
+        },
+        {
+          "name": "Instagram",
+          "children": [
+            {
+              "name": "Square 1:1"
+            },
+            {
+              "name": "15s Duration"
+            }
+          ]
+        },
+        {
+          "name": "Twitter",
+          "children": [
+            {
+              "name": "Landscape 16:9"
+            },
+            {
+              "name": "Professional Tone"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Video Structure",
+      "children": [
+        {
+          "name": "BrandIntro (2.5s)"
+        },
+        {
+          "name": "Main Content (Varies)"
+        },
+        {
+          "name": "BrandOutro (4s)"
+        },
+        {
+          "name": "No Blank Screens Rule"
+        }
+      ]
+    },
+    {
+      "name": "Compliance & Strategy",
+      "children": [
+        {
+          "name": "Safe Language",
+          "children": [
+            {
+              "name": "Avoid Medical Claims"
+            },
+            {
+              "name": "Use 'Supports' or 'May help'"
+            },
+            {
+              "name": "Required Health Disclaimer"
+            }
+          ]
+        },
+        {
+          "name": "Hashtags",
+          "children": [
+            {
+              "name": "#bilan"
+            },
+            {
+              "name": "#hidratacion"
+            },
+            {
+              "name": "#bienestar"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
