@@ -41,7 +41,7 @@ export const EducationalLandscape: React.FC<EducationalLandscapeProps> = ({
   const subtitleEnd = fps * 5;
   const keyPointsStart = fps * 4;
   const keyPointsEnd = fps * 12;
-  const conclusionStart = fps * 11;
+  const conclusionStart = fps * 12;
 
   // Title animations
   const titleOpacity = interpolate(

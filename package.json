@@ -23,7 +23,8 @@
     "@types/web": "0.0.166",
     "eslint": "9.19.0",
     "prettier": "3.6.0",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "^4.0.18"
   },
   "scripts": {
     "dev": "remotion studio",
@@ -32,7 +33,9 @@
     "render:batch": "node scripts/batch-automation.mjs",
     "content": "node scripts/content-manager.mjs",
     "upgrade": "remotion upgrade",
-    "lint": "eslint src && tsc"
+    "lint": "eslint src && tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "sideEffects": [
     "*.css"

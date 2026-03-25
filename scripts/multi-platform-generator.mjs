@@ -123,9 +123,9 @@ class MultiPlatformGenerator {
       props = {
         title: content.title || content.tip,
         subtitle: content.subtitle || "Lo que necesitas saber",
-        keyPoint1: content.keyPoint1 || "PUNTO 1\\nInformación relevante",
-        keyPoint2: content.keyPoint2 || "PUNTO 2\\nDatos importantes", 
-        keyPoint3: content.keyPoint3 || "PUNTO 3\\nConclusión clave",
+        keyPoint1: content.keyPoint1 || content.tip,
+        keyPoint2: content.keyPoint2 || content.reason,
+        keyPoint3: content.keyPoint3 || content.cta,
         conclusion: content.conclusion || content.cta
       };
     } else {
