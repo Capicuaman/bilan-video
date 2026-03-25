@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bilan · Content Builder Playground</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1117;
+    --bg2: #181c27;
+    --bg3: #1e2335;
+    --border: #2a3050;
+    --accent: #22c55e;
+    --accent2: #3b82f6;
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --text3: #64748b;
+    --warn: #f59e0b;
+    --error: #ef4444;
+    --platform-tiktok: #ff0050;
+    --platform-instagram: #e1306c;
+    --platform-whatsapp: #25d366;
+    --platform-twitter: #1d9bf0;
+    --radius: 8px;
+    --font-ui: system-ui, -apple-system, sans-serif;
+    --font-mono: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-ui);
+    font-size: 14px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-dot {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--accent), #16a34a);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .logo-text {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .logo-sub {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 1px;
+  }
+
+  .presets {
+    display: flex;
+    gap: 6px;
+  }
+
+  .preset-btn {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: var(--font-ui);
+    transition: all 0.15s;
+  }
+
+  .preset-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── Main layout ── */
+  .main {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* ── Left panel ── */
+  .controls {
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text3);
+    margin-bottom: 8px;
+  }
+
+  label {
+    display: block;
+    font-size: 12px;
+    color: var(--text2);
+    margin-bottom: 5px;
+  }
+
+  input[type="text"], textarea {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 10px;
+    border-radius: var(--radius);
+    font-family: var(--font-ui);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s;
+    resize: none;
+  }
+
+  input[type="text"]:focus, textarea:focus {
+    border-color: var(--accent);
+  }
+
+  textarea {
+    line-height: 1.5;
+  }
+
+  .char-count {
+    text-align: right;
+    font-size: 10px;
+    color: var(--text3);
+    margin-top: 3px;
+  }
+
+  .char-count.warn { color: var(--warn); }
+  .char-count.error { color: var(--error); }
+
+  /* Platform chips */
+  .platform-chips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text2);
+    background: var(--bg3);
+  }
+
+  .chip .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .chip[data-platform="tiktok"] .dot { background: var(--platform-tiktok); }
+  .chip[data-platform="instagram"] .dot { background: var(--platform-instagram); }
+  .chip[data-platform="whatsapp"] .dot { background: var(--platform-whatsapp); }
+  .chip[data-platform="twitter"] .dot { background: var(--platform-twitter); }
+
+  .chip.active[data-platform="tiktok"] { border-color: var(--platform-tiktok); color: var(--platform-tiktok); background: rgba(255,0,80,0.08); }
+  .chip.active[data-platform="instagram"] { border-color: var(--platform-instagram); color: var(--platform-instagram); background: rgba(225,48,108,0.08); }
+  .chip.active[data-platform="whatsapp"] { border-color: var(--platform-whatsapp); color: var(--platform-whatsapp); background: rgba(37,211,102,0.08); }
+  .chip.active[data-platform="twitter"] { border-color: var(--platform-twitter); color: var(--platform-twitter); background: rgba(29,155,240,0.08); }
+
+  /* Stats row */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .stat {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 8px 10px;
+    text-align: center;
+  }
+
+  .stat-val {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: var(--font-mono);
+  }
+
+  .stat-key {
+    font-size: 9px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* ── Right panel ── */
+  .right-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .preview-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Caption cards */
+  .caption-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .caption-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .caption-platform {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .caption-platform .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  .platform-tiktok .dot { background: var(--platform-tiktok); }
+  .platform-tiktok { color: var(--platform-tiktok); }
+  .platform-instagram .dot { background: var(--platform-instagram); }
+  .platform-instagram { color: var(--platform-instagram); }
+  .platform-whatsapp .dot { background: var(--platform-whatsapp); }
+  .platform-whatsapp { color: var(--platform-whatsapp); }
+  .platform-twitter .dot { background: var(--platform-twitter); }
+  .platform-twitter { color: var(--platform-twitter); }
+
+  .caption-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .caption-len {
+    font-family: var(--font-mono);
+    font-size: 10px;
+  }
+
+  .len-ok { color: var(--accent); }
+  .len-warn { color: var(--warn); }
+  .len-error { color: var(--error); }
+
+  .caption-dims {
+    font-size: 10px;
+    color: var(--text3);
+  }
+
+  .caption-body {
+    padding: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text);
+    white-space: pre-wrap;
+    word-break: break-word;
+    min-height: 60px;
+  }
+
+  /* JSON preview */
+  .json-section {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .json-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .json-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text3);
+  }
+
+  .json-body {
+    padding: 12px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    line-height: 1.6;
+    overflow-x: auto;
+  }
+
+  .j-key { color: #93c5fd; }
+  .j-str { color: #86efac; }
+  .j-num { color: #fca5a5; }
+  .j-bool { color: #fdba74; }
+
+  /* ── Prompt output ── */
+  .prompt-area {
+    border-top: 1px solid var(--border);
+    background: var(--bg2);
+    flex-shrink: 0;
+  }
+
+  .prompt-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .prompt-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text3);
+  }
+
+  .copy-btn {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: var(--font-ui);
+    transition: all 0.15s;
+    letter-spacing: 0.3px;
+  }
+
+  .copy-btn:hover { background: #16a34a; }
+  .copy-btn.copied { background: var(--accent2); color: #fff; }
+
+  .prompt-text {
+    padding: 10px 16px 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text2);
+    max-height: 120px;
+    overflow-y: auto;
+  }
+
+  /* CLI command */
+  .cli-area {
+    border-top: 1px solid var(--border);
+    padding: 8px 16px 10px;
+    background: var(--bg);
+  }
+
+  .cli-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text3);
+    margin-bottom: 4px;
+  }
+
+  .cli-cmd {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #86efac;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  .cli-cmd .cmd-dim { color: var(--text3); }
+  .cli-cmd .cmd-flag { color: #93c5fd; }
+  .cli-cmd .cmd-val { color: #fcd34d; }
+
+  /* Empty state */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: var(--text3);
+    text-align: center;
+    gap: 8px;
+  }
+
+  .empty-icon { font-size: 32px; }
+  .empty-title { font-size: 14px; font-weight: 600; color: var(--text2); }
+  .empty-sub { font-size: 12px; }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-dot">💧</div>
+    <div>
+      <div class="logo-text">bilan · Content Builder</div>
+      <div class="logo-sub">Multi-platform video content playground</div>
+    </div>
+  </div>
+  <div class="presets">
+    <button class="preset-btn" onclick="loadPreset('hidratacion')">💧 Hidratación</button>
+    <button class="preset-btn" onclick="loadPreset('electrolitos')">⚡ Electrolitos</button>
+    <button class="preset-btn" onclick="loadPreset('rendimiento')">🏃 Rendimiento</button>
+    <button class="preset-btn" onclick="loadPreset('habito')">📅 Hábito</button>
+    <button class="preset-btn" onclick="loadPreset('mitos')">🔍 Mitos</button>
+  </div>
+</header>
+
+<div class="main">
+  <!-- Controls -->
+  <div class="controls">
+
+    <div>
+      <div class="section-label">Identificador</div>
+      <label>Content ID</label>
+      <input type="text" id="contentId" value="BILAN_001" maxlength="20" oninput="updateAll()">
+    </div>
+
+    <div>
+      <div class="section-label">Contenido del video</div>
+
+      <label>💡 Tip — el mensaje principal</label>
+      <textarea id="tipText" rows="2" oninput="updateAll()" placeholder="Toma agua antes de sentir sed"></textarea>
+      <div class="char-count" id="tipCount">0 chars</div>
+
+      <label style="margin-top:10px">📖 Reason — la razón o contexto</label>
+      <textarea id="reasonText" rows="3" oninput="updateAll()" placeholder="Cuando sientes sed, tu cuerpo ya está deshidratado"></textarea>
+      <div class="char-count" id="reasonCount">0 chars</div>
+
+      <label style="margin-top:10px">📣 CTA — llamada a la acción</label>
+      <textarea id="ctaText" rows="2" oninput="updateAll()" placeholder="Mantente hidratado con bilan"></textarea>
+      <div class="char-count" id="ctaCount">0 chars</div>
+    </div>
+
+    <div>
+      <div class="section-label">Plataformas</div>
+      <div class="platform-chips">
+        <div class="chip active" data-platform="tiktok" onclick="togglePlatform('tiktok')">
+          <div class="dot"></div> TikTok
+        </div>
+        <div class="chip active" data-platform="instagram" onclick="togglePlatform('instagram')">
+          <div class="dot"></div> Instagram
+        </div>
+        <div class="chip active" data-platform="whatsapp" onclick="togglePlatform('whatsapp')">
+          <div class="dot"></div> WhatsApp
+        </div>
+        <div class="chip active" data-platform="twitter" onclick="togglePlatform('twitter')">
+          <div class="dot"></div> Twitter
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-label">Estadísticas</div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-val" id="statPlatforms">4</div>
+          <div class="stat-key">Plataformas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val" id="statWords">0</div>
+          <div class="stat-key">Palabras</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val" id="statMaxLen">0</div>
+          <div class="stat-key">Max chars</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Right panel -->
+  <div class="right-panel">
+    <div class="preview-area" id="previewArea">
+      <div class="empty-state">
+        <div class="empty-icon">✍️</div>
+        <div class="empty-title">Escribe tu contenido</div>
+        <div class="empty-sub">Las vistas previas aparecerán aquí</div>
+      </div>
+    </div>
+
+    <!-- Prompt output -->
+    <div class="prompt-area">
+      <div class="prompt-bar">
+        <span class="prompt-label">Prompt para Claude</span>
+        <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">Copiar prompt</button>
+      </div>
+      <div class="prompt-text" id="promptText">Escribe el contenido del video para ver el prompt generado.</div>
+    </div>
+
+    <!-- CLI command -->
+    <div class="cli-area">
+      <div class="cli-label">Comando de render</div>
+      <div class="cli-cmd" id="cliCmd">
+        <span class="cmd-dim">node scripts/multi-platform-generator.mjs</span> <span class="cmd-val">BILAN_001</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────
+const DEFAULTS = {
+  contentId: 'BILAN_001',
+  tip: '',
+  reason: '',
+  cta: '',
+  platforms: { tiktok: true, instagram: true, whatsapp: true, twitter: true }
+};
+
+const state = {
+  contentId: DEFAULTS.contentId,
+  tip: DEFAULTS.tip,
+  reason: DEFAULTS.reason,
+  cta: DEFAULTS.cta,
+  platforms: { ...DEFAULTS.platforms }
+};
+
+// ── Platform configs (mirrors multi-platform-generator.mjs) ─────────
+const PLATFORMS = {
+  tiktok: {
+    label: 'TikTok',
+    cssClass: 'platform-tiktok',
+    composition: 'QuickTip',
+    dimensions: '1080×1920',
+    duration: 15,
+    caption: {
+      prefix: '🔥',
+      style: 'casual',
+      hashtags: ['#electrolitos', '#hidratacion', '#bilan', '#ciencia', '#salud'],
+      maxLength: 150
+    }
+  },
+  instagram: {
+    label: 'Instagram',
+    cssClass: 'platform-instagram',
+    composition: 'QuickTipInstagram',
+    dimensions: '1080×1080',
+    duration: 15,
+    caption: {
+      prefix: '💡',
+      style: 'educational',
+      hashtags: ['#ElectrolitosReales', '#HidratacionInteligente', '#bilan', '#SaludBasadaEnCiencia'],
+      maxLength: 300
+    }
+  },
+  whatsapp: {
+    label: 'WhatsApp',
+    cssClass: 'platform-whatsapp',
+    composition: 'QuickTipWhatsApp',
+    dimensions: '1080×1080',
+    duration: 12,
+    caption: {
+      prefix: '📱',
+      style: 'direct',
+      hashtags: [],
+      maxLength: 100
+    }
+  },
+  twitter: {
+    label: 'Twitter',
+    cssClass: 'platform-twitter',
+    composition: 'EducationalTwitter',
+    dimensions: '1920×1080',
+    duration: 15,
+    caption: {
+      prefix: '🧵',
+      style: 'thread',
+      hashtags: ['#electrolitos', '#hidratacion', '#salud'],
+      maxLength: 240
+    }
+  }
+};
+
+// ── Caption generator (mirrors script logic) ────────────────────────
+function generateCaption(content, platform) {
+  const cfg = PLATFORMS[platform].caption;
+  const { tip, reason, cta } = content;
+  if (!tip) return '';
+
+  let caption = `${cfg.prefix} ${tip}\n\n`;
+
+  if (cfg.style === 'educational') {
+    caption += `✨ ${reason}\n\n`;
+  } else if (cfg.style === 'casual') {
+    caption += `${reason} 💪\n\n`;
+  } else if (cfg.style === 'thread') {
+    caption += `Hilo 👇\n\n${reason}\n\n`;
+  } else {
+    caption += `${reason}\n\n`;
+  }
+
+  caption += cta;
+
+  if (cfg.hashtags.length > 0) {
+    caption += `\n\n${cfg.hashtags.join(' ')}`;
+  }
+
+  if (caption.length > cfg.maxLength) {
+    caption = caption.substring(0, cfg.maxLength - 3) + '...';
+  }
+
+  return caption;
+}
+
+// ── Presets ─────────────────────────────────────────────────────────
+const PRESETS = {
+  hidratacion: {
+    contentId: 'BILAN_HID_01',
+    tip: 'Toma agua antes de sentir sed',
+    reason: 'Cuando sientes sed, tu cuerpo ya está pidiendo hidratación urgente',
+    cta: 'Mantente hidratado con bilan'
+  },
+  electrolitos: {
+    contentId: 'BILAN_ELC_01',
+    tip: 'Los electrolitos no son solo para deportistas',
+    reason: 'Cada célula de tu cuerpo necesita sodio, potasio y magnesio para funcionar bien',
+    cta: 'Descubre bilan — electrolitos sin azúcar añadida'
+  },
+  rendimiento: {
+    contentId: 'BILAN_RND_01',
+    tip: 'Deshidratado un 2% = 20% menos rendimiento',
+    reason: 'Tu cerebro es 75% agua — incluso una leve deshidratación afecta concentración y energía',
+    cta: 'Optimiza tu rendimiento con bilan'
+  },
+  habito: {
+    contentId: 'BILAN_HAB_01',
+    tip: 'El mejor momento para hidratarte es por la mañana',
+    reason: 'Dormiste 8 horas sin beber — tu cuerpo empieza el día deshidratado',
+    cta: 'Empieza cada mañana con bilan'
+  },
+  mitos: {
+    contentId: 'BILAN_MIT_01',
+    tip: '8 vasos de agua al día es un mito',
+    reason: 'La hidratación ideal depende de tu peso, actividad y clima — no de un número fijo',
+    cta: 'Aprende a hidratarte mejor con bilan'
+  }
+};
+
+function loadPreset(name) {
+  const p = PRESETS[name];
+  document.getElementById('contentId').value = p.contentId;
+  document.getElementById('tipText').value = p.tip;
+  document.getElementById('reasonText').value = p.reason;
+  document.getElementById('ctaText').value = p.cta;
+  updateAll();
+}
+
+// ── Platform toggle ──────────────────────────────────────────────────
+function togglePlatform(platform) {
+  state.platforms[platform] = !state.platforms[platform];
+  const chip = document.querySelector(`.chip[data-platform="${platform}"]`);
+  chip.classList.toggle('active', state.platforms[platform]);
+  updateAll();
+}
+
+// ── Main update ──────────────────────────────────────────────────────
+function updateAll() {
+  state.contentId = document.getElementById('contentId').value.trim() || 'BILAN_001';
+  state.tip = document.getElementById('tipText').value.trim();
+  state.reason = document.getElementById('reasonText').value.trim();
+  state.cta = document.getElementById('ctaText').value.trim();
+
+  updateCharCounts();
+  updateStats();
+  renderPreview();
+  updatePrompt();
+  updateCLI();
+}
+
+function updateCharCounts() {
+  const fields = [
+    { id: 'tipCount', val: state.tip, max: 80 },
+    { id: 'reasonCount', val: state.reason, max: 160 },
+    { id: 'ctaCount', val: state.cta, max: 80 },
+  ];
+  fields.forEach(({ id, val, max }) => {
+    const el = document.getElementById(id);
+    const len = val.length;
+    el.textContent = `${len} / ~${max} chars`;
+    el.className = 'char-count' + (len > max * 1.2 ? ' error' : len > max ? ' warn' : '');
+  });
+}
+
+function updateStats() {
+  const activePlatforms = Object.values(state.platforms).filter(Boolean).length;
+  const words = [state.tip, state.reason, state.cta].join(' ').split(/\s+/).filter(Boolean).length;
+  const maxCaptions = Object.keys(PLATFORMS)
+    .filter(p => state.platforms[p])
+    .map(p => generateCaption({ tip: state.tip, reason: state.reason, cta: state.cta }, p).length);
+  const maxLen = maxCaptions.length ? Math.max(...maxCaptions) : 0;
+
+  document.getElementById('statPlatforms').textContent = activePlatforms;
+  document.getElementById('statWords').textContent = words;
+  document.getElementById('statMaxLen').textContent = maxLen;
+}
+
+// ── Preview render ───────────────────────────────────────────────────
+function renderPreview() {
+  const area = document.getElementById('previewArea');
+  const content = { tip: state.tip, reason: state.reason, cta: state.cta };
+  const activePlatforms = Object.keys(PLATFORMS).filter(p => state.platforms[p]);
+
+  if (!state.tip && !state.reason && !state.cta) {
+    area.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">✍️</div>
+        <div class="empty-title">Escribe tu contenido</div>
+        <div class="empty-sub">Las vistas previas de captions aparecerán aquí</div>
+      </div>`;
+    return;
+  }
+
+  if (activePlatforms.length === 0) {
+    area.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">📱</div>
+        <div class="empty-title">Sin plataformas seleccionadas</div>
+        <div class="empty-sub">Activa al menos una plataforma</div>
+      </div>`;
+    return;
+  }
+
+  let html = '';
+
+  // Caption cards
+  activePlatforms.forEach(platform => {
+    const cfg = PLATFORMS[platform];
+    const caption = generateCaption(content, platform);
+    const maxLen = cfg.caption.maxLength;
+    const len = caption.length;
+    const lenClass = len >= maxLen ? 'len-error' : len > maxLen * 0.85 ? 'len-warn' : 'len-ok';
+
+    html += `
+      <div class="caption-card">
+        <div class="caption-header">
+          <div class="caption-platform ${cfg.cssClass}">
+            <div class="dot"></div>
+            ${cfg.label}
+          </div>
+          <div class="caption-meta">
+            <span class="caption-len ${lenClass}">${len}/${maxLen} chars</span>
+            <span class="caption-dims">${cfg.dimensions} · ${cfg.duration}s · ${cfg.composition}</span>
+          </div>
+        </div>
+        <div class="caption-body">${escHtml(caption)}</div>
+      </div>`;
+  });
+
+  // JSON preview
+  const jsonObj = {
+    contentId: state.contentId,
+    status: "ready",
+    content: {
+      tip: state.tip || "<tip>",
+      reason: state.reason || "<reason>",
+      cta: state.cta || "<cta>"
+    }
+  };
+
+  html += `
+    <div class="json-section">
+      <div class="json-header">
+        <span class="json-title">content/ready/${escHtml(state.contentId)}.json</span>
+      </div>
+      <div class="json-body">${renderJson(jsonObj)}</div>
+    </div>`;
+
+  area.innerHTML = html;
+}
+
+function escHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderJson(obj, indent = 0) {
+  const pad = '  '.repeat(indent);
+  const pad1 = '  '.repeat(indent + 1);
+
+  if (typeof obj === 'string') return `<span class="j-str">"${escHtml(obj)}"</span>`;
+  if (typeof obj === 'number') return `<span class="j-num">${obj}</span>`;
+  if (typeof obj === 'boolean') return `<span class="j-bool">${obj}</span>`;
+
+  if (Array.isArray(obj)) {
+    const items = obj.map(v => `${pad1}${renderJson(v, indent + 1)}`).join(',\n');
+    return `[\n${items}\n${pad}]`;
+  }
+
+  const entries = Object.entries(obj).map(([k, v]) =>
+    `${pad1}<span class="j-key">"${escHtml(k)}"</span>: ${renderJson(v, indent + 1)}`
+  ).join(',\n');
+
+  return `{\n${entries}\n${pad}}`;
+}
+
+// ── Prompt output ────────────────────────────────────────────────────
+function updatePrompt() {
+  const promptEl = document.getElementById('promptText');
+  const activePlatforms = Object.keys(PLATFORMS).filter(p => state.platforms[p]);
+
+  if (!state.tip) {
+    promptEl.textContent = 'Escribe el contenido del video para ver el prompt generado.';
+    return;
+  }
+
+  const platformList = activePlatforms.map(p => PLATFORMS[p].label).join(', ');
+  const parts = [];
+
+  parts.push(`Genera el contenido JSON para un video de bilan con ID "${state.contentId}".`);
+
+  if (state.tip) parts.push(`El tip principal es: "${state.tip}".`);
+  if (state.reason) parts.push(`La razón o contexto es: "${state.reason}".`);
+  if (state.cta) parts.push(`El CTA es: "${state.cta}".`);
+
+  if (activePlatforms.length > 0) {
+    parts.push(`Genera videos para las siguientes plataformas: ${platformList}.`);
+  }
+
+  if (activePlatforms.includes('twitter')) {
+    parts.push(`Para Twitter usa el formato educacional con title, subtitle, keyPoint1, keyPoint2, keyPoint3 y conclusion.`);
+  }
+
+  parts.push(`El archivo de contenido debe guardarse en content/ready/${state.contentId}.json y los videos en out/<platform>/.`);
+
+  promptEl.textContent = parts.join(' ');
+}
+
+// ── CLI command ──────────────────────────────────────────────────────
+function updateCLI() {
+  const cliEl = document.getElementById('cliCmd');
+  const activePlatforms = Object.keys(PLATFORMS).filter(p => state.platforms[p]);
+  const platformArg = activePlatforms.length === 4 ? '' : ` --platforms ${activePlatforms.join(',')}`;
+
+  if (!state.tip) {
+    cliEl.innerHTML = `<span class="cmd-dim">node scripts/multi-platform-generator.mjs</span> <span class="cmd-val">${escHtml(state.contentId)}</span> <span class="cmd-flag">--from-file</span> <span class="cmd-val">content/ready/${escHtml(state.contentId)}.json</span>`;
+    return;
+  }
+
+  // Use inline args for quick preview
+  const tipArg = `\\\n  --tip "${escHtml(state.tip)}"`;
+  const reasonArg = state.reason ? `\\\n  --reason "${escHtml(state.reason)}"` : '';
+  const ctaArg = state.cta ? `\\\n  --cta "${escHtml(state.cta)}"` : '';
+  const platformsArg = platformArg ? `\\\n  --platforms <span class="cmd-val">${escHtml(activePlatforms.join(','))}</span>` : '';
+
+  cliEl.innerHTML = `<span class="cmd-dim">node scripts/multi-platform-generator.mjs</span> <span class="cmd-val">${escHtml(state.contentId)}</span> ${tipArg}${reasonArg}${ctaArg}${platformsArg}`;
+}
+
+// ── Copy prompt ──────────────────────────────────────────────────────
+function copyPrompt() {
+  const text = document.getElementById('promptText').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copiado!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copiar prompt';
+      btn.classList.remove('copied');
+    }, 1800);
+  });
+}
+
+// ── Init ─────────────────────────────────────────────────────────────
+loadPreset('hidratacion');
+</script>
+</body>
+</html>
